@@ -1,0 +1,6 @@
+2       protein_coding  mRNA    8        55        .       +       .       ID=ENSDART00000146444;Gene=ENSDARG0000009
+2       protein_coding  CDS     8        55        .       +       0       Parent=ENSDART00000146444;
+2       protein_coding  CDS     8        55        .       +       0       Parent=ENSDART00000146444;
+2       protein_coding  CDS     8        55        .       +       0       Parent=ENSDART00000146444;
+1       protein_coding  mRNA    8        55        .       -       .       ID=ENSDART00000152687;Gene=ENSDARG0000008
+1       protein_coding  CDS     8        55        .       -       0       Parent=ENSDART00000152687;
