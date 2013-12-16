@@ -13,6 +13,11 @@ use Tie::File;
 use Fcntl 'O_RDONLY';
 use Data::Dumper;
 
+## cds 对应cds
+#blast结果：
+#问询序列 库文件 相似度	长度  gap snp 问询序列的起始终止位置  在库里的起始终止位置  score
+
+# 问询序列
 open (F, "< pear_2.NBS.cds.fasta") || die "error: $! $:";  #fasta file
 my %gene_length = ();
 my $count       = 1;
@@ -26,7 +31,7 @@ while (<F>)
 close F;
 print "\n";
 
-
+# 库文件
 my	$in_in = "pear.cds.NBS.fasta";
 open  my $in, '<', $in_in or die "cannot open\n";
 while(<$in>)
@@ -42,6 +47,7 @@ close  $in;
 #classify of the gene family
 #-------------------------------------------------------------------------------
 
+# blast结果
 open (F, "< blast_result.txt.fas") || die "error: $! $:"; #blast result
 my %name     = ();
 my %coverage = ();
@@ -66,6 +72,7 @@ close F;
 #-------------------------------------------------------------------------------
 
 print "\n";
+# blast结果
 open (F, "< blast_result.txt.fas") || die "error: $! $:"; #blast result
 my %gene_id = ();
 my %pair    = ();
