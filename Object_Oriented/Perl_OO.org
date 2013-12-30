@@ -1,0 +1,21 @@
+Perl面向对象的编程
+* Introduction 对象
+Object“物体”又称为“对象”。面向对象编程，就是针对一个对象。
+我们先从一个对象开始。我们把一个单词看成一个对象。那么一个单词
+有什么属性的？
++ 单词有长度length
++ 单词的首字母是什么
+这被称为对象的属性。
+下面我们就进行一个面向单词的编程。
+
+#+BEGIN_SRC perl -n
+  sub len
+  {
+          my $word=shift;
+          my $length=length($word);
+          print "$length\n";
+  }
+  
+#+END_SRC
+我们很容易可以看出上面子程序的目的：得到单词的长度。
+
