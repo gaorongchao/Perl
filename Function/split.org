@@ -1,0 +1,176 @@
+Perl5 split 函数的使用详细讲解
+文章来源与：http://perlmaven.com/perl-split 
+翻译：扬眉剑（GRC）rongchaogao@gmail.com
+** 一个简单的例子
+#+BEGIN_SRC perl -n
+  use Data::Dumper;
+  my $str  = "ab cd ef gh ij";
+  my @word = split/\s+/,$str;
+  print Dumper(\@word);
+#+END_SRC
+结果：
+#+BEGIN_SRC perl -n
+  $VAR1 = [
+            'ab',
+            'cd',
+            'ef',
+            'gh',
+            'ij'
+          ];
+  
+#+END_SRC
+** 限制分成几分
+#+BEGIN_SRC perl -n
+  use Data::Dumper;
+  my $str  = "ab cd ef gh ij";
+  my @word = split/\s+/,$str,2;
+  #添加一个参数2，这里整个字符串就被从前往后分成了两部分
+  print Dumper(\@word);
+  =结果
+  $VAR1 = [
+            'ab',
+            'cd ef gh ij'
+          ];
+  =cut
+  use Data::Dumper;
+  my $str  = "ab cd ef gh ij";
+  my @word = split/\s+/,$str,3;
+  print Dumper(\@word);
+  =结果
+  $VAR1 = [
+            'ab',
+            'cd',
+            'ef gh ij'
+          ];
+  =cut
+#+END_SRC
+** 通过split给标量赋值
++ 方法一：
+#+BEGIN_SRC perl -n
+  my $str  = "ab cd ef gh ij";
+  my ($first,$second,$third,$four,$five) = split/\s+/,$str;
+  print "first $first\nsecond $second\nthird $third\nfour $four\nfive $five\n";
+  
+  =结果
+  first ab
+  second cd
+  third ef
+  four gh
+  five ij
+#+END_SRC
++ 方法二： 
+上面的程序可以达到我们的需求，但是，如果我们只需要其中的2个值。那么上面的程序就很繁琐了。
+我们可以用下面改进的办法；
+#+BEGIN_SRC perl -n
+  my $str  = "ab cd ef gh ij";
+  my @word=split/\s+/,$str;
+  my $third=@word[2];
+  my $five =@word[4];
+  print "third $third\nfive $five\n";
+  
+  =结果
+  third ef
+  five ij
+  
+#+END_SRC
++ 方法三：
+上面的方法也成功的实现了我们的需求，但还是不够简洁，我们还可以通过下面的方法：
+#+BEGIN_SRC perl -n
+  my $str  = "ab cd ef gh ij";
+  my ($third,$five)=(split/\s+/,$str)[2,4];
+  print "third $third\nfive $five\n";
+  =结果
+  third ef
+  five ij
+#+END_SRC
+** 用更复杂的正则分割
+首先还是一个简单的例子；
+#+BEGIN_SRC perl -n
+  use Data::Dumper;
+  my $str="fname    = Foolname =    Baremail=foo@bar.com";
+  my @array=split/=/,$str;
+  print Dumper(\@array);
+  
+  =结果
+  $VAR1 = [
+            'fname    ',
+            ' Foolname ',
+            '    Baremail',
+            'foo.com'
+          ];
+#+END_SRC
+上面的结果有什么不妥的地方呢？我们发现分成的四部分中有空格的存在，而空格未必是我们想要的。
+所以我们要对程序进行改进
+#+BEGIN_SRC perl -n
+  use Data::Dumper;
+  my $str="fname    = Foolname =    Baremail=foo@bar.com";
+  my @array=split/\s*=\s*/,$str;
+  print Dumper(\@array);
+  
+  =结果
+  $VAR1 = [
+            'fname',
+            'Foolname',
+            'Baremail',
+            'foo.com'
+          ];
+#+END_SRC
+我们还可以这样控制
+#+BEGIN_SRC perl -n
+  use Data::Dumper;
+  my $str="fname    = Foolname =    Baremail=foo@bar.com";
+  my @array=split/\s+=\s+/,$str;
+  print Dumper(\@array);
+  =结果
+  $VAR1 = [
+            'fname',
+            'Foolname',
+            'Baremail=foo.com'
+          ];
+#+END_SRC
+上面的字符串$str有3个等号，我们最后的结果却只分成了三分。因为我们在分割的时候，
+要求必须=两侧有空格的才进行分割。所以最后的一个等号两侧没有被分割。
+** 按照多种字符分割
+我们有这么一个字符串"fname=Foo&lname=Bar&email=foo@bar.com"我们既想用“=”分割，也想
+用“&”分割。怎么做到呢？
+#+BEGIN_SRC perl -n
+  use Data::Dumper;
+  my $str = 'fname=Foo&lname=Bar&email=foo@bar.com';
+  my @user = split /[=&]/, $str;
+  print Dumper (\@user);
+  =结果
+  $VAR1 = [
+            'fname',
+            'Foo',
+            'lname',
+            'Bar',
+            'email',
+            'foo@bar.com'
+          ];
+#+END_SRC
+
+** 分割字符
+也许我们有时候还会有这样的要求“hello world”把这个字符串按照字符来分割，分割成"h""e""l"
+等等。
+#+BEGIN_SRC perl -n
+  use Data::Dumper;
+  my $str = "Hello World";
+  my @chars = split //, $str;
+  print Dumper(\@chars);
+  
+  =结果
+  $VAR1 = [
+            'H',
+            'e',
+            'l',
+            'l',
+            'o',
+            ' ',
+            'W',
+            'o',
+            'r',
+            'l',
+            'd'
+          ];
+#+END_SRC
+注意这里是用//来分割的。要和省略分割符号区别开，如果省略分割符号，默认用空格分割。
