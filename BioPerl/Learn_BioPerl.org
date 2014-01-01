@@ -1,0 +1,186 @@
+# title:Learn BioPerl
+* 安装
+因为我们要用到只是其中的一部分的模块，所以我们没有按照网上的方法安装。
+我们直接在CPAN上下载BioPerl然后解压后把模块扔到lib目录下，让Perl能
+够找到就可以了。
+** 学习条件
+如果你想更好的理解这里的内容，最好把Intermediate Perl的前几章看一下。
+这样方便理解。
+* 面向对象
+首先我们先来看一个例子：
+#+BEGIN_SRC perl -n
+  use Data::Dumper;
+  use Bio::Seq;
+  
+  # 下面创建一个seq_obj的对象，并给这个对象添加属性：是DNA序列。
+  my $seq_obj = Bio::Seq->new(-seq=>"aaaaaaaaaaaaaaatatatctata",-alphabet=>"dna");
+  print Dumper($seq_obj);
+#+END_SRC
+上面用new创建了一个新的对象，语法格式
+#+BEGIN_SRC perl -n
+  模块名称Bio::Seq->方法名称new(-参数=>参数值);
+#+END_SRC
+BioPerl是面向对象的，上面我们创建了一个seq_obj的对象，我们通过上面的程序
+给这个对象赋予了两个属性，第一：-seq 也就是序列。第二：-alphabet也就是序列
+的类型，我们指明了是dna。那这个对象中还有那些属性呢？在上面的例子中我们用
+Data::Dumper把$seq_obj打印出来，其实$seq_obj是一个引用。引用了一个匿名的
+hash。
+#+BEGIN_SRC perl -n
+  $VAR1 = bless( {
+                   'primary_seq' => bless( {
+                                             'length' => 25,
+                                             '_nowarnonempty' => undef,
+                                             'alphabet' => 'dna',
+                                             '_root_verbose' => 0,
+                                             'seq' => 'aaaaaaaaaaaaaaatatatctata'
+                                           }, 'Bio::PrimarySeq' ),
+                   '_root_verbose' => 0
+                 }, 'Bio::Seq' );
+#+END_SRC
+通过上面我们打印的结果，我们可以看到这里还包含其他的属性，length等。
+既然这是一个对hash的引用，那么我们获取属性的方法也就很简单了，解引用：
+#+BEGIN_SRC perl -n
+  use strict;
+  use warnings;
+  use Data::Dumper;
+  use Bio::Seq;
+  
+  # 下面创建一个seq_obj的对象，并给这个对象添加属性：是DNA序列。
+  my $seq_obj = Bio::Seq->new(-seq=>"aaaaaaaaaaaaaaatatatctata",-alphabet=>"dna");
+  print Dumper($seq_obj);
+  # 输出序列
+  
+  print $seq_obj->seq."\n";
+  # 或者解引用的另一种方法
+  print ${$seq_obj}{'primary_seq'}{'seq'}."\n";
+  my @keys = keys %{$seq_obj};
+  print Dumper(\@keys);
+  # 输出长度
+  print $seq_obj->length."\n";
+  # 输出类型
+  print $seq_obj->alphabet."\n";
+  
+#+END_SRC
+** Bio::Seq属性
+#+BEGIN_SRC perl -n
+  -seq=>序列
+  -display_id=>标签
+  -desc=>描述
+  -alphabet=>序列类型(dna,rna,protein),如果不声明，bioperl会自己猜测
+#+END_SRC
+* Bio::SeqIO BioPerl的输入输出
+Bio::SeqIO支持几乎所有的格式，http://www.bioperl.org/wiki/HOWTO:SeqIO
+具体内容就看网址，不在粘贴过来。
+** 读入
+#+BEGIN_SRC perl -n
+  use strict;
+  use warnings;
+  use Data::Dumper;
+  use Bio::SeqIO;
+  
+  my      $out_out = "result.txt";
+  open  my $out, '>', $out_out or die  "Fail open $out_out\n";
+  
+  my $seqio_object=Bio::SeqIO->new(-file=>"Os01g0104900.fasta",-format=>"fasta");
+  while(my $seq_object=$seqio_object->next_seq)
+  {
+          print $out Dumper($seq_object);
+  }
+  close  $out;
+  
+#+END_SRC
+首先，上面用Bio::SeqIO->new读入一个fasta的文件，然后创建一个对象，
+这个对象指向这个文件。
+然后fasta中的序列我们用$seqio_object->next_seq来取得，一次得到
+一条序列。然后这个序列也是一个对象，并包含很多属性。
+我们用Dumper打印出来，然后查看内容。
+#+BEGIN_SRC perl -n
+  $VAR1 = bless( {
+                   'primary_id' => '9311_GLEAN_10035453',
+                   'primary_seq' => bless( {
+                                             'primary_id' => '9311_GLEAN_10035453',
+                                             'display_id' => '9311_GLEAN_10035453',
+                                             'desc' => '',
+                                             'length' => 61,
+                                             'seq' => 'ATGGAGATCGTGGGCGAGTGCGAGTACCGGGGCGAGGCGGTGTTGGTGACGCCGAGCTCGG',
+                                             'alphabet' => 'dna'
+                                           }, 'Bio::PrimarySeq' )
+                 }, 'Bio::Seq' );
+  $VAR1 = bless( {
+                   'primary_seq' => bless( {
+                                             'desc' => '',
+                                             'primary_id' => 'Pa_GLEAN_10032244',
+                                             'display_id' => 'Pa_GLEAN_10032244',
+                                             'length' => 64,
+                                             'seq' => 'ATGCCGCGGCGCTCCCTCTACCTCTCTAACCTGGACGACCAGCGATTCCTCCGTTTCTCCATCA',
+                                             'alphabet' => 'dna'
+                                           }, 'Bio::PrimarySeq' ),
+                   'primary_id' => 'Pa_GLEAN_10032244'
+                 }, 'Bio::Seq' );
+  
+#+END_SRC
+我们得到的内容就是一个个序列的对象了，和前面一样了。
+** 输出
+如果我们想把上面的内容进行输出的话，应该怎么做呢？同样
+Bio::SeqIO提供了输出的功能，比如我们转换一下输出的格式。
+#+BEGIN_SRC perl -n
+  use strict;
+  use warnings;
+  use Data::Dumper;
+  use Bio::SeqIO;
+  
+  my $seqo_object=Bio::SeqIO->new(-file=>">result2.fasta",-format=>"fasta");
+  my $seqi_object=Bio::SeqIO->new(-file=>"Os01g0104900.fasta",-format=>"fasta");
+  while(my $seq_object=$seqi_object->next_seq)
+  {
+          $seqo_object->write_seq($seq_object);
+  }
+  
+#+END_SRC
+结果：
+#+BEGIN_SRC perl -n
+  >9311_GLEAN_10035453
+  ATGGAGATCGTGGGCGAGTGCGAGTACCGGGGCGAGGCGGTGTTGGTGACGCCGAGCTCG
+  G
+  >Pa_GLEAN_10032244
+  ATGCCGCGGCGCTCCCTCTACCTCTCTAACCTGGACGACCAGCGATTCCTCCGTTTCTCC
+  ATCA
+  
+#+END_SRC
+程序解读：
+我们首先用Bio::SeqIO->new(-file=>">",format=>)等来新建一个输出文件。
+然后一次遍历每一个seq_object,并用seqo_object->write_seq()输出。
+这里我们要注意-file是输出，所以前面要加>。结果中，按照没60个bp一行的形式输出。
+我们也可以把-format设为其他的形式，进行格式转换。
+#+BEGIN_SRC perl -n
+  use strict;
+  use warnings;
+  use Data::Dumper;
+  use Bio::SeqIO;
+  
+  my $seqo_object=Bio::SeqIO->new(-file=>">result2.fasta",-format=>"genbank");
+  my $seqi_object=Bio::SeqIO->new(-file=>"Os01g0104900.fasta",-format=>"fasta");
+  while(my $seq_object=$seqi_object->next_seq)
+  {
+          $seqo_object->write_seq($seq_object);
+  }
+  
+#+END_SRC
+结果：
+#+BEGIN_SRC perl -n
+  LOCUS       9311_GLEAN_10035453           61 bp    dna     linear   UNK 
+  ACCESSION   unknown
+  FEATURES             Location/Qualifiers
+  ORIGIN      
+          1 atggagatcg tgggcgagtg cgagtaccgg ggcgaggcgg tgttggtgac gccgagctcg
+         61 g
+  //
+  LOCUS       Pa_GLEAN_10032244           64 bp    dna     linear   UNK 
+  ACCESSION   unknown
+  FEATURES             Location/Qualifiers
+  ORIGIN      
+          1 atgccgcggc gctccctcta cctctctaac ctggacgacc agcgattcct ccgtttctcc
+         61 atca
+  //
+  
+#+END_SRC

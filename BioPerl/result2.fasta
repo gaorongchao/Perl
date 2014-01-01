@@ -1,0 +1,14 @@
+LOCUS       9311_GLEAN_10035453           61 bp    dna     linear   UNK 
+ACCESSION   unknown
+FEATURES             Location/Qualifiers
+ORIGIN      
+        1 atggagatcg tgggcgagtg cgagtaccgg ggcgaggcgg tgttggtgac gccgagctcg
+       61 g
+//
+LOCUS       Pa_GLEAN_10032244           64 bp    dna     linear   UNK 
+ACCESSION   unknown
+FEATURES             Location/Qualifiers
+ORIGIN      
+        1 atgccgcggc gctccctcta cctctctaac ctggacgacc agcgattcct ccgtttctcc
+       61 atca
+//

@@ -1,0 +1,22 @@
+$VAR1 = bless( {
+                 'primary_id' => '9311_GLEAN_10035453',
+                 'primary_seq' => bless( {
+                                           'primary_id' => '9311_GLEAN_10035453',
+                                           'display_id' => '9311_GLEAN_10035453',
+                                           'desc' => '',
+                                           'length' => 61,
+                                           'seq' => 'ATGGAGATCGTGGGCGAGTGCGAGTACCGGGGCGAGGCGGTGTTGGTGACGCCGAGCTCGG',
+                                           'alphabet' => 'dna'
+                                         }, 'Bio::PrimarySeq' )
+               }, 'Bio::Seq' );
+$VAR1 = bless( {
+                 'primary_seq' => bless( {
+                                           'desc' => '',
+                                           'primary_id' => 'Pa_GLEAN_10032244',
+                                           'display_id' => 'Pa_GLEAN_10032244',
+                                           'length' => 64,
+                                           'seq' => 'ATGCCGCGGCGCTCCCTCTACCTCTCTAACCTGGACGACCAGCGATTCCTCCGTTTCTCCATCA',
+                                           'alphabet' => 'dna'
+                                         }, 'Bio::PrimarySeq' ),
+                 'primary_id' => 'Pa_GLEAN_10032244'
+               }, 'Bio::Seq' );

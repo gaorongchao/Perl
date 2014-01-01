@@ -1,0 +1,428 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Learn<sub>BioPerl</sub></title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="Learn<sub>BioPerl</sub>"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-01-01T14:53+0800"/>
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Learn<sub>BioPerl</sub></h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 安装</a>
+<ul>
+<li><a href="#sec-1-1">1.1 学习条件</a></li>
+</ul>
+</li>
+<li><a href="#sec-2">2 面向对象</a>
+<ul>
+<li><a href="#sec-2-1">2.1 Bio::Seq属性</a></li>
+</ul>
+</li>
+<li><a href="#sec-3">3 Bio::SeqIO BioPerl的输入输出</a>
+<ul>
+<li><a href="#sec-3-1">3.1 读入</a></li>
+<li><a href="#sec-3-2">3.2 输出</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 安装</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>因为我们要用到只是其中的一部分的模块，所以我们没有按照网上的方法安装。
+我们直接在CPAN上下载BioPerl然后解压后把模块扔到lib目录下，让Perl能
+够找到就可以了。
+</p>
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1"><span class="section-number-3">1.1</span> 学习条件</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<p>如果你想更好的理解这里的内容，最好把Intermediate Perl的前几章看一下。
+这样方便理解。
+</p></div>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 面向对象</h2>
+<div class="outline-text-2" id="text-2">
+
+<p>首先我们先来看一个例子：
+</p>
+
+
+<pre class="example"><span class="linenr">1:  </span>use Data::Dumper;
+<span class="linenr">2:  </span>use Bio::Seq;
+<span class="linenr">3:  </span>
+<span class="linenr">4:  </span># 下面创建一个seq_obj的对象，并给这个对象添加属性：是DNA序列。
+<span class="linenr">5:  </span>my $seq_obj = Bio::Seq-&gt;new(-seq=&gt;"aaaaaaaaaaaaaaatatatctata",-alphabet=&gt;"dna");
+<span class="linenr">6:  </span>print Dumper($seq_obj);
+</pre>
+
+<p>
+上面用new创建了一个新的对象，语法格式
+</p>
+
+
+<pre class="example"><span class="linenr">1:  </span>模块名称Bio::Seq-&gt;方法名称new(-参数=&gt;参数值);
+</pre>
+
+<p>
+BioPerl是面向对象的，上面我们创建了一个seq<sub>obj的对象，我们通过上面的程序</sub>
+给这个对象赋予了两个属性，第一：-seq 也就是序列。第二：-alphabet也就是序列
+的类型，我们指明了是dna。那这个对象中还有那些属性呢？在上面的例子中我们用
+Data::Dumper把$seq<sub>obj打印出来，其实</sub>$seq<sub>obj是一个引用。引用了一个匿名的</sub>
+hash。
+</p>
+
+
+<pre class="example"><span class="linenr"> 1:  </span>$VAR1 = bless( {
+<span class="linenr"> 2:  </span>                 'primary_seq' =&gt; bless( {
+<span class="linenr"> 3:  </span>                                           'length' =&gt; 25,
+<span class="linenr"> 4:  </span>                                           '_nowarnonempty' =&gt; undef,
+<span class="linenr"> 5:  </span>                                           'alphabet' =&gt; 'dna',
+<span class="linenr"> 6:  </span>                                           '_root_verbose' =&gt; 0,
+<span class="linenr"> 7:  </span>                                           'seq' =&gt; 'aaaaaaaaaaaaaaatatatctata'
+<span class="linenr"> 8:  </span>                                         }, 'Bio::PrimarySeq' ),
+<span class="linenr"> 9:  </span>                 '_root_verbose' =&gt; 0
+<span class="linenr">10:  </span>               }, 'Bio::Seq' );
+</pre>
+
+<p>
+通过上面我们打印的结果，我们可以看到这里还包含其他的属性，length等。
+既然这是一个对hash的引用，那么我们获取属性的方法也就很简单了，解引用：
+</p>
+
+
+<pre class="example"><span class="linenr"> 1:  </span>use strict;
+<span class="linenr"> 2:  </span>use warnings;
+<span class="linenr"> 3:  </span>use Data::Dumper;
+<span class="linenr"> 4:  </span>use Bio::Seq;
+<span class="linenr"> 5:  </span>
+<span class="linenr"> 6:  </span># 下面创建一个seq_obj的对象，并给这个对象添加属性：是DNA序列。
+<span class="linenr"> 7:  </span>my $seq_obj = Bio::Seq-&gt;new(-seq=&gt;"aaaaaaaaaaaaaaatatatctata",-alphabet=&gt;"dna");
+<span class="linenr"> 8:  </span>print Dumper($seq_obj);
+<span class="linenr"> 9:  </span># 输出序列
+<span class="linenr">10:  </span>
+<span class="linenr">11:  </span>print $seq_obj-&gt;seq."\n";
+<span class="linenr">12:  </span># 或者解引用的另一种方法
+<span class="linenr">13:  </span>print ${$seq_obj}{'primary_seq'}{'seq'}."\n";
+<span class="linenr">14:  </span>my @keys = keys %{$seq_obj};
+<span class="linenr">15:  </span>print Dumper(\@keys);
+<span class="linenr">16:  </span># 输出长度
+<span class="linenr">17:  </span>print $seq_obj-&gt;length."\n";
+<span class="linenr">18:  </span># 输出类型
+<span class="linenr">19:  </span>print $seq_obj-&gt;alphabet."\n";
+<span class="linenr">20:  </span>
+</pre>
+
+
+</div>
+
+<div id="outline-container-2-1" class="outline-3">
+<h3 id="sec-2-1"><span class="section-number-3">2.1</span> Bio::Seq属性</h3>
+<div class="outline-text-3" id="text-2-1">
+
+
+
+
+<pre class="example"><span class="linenr">1:  </span>-seq=&gt;序列
+<span class="linenr">2:  </span>-display_id=&gt;标签
+<span class="linenr">3:  </span>-desc=&gt;描述
+<span class="linenr">4:  </span>-alphabet=&gt;序列类型(dna,rna,protein),如果不声明，bioperl会自己猜测
+</pre>
+
+</div>
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> Bio::SeqIO BioPerl的输入输出</h2>
+<div class="outline-text-2" id="text-3">
+
+<p>Bio::SeqIO支持几乎所有的格式，<a href="http://www.bioperl.org/wiki/HOWTO:SeqIO">http://www.bioperl.org/wiki/HOWTO:SeqIO</a>
+具体内容就看网址，不在粘贴过来。
+</p>
+</div>
+
+<div id="outline-container-3-1" class="outline-3">
+<h3 id="sec-3-1"><span class="section-number-3">3.1</span> 读入</h3>
+<div class="outline-text-3" id="text-3-1">
+
+
+
+
+<pre class="example"><span class="linenr"> 1:  </span>use strict;
+<span class="linenr"> 2:  </span>use warnings;
+<span class="linenr"> 3:  </span>use Data::Dumper;
+<span class="linenr"> 4:  </span>use Bio::SeqIO;
+<span class="linenr"> 5:  </span>
+<span class="linenr"> 6:  </span>my      $out_out = "result.txt";
+<span class="linenr"> 7:  </span>open  my $out, '&gt;', $out_out or die  "Fail open $out_out\n";
+<span class="linenr"> 8:  </span>
+<span class="linenr"> 9:  </span>my $seqio_object=Bio::SeqIO-&gt;new(-file=&gt;"Os01g0104900.fasta",-format=&gt;"fasta");
+<span class="linenr">10:  </span>while(my $seq_object=$seqio_object-&gt;next_seq)
+<span class="linenr">11:  </span>{
+<span class="linenr">12:  </span>        print $out Dumper($seq_object);
+<span class="linenr">13:  </span>}
+<span class="linenr">14:  </span>close  $out;
+<span class="linenr">15:  </span>
+</pre>
+
+<p>
+首先，上面用Bio::SeqIO-&gt;new读入一个fasta的文件，然后创建一个对象，
+这个对象指向这个文件。
+然后fasta中的序列我们用$seqio<sub>object</sub>-&gt;next<sub>seq来取得，一次得到</sub>
+一条序列。然后这个序列也是一个对象，并包含很多属性。
+我们用Dumper打印出来，然后查看内容。
+</p>
+
+
+<pre class="example"><span class="linenr"> 1:  </span>$VAR1 = bless( {
+<span class="linenr"> 2:  </span>                 'primary_id' =&gt; '9311_GLEAN_10035453',
+<span class="linenr"> 3:  </span>                 'primary_seq' =&gt; bless( {
+<span class="linenr"> 4:  </span>                                           'primary_id' =&gt; '9311_GLEAN_10035453',
+<span class="linenr"> 5:  </span>                                           'display_id' =&gt; '9311_GLEAN_10035453',
+<span class="linenr"> 6:  </span>                                           'desc' =&gt; '',
+<span class="linenr"> 7:  </span>                                           'length' =&gt; 61,
+<span class="linenr"> 8:  </span>                                           'seq' =&gt; 'ATGGAGATCGTGGGCGAGTGCGAGTACCGGGGCGAGGCGGTGTTGGTGACGCCGAGCTCGG',
+<span class="linenr"> 9:  </span>                                           'alphabet' =&gt; 'dna'
+<span class="linenr">10:  </span>                                         }, 'Bio::PrimarySeq' )
+<span class="linenr">11:  </span>               }, 'Bio::Seq' );
+<span class="linenr">12:  </span>$VAR1 = bless( {
+<span class="linenr">13:  </span>                 'primary_seq' =&gt; bless( {
+<span class="linenr">14:  </span>                                           'desc' =&gt; '',
+<span class="linenr">15:  </span>                                           'primary_id' =&gt; 'Pa_GLEAN_10032244',
+<span class="linenr">16:  </span>                                           'display_id' =&gt; 'Pa_GLEAN_10032244',
+<span class="linenr">17:  </span>                                           'length' =&gt; 64,
+<span class="linenr">18:  </span>                                           'seq' =&gt; 'ATGCCGCGGCGCTCCCTCTACCTCTCTAACCTGGACGACCAGCGATTCCTCCGTTTCTCCATCA',
+<span class="linenr">19:  </span>                                           'alphabet' =&gt; 'dna'
+<span class="linenr">20:  </span>                                         }, 'Bio::PrimarySeq' ),
+<span class="linenr">21:  </span>                 'primary_id' =&gt; 'Pa_GLEAN_10032244'
+<span class="linenr">22:  </span>               }, 'Bio::Seq' );
+<span class="linenr">23:  </span>
+</pre>
+
+<p>
+我们得到的内容就是一个个序列的对象了，和前面一样了。
+</p></div>
+
+</div>
+
+<div id="outline-container-3-2" class="outline-3">
+<h3 id="sec-3-2"><span class="section-number-3">3.2</span> 输出</h3>
+<div class="outline-text-3" id="text-3-2">
+
+<p>如果我们想把上面的内容进行输出的话，应该怎么做呢？同样
+Bio::SeqIO提供了输出的功能，比如我们转换一下输出的格式。
+</p>
+
+
+<pre class="example"><span class="linenr"> 1:  </span>use strict;
+<span class="linenr"> 2:  </span>use warnings;
+<span class="linenr"> 3:  </span>use Data::Dumper;
+<span class="linenr"> 4:  </span>use Bio::SeqIO;
+<span class="linenr"> 5:  </span>
+<span class="linenr"> 6:  </span>my $seqo_object=Bio::SeqIO-&gt;new(-file=&gt;"&gt;result2.fasta",-format=&gt;"fasta");
+<span class="linenr"> 7:  </span>my $seqi_object=Bio::SeqIO-&gt;new(-file=&gt;"Os01g0104900.fasta",-format=&gt;"fasta");
+<span class="linenr"> 8:  </span>while(my $seq_object=$seqi_object-&gt;next_seq)
+<span class="linenr"> 9:  </span>{
+<span class="linenr">10:  </span>        $seqo_object-&gt;write_seq($seq_object);
+<span class="linenr">11:  </span>}
+<span class="linenr">12:  </span>
+</pre>
+
+<p>
+结果：
+</p>
+
+
+<pre class="example"><span class="linenr">1:  </span>&gt;9311_GLEAN_10035453
+<span class="linenr">2:  </span>ATGGAGATCGTGGGCGAGTGCGAGTACCGGGGCGAGGCGGTGTTGGTGACGCCGAGCTCG
+<span class="linenr">3:  </span>G
+<span class="linenr">4:  </span>&gt;Pa_GLEAN_10032244
+<span class="linenr">5:  </span>ATGCCGCGGCGCTCCCTCTACCTCTCTAACCTGGACGACCAGCGATTCCTCCGTTTCTCC
+<span class="linenr">6:  </span>ATCA
+<span class="linenr">7:  </span>
+</pre>
+
+<p>
+程序解读：
+我们首先用Bio::SeqIO-&gt;new(-file=&gt;"&gt;",format=&gt;)等来新建一个输出文件。
+然后一次遍历每一个seq<sub>object</sub>,并用seqo<sub>object</sub>-&gt;write<sub>seq</sub>()输出。
+这里我们要注意-file是输出，所以前面要加&gt;。结果中，按照没60个bp一行的形式输出。
+我们也可以把-format设为其他的形式，进行格式转换。
+</p>
+
+
+<pre class="example"><span class="linenr"> 1:  </span>use strict;
+<span class="linenr"> 2:  </span>use warnings;
+<span class="linenr"> 3:  </span>use Data::Dumper;
+<span class="linenr"> 4:  </span>use Bio::SeqIO;
+<span class="linenr"> 5:  </span>
+<span class="linenr"> 6:  </span>my $seqo_object=Bio::SeqIO-&gt;new(-file=&gt;"&gt;result2.fasta",-format=&gt;"genbank");
+<span class="linenr"> 7:  </span>my $seqi_object=Bio::SeqIO-&gt;new(-file=&gt;"Os01g0104900.fasta",-format=&gt;"fasta");
+<span class="linenr"> 8:  </span>while(my $seq_object=$seqi_object-&gt;next_seq)
+<span class="linenr"> 9:  </span>{
+<span class="linenr">10:  </span>        $seqo_object-&gt;write_seq($seq_object);
+<span class="linenr">11:  </span>}
+<span class="linenr">12:  </span>
+</pre>
+
+<p>
+结果：
+</p>
+
+
+<pre class="example"><span class="linenr"> 1:  </span>LOCUS       9311_GLEAN_10035453           61 bp    dna     linear   UNK 
+<span class="linenr"> 2:  </span>ACCESSION   unknown
+<span class="linenr"> 3:  </span>FEATURES             Location/Qualifiers
+<span class="linenr"> 4:  </span>ORIGIN      
+<span class="linenr"> 5:  </span>        1 atggagatcg tgggcgagtg cgagtaccgg ggcgaggcgg tgttggtgac gccgagctcg
+<span class="linenr"> 6:  </span>       61 g
+<span class="linenr"> 7:  </span>//
+<span class="linenr"> 8:  </span>LOCUS       Pa_GLEAN_10032244           64 bp    dna     linear   UNK 
+<span class="linenr"> 9:  </span>ACCESSION   unknown
+<span class="linenr">10:  </span>FEATURES             Location/Qualifiers
+<span class="linenr">11:  </span>ORIGIN      
+<span class="linenr">12:  </span>        1 atgccgcggc gctccctcta cctctctaac ctggacgacc agcgattcct ccgtttctcc
+<span class="linenr">13:  </span>       61 atca
+<span class="linenr">14:  </span>//
+<span class="linenr">15:  </span>
+</pre>
+
+</div>
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2014-01-01T14:53+0800</p>
+<p class="author">Author: </p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

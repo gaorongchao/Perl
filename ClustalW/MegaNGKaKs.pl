@@ -1,4 +1,3 @@
-#!/usr/bin/perl -w
 use strict;
 use warnings;
 use lib "D:/Perl/Scripts/alignDB/lib";
@@ -34,7 +33,7 @@ my %Codon1_Codon2_syn_non_num_info = get_Codon1_Codon2_syn_non_num_info();
 open OUT ,">Result_kaks.csv";
 open KA,">Result_ka.csv";
 open KS,">Result_ks.csv";
-foreach my $tmp(sort {$a cmp $b} glob "*.fas"){
+foreach my $tmp(sort {$a cmp $b} glob "*.fasta.A"){
     print "do file :$tmp\n";
     my (@name,@gene,@result,$sum,$sum_ka,$sum_ks,@ka,@ks);
     my $sheep=0;
