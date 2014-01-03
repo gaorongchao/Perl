@@ -184,3 +184,61 @@ Bio::SeqIO提供了输出的功能，比如我们转换一下输出的格式。
   //
   
 #+END_SRC
+** Sequence序列的属性
+| Method                     | Returns     |
+| display\_id                | EcoRHO      |
+| desc                       | description |
+| display\_name              |             |
+| accession                  |             |
+| primary\_id                |             |
+| seq\_version               |             |
+| keywords                   |             |
+| is\_circular               | `           |
+| namespace                  |             |
+| authority                  |             |
+| length                     |             |
+| seq                        |             |
+| division                   |             |
+| molecule                   |             |
+| get\_dates                 |             |
+| get\_secondary\_accessions |             |
+** 多个文件的读取：Bio::SeqIO::MultiFile
+#+BEGIN_SRC perl -n
+  use Bio::SeqIO::MultiFile;
+  $catch_seqio_obj = Bio::SeqIO::MultiFile -> new(-files=>['a.gbk','b.gbk'], -format=>'genbank'); 
+  #  读取a.gbk和b.gbk两个文件
+  while($seq_obj = $catch_seqio_obj -> next_seq) 
+  {
+       do sth...
+  }
+  # 或者这样
+  use Bio::SeqIO::MultiFile;
+  $catch_seqio_obj = Bio::SeqIO::MultiFile -> new(-files=>[glob "*.gbk"], -format=>'genbank');
+  #  读取当前目录所有后缀名为gbk的文件。
+  while($seq_obj = $catch_seqio_obj-> next_seq)  
+  {
+  }
+#+END_SRC
+** 从命令行中传入参数
+如果我们想用前面的代码处理另一个Genbank文件（比如seq.gbk），
+我们必须打开源代码文件，把-file => 'wrky.gbk' 改成 -file => 'seq.gbk'，
+这样子太麻烦了。事实上这些要处理的文件的名字应该由用户来决定，
+而不是由你写在源代码里。有没有办法像“钻石操作符”（<>）那样通过命令行参数读入文件名呢？
+当然可以请看：
+#+BEGIN_SRC perl -n
+  use Bio::SeqIO;
+  $filename = shift @ARGV;       #  从命令行中读取文件名,而不是写在程序里
+  $catch_seqio_obj = Bio::SeqIO -> new(-file => $filename, -format => 'genbank'); 
+  # 如果要读取多个文件
+  use Bio::SeqIO::MultiFile;
+  @filenames = @ARGV;
+  $catch_seq = Bio::SeqIO::MultiFile -> new(-files => [@filenames], -format => 'genbank');
+  
+#+END_SRC
+** 利用BioPerl翻译蛋白序列
+以下内容摘选自http://www.plob.org/2012/07/30/2893.html
+我们要翻译的是-alphabet为dna或者rna的序列，我们用到translate来翻译。
+#+BEGIN_SRC perl -n
+
+#+END_SRC
+* GFF的处理：Bio::Tools::GFF
