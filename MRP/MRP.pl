@@ -4,10 +4,10 @@ use Data::Dumper;
 
 my	$out_out = "result.txt";
 open  my $out, '>', $out_out or die  "Fail open $out_out\n";
-my (%hash,@all);
+my (%hash,@all,%hash_all,);
 my $i=0;
 # 先把父子关系理清楚，每一个产品都有3个属性，父和子，以及系数
-my	$in_in = "a.txt";
+my	$in_in = "need.txt";
 open  my $in, '<', $in_in or die "Fail open $in_in file\n";
 while(my $line=<$in>)
 {
@@ -24,7 +24,7 @@ foreach my $i (0..$#all)
 	if ($all[$i][1] == 1)
 	{
 		my $m=$all[$i][1];
-		%hash_all{$m}{}
+		$hash_all{$m}{$all[$i][2]}=0;
 		my @array=qw/None/;
 		$hash{$all[$i][2]}[0]=\@array;
 		$hash{$all[$i][2]}[2]=\@{$all[$i]};
@@ -51,6 +51,7 @@ foreach my $i (0..$#all)
 	else
 	{
 		my $m=$all[$i][1];
+		$hash_all{$m}{$all[$i][2]}=0;
 		$hash{$all[$i][2]}[2]=\@{$all[$i]};
 		my $j=$i+1;
 		my @son;
@@ -76,14 +77,26 @@ foreach my $i (0..$#all)
 
 foreach my $key (sort keys %hash)
 {
-	#foreach my $key1 (@{$hash{$key}[0]})
-	#{
-	#print $out "$key1";
-	#}
-	print $out "自身\t@{$hash{$key}[2]}\n";
-	print $out "父@{$hash{$key}[0]}\n";
-	print $out "子\t@{$hash{$key}[1]}\n\n\n";
-
+	#print $out "自身\t@{$hash{$key}[2]}\n";
+	#print $out "父\t@{$hash{$key}[0]}\n";
+	#print $out "子\t@{$hash{$key}[1]}\n\n\n";
 }
 
+
+my	$in1_in = "we_have.txt";
+open  my $in1, '<', $in1_in or die "Fail open $in1_in file\n";
+while(my $line=<$in1>)
+{
+	chomp $line;
+
+}
+close  $in1;
+
+foreach my $key1 (sort {$b<=>$a} keys %hash_all)
+{
+	foreach my $key2 (keys $hash_all{$key1})
+	{
+		print $out "$key1 $key2\n";
+	}
+}
 close  $out;
