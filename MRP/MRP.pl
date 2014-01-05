@@ -1,8 +1,9 @@
 use strict;
 use warnings;
-use utf8;
 use Data::Dumper;
 
+my	$out_out = "result.txt";
+open  my $out, '>', $out_out or die  "Fail open $out_out\n";
 my (%hash,@all);
 my $i=0;
 # 先把父子关系理清楚，每一个产品都有3个属性，父和子，以及系数
@@ -13,20 +14,76 @@ while(my $line=<$in>)
 	chomp $line;
 	next if $line=~/^#/;
 	my $i++;
-	my @next=(split/\s+/,$line)[0,1,2,4];
+	my @next=(split/\s+/,$line)[0,1,2,3,4];
 	push @all,\@next;
-	for my $j (0..3)
-	{
-		$all[$i][$j]=$next[$j];
-	}
 }
 close  $in;
 
-for my $m (0..$#all)
+foreach my $i (0..$#all)
 {
-	for my $n (0..$#{$all[$m]})
+	if ($all[$i][1] == 1)
 	{
-		print "$all[$m][$n]\n";
+		my $m=$all[$i][1];
+		%hash_all{$m}{}
+		my @array=qw/None/;
+		$hash{$all[$i][2]}[0]=\@array;
+		$hash{$all[$i][2]}[2]=\@{$all[$i]};
+		my $j=$i+1;
+		my @son;
+		foreach my $j ($j..$#all)
+		{
+			if ($all[$j][1] == $m+1 )
+			{
+				push @son,$all[$j][2];
+				push @{$hash{$all[$j][2]}[0]},$all[$i][2];
+			}
+			elsif ($all[$j][1] > $m+1)
+			{
+				next;
+			}
+			elsif ($all[$j][1] <= $m)
+			{
+				last;
+			}
+		}
+		$hash{$all[$i][2]}[1]=\@son;
 	}
-	print "\n\n";
+	else
+	{
+		my $m=$all[$i][1];
+		$hash{$all[$i][2]}[2]=\@{$all[$i]};
+		my $j=$i+1;
+		my @son;
+		foreach my $j ($j..$#all)
+		{
+			if ($all[$j][1] == $m+1 )
+			{
+				push @son,$all[$j][2];
+				push @{$hash{$all[$j][2]}[0]},$all[$i][2];
+			}
+			elsif ($all[$j][1] > $m+1)
+			{
+				next;
+			}
+			elsif ($all[$j][1] <= $m)
+			{
+				last;
+			}
+		}
+		$hash{$all[$i][2]}[1]=\@son;
+	}
 }
+
+foreach my $key (sort keys %hash)
+{
+	#foreach my $key1 (@{$hash{$key}[0]})
+	#{
+	#print $out "$key1";
+	#}
+	print $out "自身\t@{$hash{$key}[2]}\n";
+	print $out "父@{$hash{$key}[0]}\n";
+	print $out "子\t@{$hash{$key}[1]}\n\n\n";
+
+}
+
+close  $out;
