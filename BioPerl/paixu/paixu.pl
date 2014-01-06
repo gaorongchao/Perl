@@ -12,6 +12,7 @@ while(<$in1>)
 	$seq .=$_;
 }
 close  $in1;
+$seq=~s/\s+//g;
 
 my @files=glob "*.seq";
 foreach my $file (@files)
@@ -24,9 +25,10 @@ foreach my $file (@files)
 	while(my $line=<$in>)
 	{
 		chomp $line;
-		 $line1 .=$line;
+		$line1 .=$line;
 	}
 	close  $in;
+	$line1=~s/\s+//;
 	if ($file=~/^F/)
 	{
 		my $line2=reverse $line1;
