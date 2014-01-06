@@ -91,54 +91,6 @@ while(my $line=<$in1>)
 {
 	chomp $line;
 	my ($name,$num)=(split/\s+/,$line)[0,2];
-	my $ceng=$hash{$name}->[2]->[1];
-	$hash_all{$ceng}{$name}[0]=$num;
+	$hash_all{$name}=$num;
 }
 close  $in1;
-
-foreach my $key1 (sort {$b<=>$a} keys %hash_all)
-{
-	my $son_ceng=$key1+1;
-	foreach my $key2 (keys $hash_all{$key1})
-	{
-		my @father=@{$hash{$key2}->[0]};
-		my @son   =@{$hash{$key2}->[1]};
-		my $xishu=$hash{$key2}->[2]->[4];
-		#print $out "$xishu\n";
-		if ($#father==0 and $father[0] eq "None")
-		{
-			# $hash_all{层}{零件名称}[0] 是原始数量
-			# $hash_all{层}{零件名称}[1] 是换算数量
-			# $hash_all{层}{零件名称}[2] 是加工更高级零件后，剩余数量
-			$hash_all{$key1}{$key2}[1]=$hash_all{$key1}{$key2}[0]/$xishu;
-			# hash_shuliang{父}{子};
-			$hash_shuliang{$father[0]}{$key2}=$hash_all{$key1}{$key2}[1];
-			#print $out "$hash_all{$key1}{$key2}[1]\n";
-			if ($#son>=0)
-			{
-				# 寻找所有子中的瓶颈，也就是换算后最少的一个。
-				foreach  my $key3 (keys %{$hash_shuliang{$key2}})
-				{
-					push @array_min,$hash_shuliang{$key2}{$key3}
-				}
-			}
-			else
-			{
-				next;
-			}
-		}
-		else
-		{
-		}
-		#print $out "$key1 $key2 $hash_all{$key1}{$key2}[0]\n\n\n\n";
-	}
-}
-
-foreach my $key1 (sort {$b<=>$a} keys %hash_all)
-{
-	foreach my $key2 (keys $hash_all{$key1})
-	{
-		print $out "$hash_all{$key1}{$key2}[2]\n";
-	}
-}
-close  $out;

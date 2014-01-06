@@ -1,0 +1,12 @@
+#+TITLE: how to align seq
+#+GRC
+* 准备文件
++ 需要排序的序列，以seq结尾，里面是纯粹的序列信息。
++ 反向的序列重命名在最前面添加F_
++ 参考序列,必须以txt结尾，文件里也是纯粹的序列信息。
+* 运行条件
++ 安装ActivePerl或者strawberryPerl，既能运行Perl程序
++ 把本文件夹中的clustalw2.exe扔到system32中
+* 运行
++ 双击paixu.pl
++ 结果是result.txt的文件
