@@ -81,9 +81,9 @@ foreach my $i (0..$#all)
 
 foreach my $key (sort keys %hash)
 {
-	print $out "自身\t@{$hash{$key}[2]}\n";
-	print $out "父\t@{$hash{$key}[0]}\n";
-	print $out "子\t@{$hash{$key}[1]}\n\n\n";
+	#print $out "自身\t@{$hash{$key}[2]}\n";
+	#print $out "父\t@{$hash{$key}[0]}\n";
+	#print $out "子\t@{$hash{$key}[1]}\n\n\n";
 }
 
 my	$in1_in = "we_have.txt";
@@ -126,14 +126,17 @@ foreach my $key1 (sort {$b<=>$a} keys %hash_all)
 					$hash_shuliang{$key2}{$key3} = $hash_shuliang{$key2}{$key3}-$min;
 				}
 				# 计算加工后的数量
+				# 父的原始数量增加
 				$hash_all{$key1}{$key2}[0] =$hash_all{$key1}{$key2}[0]+$min;
 			}
-			$hash_all{$key1}{$key2}[1]=$hash_all{$key1}{$key2}[0]/$xishu;
+			# 换算数量
+			$hash_all{$key1}{$key2}[1]=int($hash_all{$key1}{$key2}[0]/$xishu);
+			$hash_all{$key1}{$key2}[2]=$hash_all{$key1}{$key2}[0]-$hash_all{$key1}{$key2}[1]*$xishu;
 			# hash_shuliang{父}{子};
 			$hash_shuliang{$father[0]}{$key2}=$hash_all{$key1}{$key2}[1];
 			#print $out "$hash_all{$key1}{$key2}[1]\n";
 		}
-		elsif ($#father==0 and $father[0] ne "None")
+		elsif ($#father==0 and $father[0] eq "None")
 		{
 			if ($#son>=0)
 			{
@@ -145,12 +148,14 @@ foreach my $key1 (sort {$b<=>$a} keys %hash_all)
 				}
 				my $min=min(@array_min);
 				# 计算剩余的子的数量
-				foreach $key3  (keys %{$hash_shuliang{$key2}})
+				foreach my $key3  (keys %{$hash_shuliang{$key2}})
 				{
 					$hash_shuliang{$key2}{$key3} -=$min;
 				}
 				# 计算加工后的数量
 				$hash_all{$key1}{$key2}[0] +=$min;
+				$hash_all{$key1}{$key2}[1]  =$hash_all{$key1}{$key2}[0];
+				$hash_all{$key1}{$key2}[2]  =$hash_all{$key1}{$key2}[0];
 			}
 		}
 		else
@@ -164,34 +169,42 @@ foreach my $key1 (sort {$b<=>$a} keys %hash_all)
 					push @array_min,$hash_shuliang{$key2}{$key3};
 				}
 				my $min=min(@array_min);
-				foreach $key3  (keys %{$hash_shuliang{$key2}})
+				foreach my $key3  (keys %{$hash_shuliang{$key2}})
 				{
 					$hash_shuliang{$key2}{$key3} -=$min;
 				}
 				$hash_all{$key1}{$key2}[0] +=$min;
 			}
-			$hash_all{$key1}{$key2}[1]=$hash_all{$key1}{$key2}[0]/$xishu;
+			$hash_all{$key1}{$key2}[1]=int($hash_all{$key1}{$key2}[0]/$xishu);
+			$hash_all{$key1}{$key2}[2]=$hash_all{$key1}{$key2}[0]-$hash_all{$key1}{$key2}[1]*$xishu;
 			# hash_shuliang{父}{子};
-			for my $father (@father)
+			for my $father (@father[0..$#father-1])
 			{
 				$hash_shuliang{$father}{$key2}=int($hash_all{$key1}{$key2}[1]/($#father+1))
 			}
+			$hash_shuliang{$father[$#father]}{$key2}=$hash_all{$key1}{$key2}[1]-$#father*int($hash_all{$key1}{$key2}[1]/($#father+1));
 		}
 		#print $out "$key1 $key2 $hash_all{$key1}{$key2}[0]\n\n\n\n";
 	}
 }
 
-foreach my $key1 (sort {$b<=>$a} keys %hash_all)
+foreach my $key4 (sort keys %hash_shuliang)
 {
-	foreach my $key2 (keys $hash_all{$key1})
+	foreach my $key5 (sort keys %{$hash_shuliang{$key4}})
 	{
-		print $out "$hash_all{$key1}{$key2}[2]\n";
+		my $xishu=$hash{$key5}->[2]->[4];
+		$hash_all{$hash{$key5}->[2]->[1]}{$key5}[2] +=$hash_shuliang{$key4}{$key5}*$xishu;
 	}
 }
-close  $out;
 
-
-
+foreach my $key6 (sort {$b<=>$a} keys %hash_all)
+{
+	foreach my $key7 (sort keys %{$hash_all{$key6}})
+	{
+		my $xishu=$hash{$key7}->[2]->[4];
+		print $out "$key6 $key7 $hash_all{$key6}{$key7}[2]\n";
+	}
+}
 
 #++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 # Sub
