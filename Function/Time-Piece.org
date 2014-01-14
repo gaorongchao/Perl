@@ -1,0 +1,29 @@
+#+TITLE:Solve almost any datatime need with Time::Piece
+#+AUTHOR:GRC
+在编程过程中，我们总会遇到各种时间处理的问题，所以，熟练的掌握处理时间的方法，是一项
+必须的技能。
+在CPAN上有很多处理时间的模块，但是大多数时候你只需要用Time::Piece这一个模块就可以
+完成大多数任务了。
+* 安装
+Time::Piece 模块是Perl 5.8的核心模块，所以你应该已经安装他了。如果还没有安装，那么
+用cpan安装一下：
+#+BEGIN_SRC perl
+  $ cpan Time::Piece
+#+END_SRC
+* 创建Time::Piece对象
+用当前系统的时间，创建一个新的Time::Piece对象，用new：
+#+BEGIN_SRC perl
+  use Time::Piece;
+  my $time=Time::Piece->new;
+#+END_SRC
+* 获取各种格式的时间
+Time::Piece 提供了常见时间格式的输出方法。例如：
+#+BEGIN_SRC perl
+  $time;            # Thu Jan 9 21:21:36 2014
+  $time->datatime;  # 2014-01-09T21:21:36
+  $time->data;      # 2014-01-09
+  $time->mdy;       # 01-09-2014
+  $time->fullday;   # Thursday
+  $time->hms;       # 21:21:36
+  $time->epoch;     # 1389320496 (Unix time)
+#+END_SRC
