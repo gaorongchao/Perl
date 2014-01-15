@@ -27,3 +27,15 @@ Time::Piece 提供了常见时间格式的输出方法。例如：
   $time->hms;       # 21:21:36
   $time->epoch;     # 1389320496 (Unix time)
 #+END_SRC
+* 其他传统格式
+如果你要用传统的时间格式，Time::Piece 的strftime 提供了便利。
+这里我们举例说明：
+#+BEGIN_SRC perl 
+  use Time::Piece;
+  my $time =Time::Piece->new;
+  $time->strftime('%y/%m/%d %H:%M')； # 14/01/09 21:21
+  $time->strftime（'%y_%m_%d');       # 14_01_09
+  $time->strftimeI('%s');             # 1389320496 (Unix time)
+  $time->strftime('%Y %y %G %g');     # 2014 14 2014 14
+#+END_SRC
+* 读取任何时间格式
