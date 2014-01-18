@@ -39,3 +39,73 @@ Time::Piece 提供了常见时间格式的输出方法。例如：
   $time->strftime('%Y %y %G %g');     # 2014 14 2014 14
 #+END_SRC
 * 读取任何时间格式
+Time::Piece 同样也提供了将字符串转换成特定的时间格式。
+如果某个时间原件缺失，那么Time::Piece会认为是当前日期或者时间。
+这里有一些例子：
+#+BEGIN_SRC perl
+  use Time::Piece;
+  my $yesterday    = Time::Piece->strptime('01-08-2014','%m-%d-%Y');
+  my $yesterdayDMY = Time::Piece->strptime("08-01-14","%d-%m-%y");
+  my $lunchhour24  = Time::Piece->strptime("12:30","%H:%M");
+  my $bedtime      = Time::Piece->strptime("12:30 AM","%l:%M %p");
+#+END_SRC
+strptime和strftime用了一样的格式化代码，你可以从网址中得到详细信息。
+http://man7.org/linux/man-pages/man3/strftime.3.html
+* 时间的比较
+这很简单，只要用Time::Piece初始化时间对象，然后用比较符号
+(<,<=,==,>,>=,<=>),例如：
+#+BEGIN_SRC perl 
+  use Time::Piece;
+  my $today     = Time::Piece->new;
+  my $yesterday = Time::Piece->strptime("01/08/2014",'%m/%d/%Y');
+  if ($today > $yesterday){
+  }
+#+END_SRC
+* 时间的计算
+我们需要知道，Time::Piece是一个不变的对象，所以，很多操作将会产生新的对象。
+Time::Piece 提供为月份和年份的增加提供了很多的方法("add_months","add_years")
+用一个负数可以进行月份和年份的减法。下面是一些例子：
+#+BEGIN_SRC perl 
+  use Time::Piece;
+  my $datetime   = Time::Piece->new;
+  my $nextMounth = $datetime->add_months(1); # 加一个月
+  my $lastQuarter= $datetime->add_months(-3);# 减3个月
+  my $nextDecade = $datetime->add_years(10); # 加10年
+  my $lastYear   = $datetime->add_years(-1); # 减1年
+#+END_SRC
+你往往需要更精确的时间控制，Time::Seconds模块应运而生，
+把它放到你的程序中，它可以提供一些常量时间，用来调节时间。
+它提供的常量时间包括：
+#+BEGIN_SRC perl
+  ONE_MIMUTE;
+  ONE_HOUR;
+  ONE_DAY;
+  ONE_WEEK;
+  ONE_MONTH;
+  ONE_YEAR;
+  ONE_FINANCIAL_MONTH;
+  LEAP_YEAR;
+  NON_LEAP_YEAR;
+#+END_SRC
+我们接下来看一下怎么使用这些常量：
+#+BEGIN_SRC perl 
+  use Time::Piece;
+  use Time::Seconds;
+  
+  my $time      = Time::Piece->new;
+  my $tomorrow  = $time + ONE_DAY;
+  my $lastWeek  = $time - ONE_WEEK;
+  my $lastMonth = $time - ONE_MONTH; 
+#+END_SRC
+如果你要以秒来改变时间，你可以简单的直接用整数的加减。
+#+BEGIN_SRC perl
+  use Time::Piece;
+  my $now          = Time::Piece->new;
+  my $30SecondsAgo = $now - 30;
+#+END_SRC
+* 文档
+  DEADLINE: <2014-01-18 Sat>
+Time::Piece 有非常优秀的帮助文档，你可以通过命令行来查看。
+#+BEGIN_SRC perl
+  $ perldoc Time::Piece
+#+END_SRC
