@@ -1,5 +1,6 @@
-#+TITLE:Solve almost any datatime need with Time::Piece
+#+TITLE:用 Time::Piece 解决时间问题
 #+AUTHOR:GRC
+* 简介
 在编程过程中，我们总会遇到各种时间处理的问题，所以，熟练的掌握处理时间的方法，是一项
 必须的技能。
 在CPAN上有很多处理时间的模块，但是大多数时候你只需要用Time::Piece这一个模块就可以
@@ -104,8 +105,11 @@ Time::Piece 提供为月份和年份的增加提供了很多的方法("add_month
   my $30SecondsAgo = $now - 30;
 #+END_SRC
 * 文档
-  DEADLINE: <2014-01-18 Sat>
 Time::Piece 有非常优秀的帮助文档，你可以通过命令行来查看。
 #+BEGIN_SRC perl
   $ perldoc Time::Piece
 #+END_SRC
+
+* 来源
+本文翻译自一下网址：
+http://perltricks.com/article/59/2014/1/10/Solve-almost-any-datetime-need-with-Time-Piece

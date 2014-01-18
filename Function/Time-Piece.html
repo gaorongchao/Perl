@@ -1,0 +1,367 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>用 Time::Piece 解决时间问题</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="用 Time::Piece 解决时间问题"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-01-18T17:29+0800"/>
+<meta name="author" content="GRC"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">用 Time::Piece 解决时间问题</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 简介</a></li>
+<li><a href="#sec-2">2 安装</a></li>
+<li><a href="#sec-3">3 创建Time::Piece对象</a></li>
+<li><a href="#sec-4">4 获取各种格式的时间</a></li>
+<li><a href="#sec-5">5 其他传统格式</a></li>
+<li><a href="#sec-6">6 读取任何时间格式</a></li>
+<li><a href="#sec-7">7 时间的比较</a></li>
+<li><a href="#sec-8">8 时间的计算</a></li>
+<li><a href="#sec-9">9 文档</a></li>
+<li><a href="#sec-10">10 来源</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 简介</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>在编程过程中，我们总会遇到各种时间处理的问题，所以，熟练的掌握处理时间的方法，是一项
+必须的技能。
+在CPAN上有很多处理时间的模块，但是大多数时候你只需要用Time::Piece这一个模块就可以
+完成大多数任务了。
+</p></div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 安装</h2>
+<div class="outline-text-2" id="text-2">
+
+<p>Time::Piece 模块是Perl 5.8的核心模块，所以你应该已经安装他了。如果还没有安装，那么
+用cpan安装一下：
+</p>
+
+
+<pre class="example">$ cpan Time::Piece
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> 创建Time::Piece对象</h2>
+<div class="outline-text-2" id="text-3">
+
+<p>用当前系统的时间，创建一个新的Time::Piece对象，用new：
+</p>
+
+
+<pre class="example">use Time::Piece;
+my $time=Time::Piece-&gt;new;
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> 获取各种格式的时间</h2>
+<div class="outline-text-2" id="text-4">
+
+<p>Time::Piece 提供了常见时间格式的输出方法。例如：
+</p>
+
+
+<pre class="example">$time;            # Thu Jan 9 21:21:36 2014
+$time-&gt;datatime;  # 2014-01-09T21:21:36
+$time-&gt;data;      # 2014-01-09
+$time-&gt;mdy;       # 01-09-2014
+$time-&gt;fullday;   # Thursday
+$time-&gt;hms;       # 21:21:36
+$time-&gt;epoch;     # 1389320496 (Unix time)
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 其他传统格式</h2>
+<div class="outline-text-2" id="text-5">
+
+<p>如果你要用传统的时间格式，Time::Piece 的strftime 提供了便利。
+这里我们举例说明：
+</p>
+
+
+<pre class="example">use Time::Piece;
+my $time =Time::Piece-&gt;new;
+$time-&gt;strftime('%y/%m/%d %H:%M')； # 14/01/09 21:21
+$time-&gt;strftime（'%y_%m_%d');       # 14_01_09
+$time-&gt;strftimeI('%s');             # 1389320496 (Unix time)
+$time-&gt;strftime('%Y %y %G %g');     # 2014 14 2014 14
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-6" class="outline-2">
+<h2 id="sec-6"><span class="section-number-2">6</span> 读取任何时间格式</h2>
+<div class="outline-text-2" id="text-6">
+
+<p>Time::Piece 同样也提供了将字符串转换成特定的时间格式。
+如果某个时间原件缺失，那么Time::Piece会认为是当前日期或者时间。
+这里有一些例子：
+</p>
+
+
+<pre class="example">use Time::Piece;
+my $yesterday    = Time::Piece-&gt;strptime('01-08-2014','%m-%d-%Y');
+my $yesterdayDMY = Time::Piece-&gt;strptime("08-01-14","%d-%m-%y");
+my $lunchhour24  = Time::Piece-&gt;strptime("12:30","%H:%M");
+my $bedtime      = Time::Piece-&gt;strptime("12:30 AM","%l:%M %p");
+</pre>
+
+<p>
+strptime和strftime用了一样的格式化代码，你可以从网址中得到详细信息。
+<a href="http://man7.org/linux/man-pages/man3/strftime.3.html">http://man7.org/linux/man-pages/man3/strftime.3.html</a>
+</p></div>
+
+</div>
+
+<div id="outline-container-7" class="outline-2">
+<h2 id="sec-7"><span class="section-number-2">7</span> 时间的比较</h2>
+<div class="outline-text-2" id="text-7">
+
+<p>这很简单，只要用Time::Piece初始化时间对象，然后用比较符号
+(&lt;,&lt;=,==,&gt;,&gt;=,&lt;=&gt;),例如：
+</p>
+
+
+<pre class="example">use Time::Piece;
+my $today     = Time::Piece-&gt;new;
+my $yesterday = Time::Piece-&gt;strptime("01/08/2014",'%m/%d/%Y');
+if ($today &gt; $yesterday){
+}
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-8" class="outline-2">
+<h2 id="sec-8"><span class="section-number-2">8</span> 时间的计算</h2>
+<div class="outline-text-2" id="text-8">
+
+<p>我们需要知道，Time::Piece是一个不变的对象，所以，很多操作将会产生新的对象。
+Time::Piece 提供为月份和年份的增加提供了很多的方法("add<sub>months</sub>","add<sub>years</sub>")
+用一个负数可以进行月份和年份的减法。下面是一些例子：
+</p>
+
+
+<pre class="example">use Time::Piece;
+my $datetime   = Time::Piece-&gt;new;
+my $nextMounth = $datetime-&gt;add_months(1); # 加一个月
+my $lastQuarter= $datetime-&gt;add_months(-3);# 减3个月
+my $nextDecade = $datetime-&gt;add_years(10); # 加10年
+my $lastYear   = $datetime-&gt;add_years(-1); # 减1年
+</pre>
+
+<p>
+你往往需要更精确的时间控制，Time::Seconds模块应运而生，
+把它放到你的程序中，它可以提供一些常量时间，用来调节时间。
+它提供的常量时间包括：
+</p>
+
+
+<pre class="example">ONE_MIMUTE;
+ONE_HOUR;
+ONE_DAY;
+ONE_WEEK;
+ONE_MONTH;
+ONE_YEAR;
+ONE_FINANCIAL_MONTH;
+LEAP_YEAR;
+NON_LEAP_YEAR;
+</pre>
+
+<p>
+我们接下来看一下怎么使用这些常量：
+</p>
+
+
+<pre class="example">use Time::Piece;
+use Time::Seconds;
+
+my $time      = Time::Piece-&gt;new;
+my $tomorrow  = $time + ONE_DAY;
+my $lastWeek  = $time - ONE_WEEK;
+my $lastMonth = $time - ONE_MONTH; 
+</pre>
+
+<p>
+如果你要以秒来改变时间，你可以简单的直接用整数的加减。
+</p>
+
+
+<pre class="example">use Time::Piece;
+my $now          = Time::Piece-&gt;new;
+my $30SecondsAgo = $now - 30;
+</pre>
+
+</div>
+
+</div>
+
+<div id="outline-container-9" class="outline-2">
+<h2 id="sec-9"><span class="section-number-2">9</span> 文档</h2>
+<div class="outline-text-2" id="text-9">
+
+<p>Time::Piece 有非常优秀的帮助文档，你可以通过命令行来查看。
+</p>
+
+
+<pre class="example">$ perldoc Time::Piece
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-10" class="outline-2">
+<h2 id="sec-10"><span class="section-number-2">10</span> 来源</h2>
+<div class="outline-text-2" id="text-10">
+
+<p>本文翻译自一下网址：
+<a href="http://perltricks.com/article/59/2014/1/10/Solve-almost-any-datetime-need-with-Time-Piece">http://perltricks.com/article/59/2014/1/10/Solve-almost-any-datetime-need-with-Time-Piece</a>
+</p></div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2014-01-18T17:29+0800</p>
+<p class="author">Author: GRC</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
