@@ -69,3 +69,39 @@ sub dump_data_for_path
 		dump_data_for_path("$path/$_",$directory($_)); # 这个地方是$$
 	}
 }
+
+
+
+# another way Avoiding Recursion
+=cut
+use File::Basename;
+use File::Spec::Functions;
+
+my $data=data_for_path('/Users/Gilligan/Desktop');
+sub data_for_path
+{
+	my ($path) = @_;
+	my $data   = {};
+	my @queue  = ([$path,$data]) # queue是一个路径和$data的引用
+	while( my $next = shift @queue)
+	{
+		my ($path,$ref)= @$next;
+		my $basename = basename($path);
+		$ref->{$basename} = do 
+		{
+			if(-f $path or -l $path) {undef} # 是一个普通文件
+			else
+			{
+				my %hash={};
+				opendir my ($db),$path;
+				my @new_paths=map
+				{
+					catfile($path,$_)
+				} grep {! /^\.\.?\z/ } readdir $dh;
+				unshift @queue,map{[$_,$hash]} @new_paths;
+				$hash;
+			}
+		};
+	}
+	$data;
+}
