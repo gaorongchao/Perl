@@ -22,8 +22,8 @@ Time::Piece 模块是Perl 5.8的核心模块，所以你应该已经安装他了
 Time::Piece 提供了常见时间格式的输出方法。例如：
 #+BEGIN_SRC perl
   $time;            # Thu Jan 9 21:21:36 2014
-  $time->datatime;  # 2014-01-09T21:21:36
-  $time->data;      # 2014-01-09
+  $time->datetime;  # 2014-01-09T21:21:36
+  $time->date;      # 2014-01-09
   $time->mdy;       # 01-09-2014
   $time->fullday;   # Thursday
   $time->hms;       # 21:21:36
