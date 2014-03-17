@@ -441,7 +441,8 @@ input in any format or you should have just carried out a full multiple
 alignment and the alignment is still in memory. 
 
 
-*************** Remember YOU MUST ALIGN THE SEQUENCES FIRST!!!! ***************
+#************** Remember YOU MUST ALIGN THE SEQUENCES FIRST!!!! ***************
+必须要记住你首先对序列尽心排序。
 
 
 The methods used are NJ (Neighbour Joining) and UPGMA. First
@@ -495,7 +496,7 @@ there. (Get the PHYLIP package anyway if you are interested in trees). The
 NEXUS format can be read into PAUP or MacClade.
 
 
->> HELP 8 <<             Help for choosing a weight matrix
+* >> HELP 8 <<             Help for choosing a weight matrix
 
 For protein alignments, you use a weight matrix to determine the similarity of
 non-identical amino acids.  For example, Tyr aligned with Phe is usually judged 
@@ -558,7 +559,7 @@ last row and column of the matrix (corresponding to the * character) contain
 the minimum score over the whole matrix.
 
 
->> HELP 9 <<             Help for command line parameters
+* >> HELP 9 <<             Help for command line parameters
 
                 DATA (sequences)
 
@@ -668,7 +669,7 @@ the minimum score over the whole matrix.
 -CLUSTERING=   :NJ or UPGMA
 
 
->> HELP 0 <<             Help for tree output format options
+* >> HELP 0 <<             Help for tree output format options
 
 Four output formats are offered: 1) Clustal, 2) Phylip, 3) Just the distances
 4) Nexus
