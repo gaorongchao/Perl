@@ -1,0 +1,53 @@
+Once in a while someone comes up with a Perl is .... post, and there are always people who point out why their measurement is flawed and how everything is perfect. Yet there are people with mid-career crisis and then others who tell me this was a wake-up call for them and they start learning a more marketable language.
+I had part of the following post in a draft for ages now, there is no particular reason to publish it now, but who knows, maybe some people will agree with me.
+The numbers show that the market-share of Perl has been shrinking for ages, way below I'd expect. (4% of the JavaScript+PHP+Python+Ruby+Perl market)
+There are many reasons for that, let me just point out one that I think is critical.
+
+在很久很久以前，一些人认为Perl就是工作的敲门砖，经常有人指出为什么Perl是有缺陷的以及一切是如此的完美。
+然而，有一些人遇到了职业的中期危机，然后其他人告诉我这是一个警钟，然后他们开始学习一门更加对路的语言。
+我在多年以前就有了一下观点，并没有什么特殊的原因让我现在发表他们，但是谁知道呢？也许有人会和我有同感。
+数字表明，Perl的市场份额已经连年下跌。以我预期的一样。（4%的JS+PHP+Python+Ruby+Perl 份额）。
+原因也许有很多，但是我只指出我认为至关重要的一点。
+
+
+How did Perl manage to become so successful in the 90's ?
+It was the easiest tool around to do sysadmin work and to create dynamic web applications due to its features combining all the power of Unix and due to the availability of CGI.pm in the core.
+It was Ubiquitous.
+为什么在90年代，Perl如此盛行？
+因为他是最简单易用的工具，去做系统管理工作，去创建动态Web应用程序，因为他和强大的Unix紧密的结合在一起，也因为CGI.pm的作为核心的可用性。
+Perl在那时无处不在。
+
+
+
+How did PHP took over leadership for the web?
+It was easier for a front-end web developer (HTML) to move from pure HTML to PHP, and a lot of the necessary tools were available without any additional installation. (e.g. access to MySQL)
+
+PHP如何称为Web界的领头羊？
+一个前端的web 开发人员（HTML）非常容易就会从纯HTML转向PHP的怀抱。无需任何安装我们就可以使用大量的必备工具。（比如：访问MySQL）
+
+How did Python become so successful?
+Why is Python more and more preferred by people who just need to do some work on a Linux box? Even by system administrators?
+Besides being easier to learn than Perl and besides the disgusting socialization of "Perl is bad" I think there is another very important issue.
+The default Python distribution comes with a lot of modules in its standard library, that in Perl would require additional installation. Either from CPAN or from the package management system of the operating system.
+I know, it is not very difficult to install from CPAN, but it is yet another obstacle, both technically and administratively. A beginner does not know what to install, how to install, and if they are allowed to install at all.
+
+Python为何如此成功？
+为什么Python被越来越多的人作为首选，他们仅仅需要在Linux里做一些工作？甚至系统管理员也把Python作为首选。
+除了比Perl更易学以外，除了在人群中令人不爽的Perl是糟糕的言论。我认为还有一个重要的原因。
+在默认的Python标准库中，附带了大量的模块。而在Perl中这些模块需要另外安装。或者从CPAN或者一款操作系统的包管理系统。
+我知道，从CPAN中安装模块并不困难，但是它依然是一个技术上和管理上的阻碍。
+一个初学者虽然有权限去安装模块，但是却会迷失在“安装什么模块？”，“怎样安装模块？”的汪洋大海中。
+
+
+
+People will go in the direction of least resistance..
+
+So I think unless a future version of Perl will come with a lot of libraries built in, there won't be an easy way to convince people to pick Perl.
+(Oh, and of course it is not the number of libraries what is important, but that they solve the problems people face.)
+Having an up-to-date release of DWIM Perl both for Linux and Windows would be a good step in the direction, though I think the real solution would be if theStandard Perl, released by the Perl 5 Porters already included a much larger selection of modules.
+
+世间有很多路，大家总会选择哪条最好走的！阻力最小的！
+所以我认为：除非在未来版本的Perl中内置大量的库，没有一种更为简单的路，让人重新拾起Perl。
+（当然，库的数量并不是一件多么重要的事情，但是它确实解决了人们所面对的问题。
+在Linux和Windows上提供最新的DWIM Perl是在正确方向上的巨大进步。
+尽管我认为真正的解决方案是 在标准Perl中，Perl5的便携发行版中已经包括了大量的精挑细选的模块。

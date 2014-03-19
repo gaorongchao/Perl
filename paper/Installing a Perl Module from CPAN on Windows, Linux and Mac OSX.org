@@ -1,0 +1,95 @@
+When searching a Perl module, sooner or later you will end up on one of two sites sites providing information about CPAN modules. Both Meta CPAN, and search.cpan.org will show you a link to download the module, but in most cases that's not what you need.
+
+So how do you really install Perl modules from CPAN?
+
+(As always, some people will disagree with the recommendations below, they probably have not read the article of Dave Cross, or reached other conclusions.)
+
+In most cases the installation of a CPAN module works just as installing an app from the Apple Appstore or the Google Play. Except, that these modules are all open source and free software.
+
+Depending on the Operating System and which Perl distribution you have, the specific instructions differ. In order to make the examples clearer, let's try to install the module called Try::Tiny.
+
+It has its description both on Meta CPAN and on search.cpan.org. Both have the Download links that we won't click on.
+
+Cases
+Windows: Strawberry Perl or DWIM Perl
+Windows: ActivePerl
+Windows: GitPerl
+Windows: Cygwin Perl
+Debian/Ubuntu Linux, system Perl with root rights
+Fedora/RedHat/Centos Linux, system Perl with root rights
+Mac OSX
+Using the cpan client
+Using cpanm
+Strawberry Perl or DWIM Perl on Windows
+Both Strawberry Perl, and its derivative DWIM Perl for Windows, come with an already configured cpan client. We will use this client to install modules directly from CPAN:
+
+Open the Command Window (Start -> Run -> type in cmd) When you get the "DOS" prompt type in cpan Path::Tiny. Please note, module names are case sensitive, so typing cpan path::tiny or cpan PATH::TINY will not work!
+
+Also, in normal circumstances, the cpan client is expecting the full name of the module, not one part of the name, and not the name of the zip-file. So cpan Path or cpan Tiny will attempt to install different modules. (One called Path, the other one called Tiny.)
+
+What you need to do is type in:
+
+c:> cpan Path::Tiny
+ActivePerl
+There is a graphical tool for this as well, but it might be more simple just to open the Command Window (Start -> Run -> type cmd). When you get the "DOS" prompt, type in ppm install Path::Tiny. Please note, this too is case sensitive!
+
+c:> ppm install Path::Tiny
+The problem you might encounter is that this command uses the "CPAN store" of ActiveState that for various technical and legal reasons does not carry all the the modules from CPAN. It can also be out-of date carrying older versions of the modules. On newer versions of ActivePerl you can also enable a real cpan-client that will access the CPAN server just as it does in the case of Strawberry/DWIM Perl above.
+
+GitPerl
+TBD.
+
+Cygwin Perl
+TBD. Cygwin.
+
+Debian/Ubuntu Linux
+If you have root rights, and if you use the system perl located in /usr/bin/perl, then probably the best is to try to install from the package management sytem of your Linux distribution. If you don't have root rights, you could ask your system administrator to do it on your behalf.
+
+Apparently there is a nice way to find out if a Perl module is on Debian or Ubuntu.
+
+If the module you are looking for is not available in the repositories of your Debian/Ubuntu/etc. distribution (and there are only about 10% of the modules available), or if you don't use the system Perl, then you can follow the instructions with cpan/cpanm below.
+
+To install for the system-perl as root you can use either aptitude or apt-get depending on your personal preferences.
+
+If the name of the module in Perl-land is Path::Tiny, then the name of the package in Debian/Ubuntu-land is most likely going to be libpath-tiny-perl.
+
+$ sudo apt-get install libpath-tiny-perl
+$ sudo aptitude install libpath-tiny-perl
+RedHat/Fedora/CentOS Linux
+Just as in the case of Debian/Ubuntu above, the instructions here are relevant if you use the system perl located in /usr/bin/perl and if you have root rights:
+
+Using the package management system:
+
+$ sudo yum install perl-Path-Tiny
+As Dave Cross mentioned, if you don't know the name of the RH package, you can also use
+
+yum install 'perl(Path::Tiny)'".
+The subtle difference is that the former installs the named RPM whereas the second installs the RPM that provides the named Perl module.
+
+So if you would like to install the Path::Tiny module then the second command is actually the better one.
+
+If your vendor does not carry this Perl package, you can add other RPM repositories. Check out EPEL, and the Magnum Solutions CPAN RPM Repository maintained by Dave Cross.
+
+Mac OSX
+Follow the instructions with cpan/cpanm below.
+
+Using the cpan client
+While the cpan program comes with most operating system, and it works well after some configuration, there is probably a better, and certainly lighter solution called cpan minus or cpanm.
+
+Using cpanm
+This is for Linux and OSX systems. (For Windows, see described above.)
+
+First, if you don't have it installed yet, then install cpan minus by typing
+
+$ \curl -L http://cpanmin.us | perl - App::cpanminus
+Once it is installed type:
+
+$ cpanm Path::Tiny
+If you still have questions related to the installation of Perl modules, please ask them below! I'll try to update this article to answer those questions and to explain other situations.
+
+TODO
+Separate explanation of installing using cpan/cpanm as root stepping on the system perl, using local::lib to install in a private directory while using system perl.
+
+Using a manually compiled perl.
+
+Using perlbrew, creating "virtual environments".
