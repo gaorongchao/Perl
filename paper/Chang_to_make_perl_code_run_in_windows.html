@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Sometimes, all it takes is a simple change to make your Perl code run on Windows</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="Sometimes, all it takes is a simple change to make your Perl code run on Windows"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-03-19T10:04+0800"/>
+<meta name="author" content=""/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">Sometimes, all it takes is a simple change to make your Perl code run on Windows</h1>
+
+<p>有时候，为了让你的程序能在Windows下正确运行，你只需要做出一点简单的改变。
+</p>
+<p>
+Inspired by brian's Perl on Windows project,
+I decided to build perl 5.18.2 on an old laptop with Windows Vista 32-bit and MSVC++ Express version 10.
+Downloaded the source tarball, extracted it, edited win32/Makefile, and a simple nmake got the job done. 
+I had a couple of issues because I had forgotten to ensure that there were no Cygwin related directories in the path, 
+but after I fixed that tests went wonderfully.
+</p>
+<p>
+I then downloaded the tarball for cpanm, perl Makefile.PL, nmake, nmake test, and nmake install and I had cpanm.
+</p>
+<p>
+Then I pushed it a little by entering:
+</p>
+<p>
+cpanm Dancer2
+on the command line. Things worked well, until the installation stopped due to a failure to install Test::SharedFork:
+</p>
+
+
+
+<pre class="example">t\06_fail_lineno.t ....... 1/2
+#   Failed test at t\06_fail_lineno.t line 20.
+#                   'not ok 1
+#
+# #   Failed test at t\06_fail_lineno.t line 15.
+# '
+#     doesn't match '(?^:t/06_fail_lineno.t line \d+\.)'
+# Looks like you failed 1 test of 2.
+</pre>
+
+
+<p>
+I stared at that code, not seeing what was wrong. 
+Then, I went to bed. 
+When I woke up this morning, I kicked off some long running jobs on a remote server,
+ and then looked at that laptop again. All of a sudden, it was obvious:
+</p>
+<p>
+like($out, qr{t/06<sub>fail</sub><sub>lineno</sub>.t line \d+\.});
+Yup, the output used \ whereas the test used /.
+</p>
+<p>
+Of course, changing the pattern to qr{t(?:/|\\)06<sub>fail</sub><sub>lineno</sub>.t line \d+\.} "fixes" the problem.
+</p>
+<p>
+But, that is not right, because it would allow a t\06<sub>fail</sub><sub>lineto</sub>.t to pass on a Unixy system.
+</p>
+<p>
+<a href="#File-Spec">File::Spec</a> has been in the core for a long time now. Using catfile to create the path does the right thing:
+<a href="#File-Spec-Perl-catfile">File::Spec这个模块已经作为Perl的核心模块很久了。只需要用其中的catfile函数去创建路径，他会帮助你做正确的事情</a>。
+</p>
+
+
+<pre class="example">use File::Spec::Functions qw/catfile/;
+…
+{
+    my $path = catfile(qw(t 06_fail_lineno.t));
+    like($out, qr{\Q$path\E line \d+\.});
+}
+</pre>
+
+
+<p>
+Posted by A. Sinan Unur at 10:57 AM 
+</p></div>
+
+<div id="postamble">
+<p class="date">Date: 2014-03-19T10:04+0800</p>
+<p class="author">Author: </p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+#+TITLE: Sometimes, all it takes is a simple change to make your Perl code run on Windows
+有时候，为了让你的程序能在Windows下正确运行，你只需要做出一点简单的改变。
+
+Inspired by brian's Perl on Windows project,
+I decided to build perl 5.18.2 on an old laptop with Windows Vista 32-bit and MSVC++ Express version 10.
+Downloaded the source tarball, extracted it, edited win32/Makefile, and a simple nmake got the job done. 
+I had a couple of issues because I had forgotten to ensure that there were no Cygwin related directories in the path, 
+but after I fixed that tests went wonderfully.
+
+I then downloaded the tarball for cpanm, perl Makefile.PL, nmake, nmake test, and nmake install and I had cpanm.
+
+Then I pushed it a little by entering:
+
+cpanm Dancer2
+on the command line. Things worked well, until the installation stopped due to a failure to install Test::SharedFork:
+
+#+BEGIN_SRC perl
+  t\06_fail_lineno.t ....... 1/2
+  #   Failed test at t\06_fail_lineno.t line 20.
+  #                   'not ok 1
+  #
+  # #   Failed test at t\06_fail_lineno.t line 15.
+  # '
+  #     doesn't match '(?^:t/06_fail_lineno.t line \d+\.)'
+  # Looks like you failed 1 test of 2.
+#+END_SRC
+
+I stared at that code, not seeing what was wrong. 
+Then, I went to bed. 
+When I woke up this morning, I kicked off some long running jobs on a remote server,
+ and then looked at that laptop again. All of a sudden, it was obvious:
+
+like($out, qr{t/06_fail_lineno.t line \d+\.});
+Yup, the output used \ whereas the test used /.
+
+Of course, changing the pattern to qr{t(?:/|\\)06_fail_lineno.t line \d+\.} "fixes" the problem.
+
+But, that is not right, because it would allow a t\06_fail_lineto.t to pass on a Unixy system.
+
+File::Spec has been in the core for a long time now. Using catfile to create the path does the right thing:
+File::Spec这个模块已经作为Perl的核心模块很久了。只需要用其中的catfile函数去创建路径，他会帮助你做正确的事情。
+#+BEGIN_SRC perl
+  use File::Spec::Functions qw/catfile/;
+  …
+  {
+      my $path = catfile(qw(t 06_fail_lineno.t));
+      like($out, qr{\Q$path\E line \d+\.});
+  }
+#+END_SRC
+
+Posted by A. Sinan Unur at 10:57 AM 
