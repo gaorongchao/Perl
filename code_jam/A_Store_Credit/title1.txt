@@ -1,0 +1,66 @@
+Problem
+
+You receive a credit C at a local store and would like to buy two items. You first walk through the store and create a list L of all available items. From this list you would like to buy two items that add up to the entire value of the credit. The solution you provide will consist of the two integers indicating the positions of the items in your list (smaller number first).
+你收到一个本地商店的信用卡，然后可以买你喜欢的两件商品。
+您老首先在商店里转了一圈，然后记录了商店中所有的产品列表L。
+从这个列表中你将购买两件商品，加起来恰好是信用的全部额度。
+你提供的方案，将包括两个整数，指出商品在你列表中的位置（小数放在前面）。
+
+Input
+
+The first line of input gives the number of cases, N. N test cases follow. For each test case there will be:
+输入文件，
+输入文件的第一行是例子的数量N。然后N个例子跟在后面。
+对于每一个例子是这个样子的：
+
+One line containing the value C, the amount of credit you have at the store.
+One line containing the value I, the number of items in the store.
+One line containing a space separated list of I integers. Each integer P indicates the price of an item in the store.
+Each test case will have exactly one solution.
+
+一行包括信用卡的额度。
+一行包括商品的数目I。
+一行包括用空格分割的商品的价格。
+每一个问题有唯一解决方案。
+
+Output
+
+For each test case, output one line containing "Case #x: " followed by the indices of the two items whose price adds up to the store credit. The lower index should be output first.
+
+
+
+Limits
+
+5 ≤ C ≤ 1000
+1 ≤ P ≤ 1000
+
+Small dataset
+
+N = 10
+3 ≤ I ≤ 100
+
+Large dataset
+
+N = 50
+3 ≤ I ≤ 2000
+
+Sample
+
+
+Input 
+
+Output 
+3
+100
+3
+5 75 25
+200
+7
+150 24 79 50 88 345 3
+8
+8
+2 1 9 4 4 56 90 3
+Case #1: 2 3
+Case #2: 1 4
+Case #3: 4 5
+

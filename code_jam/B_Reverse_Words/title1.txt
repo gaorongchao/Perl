@@ -1,0 +1,22 @@
+Given a list of space separated words, 
+给你一系列用空格分割的word。
+reverse the order of the words.
+逆序words的顺序。
+Each line of text contains L letters and W words.
+没一行文本，包括L字母和W 单词。
+A line will only consist of letters and space characters. 
+一行文本中值包括字母和空白字符。
+There will be exactly one space character between each pair of consecutive words.
+这里在连续单词之间，会有一个空字符
+
+Input
+The first line of input gives the number of cases, N.
+N test cases follow. For each test case there will a line of letters and space characters indicating a list of space separated words. Spaces will not appear at the start or end of a line.
+输入文件
+第一行给出了例子的个数N。
+然后N个例子跟在后面。
+
+Output
+For each test case, output one line containing "Case #x: " followed by the list of words in reverse order.
+
+Limits

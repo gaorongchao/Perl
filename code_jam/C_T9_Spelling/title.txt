@@ -1,0 +1,57 @@
+Problem
+
+The Latin alphabet contains 26 characters and telephones only have ten digits on the keypad. We would like to make it easier to write a message to your friend using a sequence of keypresses to indicate the desired characters. The letters are mapped onto the digits as shown below. To insert the character B for instance, the program would press 22. In order to insert two characters in sequence from the same key, the user must pause before pressing the key a second time. The space character ' ' should be printed to indicate a pause. For example, 2 2 indicates AA whereas 22 indicates B.
+拉丁只有26个字符，但是电话键盘只有10个数字。
+我们希望用一串按键去代表预设的字符，这样可以使给朋友发信息更加容易。
+字母是按照下图方式映射到数字键盘上。
+比如：为了输入字符B，程序需要按22，为了输入在同一按键上的两个不同字符，
+在再次按键之前，我们必须暂定数秒。
+空格字符代表' '代表暂停。
+比如：
+2 2 代表AA.
+22代表B。
+
+Input
+输入文件
+
+The first line of input gives the number of cases, N. N test cases follow. Each case is a line of text formatted as
+
+
+desired_message
+
+每一行的信息，只包括小写字母，a-z以及空白字符 ' '，按0代表一个空格。
+Each message will consist of only lowercase characters a-z and space characters ' '. Pressing zero emits a space.
+
+Output
+
+For each test case, output one line containing "Case #x: " followed by the message translated into the sequence of keypresses.
+
+Limits
+
+1 ≤ N ≤ 100.
+
+Small dataset
+
+1 ≤ length of message in characters ≤ 15.
+
+Large dataset
+
+1 ≤ length of message in characters ≤ 1000.
+
+Sample
+
+
+Input 
+
+Output 
+4
+hi
+yes
+foo  bar
+hello world
+
+Case #1: 44 444
+Case #2: 999337777
+Case #3: 333666 6660 022 2777
+Case #4: 4433555 555666096667775553
+
