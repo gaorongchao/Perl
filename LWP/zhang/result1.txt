@@ -1,0 +1,30 @@
+Name:     Katriina Aalto-Setala
+Institue: University of Tampere
+Country:  FINLAND
+Doc_type: academic_editor
+Subject:  Animal models,Arrhythmia,Biology and life sciences,Cardiology,Cardiovascular anatomy,Cell differentiation,Cellular types,Clinical genetics,Developmental biology,Electrophysiology,Embryonic stem cells,Genetic association studies,Genetic testing,Genetics,Genetics of disease,Human genetics,Induced pluripotent stem cells,Medicine and health sciences,Model organisms,Molecular cell biology,Molecular genetics,Mouse models,Personalized medicine,Stem cells,
+
+Name:     María Mar Abad-Grau
+Institue: University of Granada - Q1818002F
+Country:  SPAIN
+Doc_type: academic_editor
+Subject:  Biostatistics,Complex traits,Computational biology,Distribution curves,Events (probability theory),Evolutionary biology,Genetic association studies,Genetic linkage,Genetics,Genome analysis,Genome-wide association studies,Genomics,Haplotypes,Heredity,Human genetics,Law of large numbers,Population biology,Population genetics,Probability density,Probability theory,Quantitative traits,Statistical distributions,Statistical medians,Statistics (mathematics),
+
+Name:     Alejandro Aballay
+Institue: Duke University Medical Center
+Country:  UNITED STATES
+Doc_type: academic_editor
+Subject:  Biology and life sciences,Caenorhabditis elegans,Innate immune system,Model organisms,Neuroimmunology,
+
+Name:     Antonio Abbate
+Institue: Virginia Commonwealth University
+Country:  UNITED STATES
+Doc_type: academic_editor
+Subject:  Acute cardiovascular problems,Angina,Atherosclerosis,Cardiology,Cardiovascular anatomy,Cardiovascular pharmacology,Critical care and emergency medicine,Heart failure,Medicine and health sciences,Myocardial infarction,Resuscitation,
+
+Name:     Derek Abbott
+Institue: University of Adelaide
+Country:  AUSTRALIA
+Doc_type: academic_editor
+Subject:  Algebra,Algebraic geometry,Applied mathematics,Astrobiology,Astronomical sciences,Bioengineering,Biomedical engineering,Biophysics,Cardiology,Cardiovascular imaging,Complex systems,Computational biology,Computational neuroscience,Computer and information sciences,Computing systems,Electrical engineering,Electromagnetic radiation,Electronics engineering,Engineering and technology,Extraterrestrial life,Forensic engineering,Game theory,Image processing,Interdisciplinary physics,Magnetic resonance imaging,Mathematics,Medical physics,Neuroscience,Physical laws and principles,Physics,Probability theory,Quantum computing,Quantum mechanics,Radiology and imaging,Relativity,Sensory systems,Signal processing,Solid state physics,Statistical mechanics,Stochastic processes,Synthetic vision systems,Text mining,
+
