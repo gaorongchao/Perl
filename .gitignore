@@ -5,3 +5,10 @@
 *.xls
 *.xlsx
 *.exe
+*.pdf
+*.out
+*.aux
+*.log
+*.gz
+*.toc
+

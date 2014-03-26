@@ -1,0 +1,210 @@
+% Created 2014-03-26 Wed 22:30
+\documentclass[11pt]{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{soul}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\tolerance=1000
+\providecommand{\alert}[1]{\textbf{#1}}
+
+\title{如何使用Mega cc}
+\author{GRC(扬眉剑)}
+\date{\today}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs Org-mode version 7.9.3f}}
+
+\begin{document}
+
+\maketitle
+
+\setcounter{tocdepth}{3}
+\tableofcontents
+\vspace*{1cm}
+
+\section{下载}
+\label{sec-1}
+
+\href{http://www.megasoftware.net/megaccusage.php}{http://www.megasoftware.net/megaccusage.php}
+
+先从上面的网址下载，收下阅读上面网上的下载协议。
+然后选“Accept Agreement”，然后就开始下载了。
+下载以后我们得到“M6CC.zip”的文件。
+然后解压。
+
+解压以后得到几个文件。
+
+\begin{verbatim}
+M6CC.exe
+M6Proto.exe #这两个是主程序，是我们要用到的
+
+MEGA-CC-Quick-Start-Tutorial.pdf # 这个是使用的教程
+Usage Agreement.pdf # 使用协议，不用看
+
+Examples # 这个文件夹提供了我们学习MEGACC所需要的文件
+\end{verbatim}
+\section{使用}
+\label{sec-2}
+
+使用过程是从解压以后得到的PDF手册翻译加工整理而来。
+\subsection{安装}
+\label{sec-2-1}
+
+你可以在上面得到的解压文件中直接使用。
+也可以直接把起作用的两个执行文件M6CC.exe 和 M6Proto.exe
+拷贝到你喜欢的文件夹中。
+下面的两个实例需要你也把Example文件也拷贝过去。
+\subsection{输入文件}
+\label{sec-2-2}
+
+
+\begin{verbatim}
+1：分析配置文件：也就是你要用MEGA的什么参数进行分析的一个参数设定的集合。
+    这个是用MEGA-Proto来生成的。
+    生成的文件是一个 .mao为后缀的文件。
+2：数据文件（下面的任意一个都可以）
+    * Multiple sequence alignment in MEGA or Fasta format. 
+    * Distance matrix in MEGA format. 
+    * Unaligned sequences in Fasta format (f or alignment only)
+3:树文件（某些分析需要） .nwk文件格式。
+\end{verbatim}
+\subsection{输出文件}
+\label{sec-2-3}
+
+一般情况下生成两种输出文件
+
+
+\begin{verbatim}
+1. Calculation-specific results file (Newick file, distance 
+ORG-LIST-END-MARKER
+matrix,…). 
+2. A summary file with additional info (likelihood, SBL,…). 
+ORG-LIST-END-MARKER
+* Some analyses produce additional output (bootstrap consensus 
+tree).
+\end{verbatim}
+输出的文件夹和文件名称
+
+
+\begin{verbatim}
+1：默认和输入文件在同一个文件夹
+2：如果要改变文件夹或者文件名称，那么用-o 选项。
+3: If no output filename is specified, MEGA-CC will assign a unique 
+name.
+\end{verbatim}
+错误和警告：
+
+如果MEGA-CC产生了错误或者警告信息。那么会出现在summary file文件中。
+\subsection{运行MEGA-CC}
+\label{sec-2-4}
+
+   \texttt{DEADLINE:} \textit{2014-03-26 Wed}
+
+用命令行运行非常简单。
+
+\begin{verbatim}
+M6CC.exe -a options.mao -d alignment.meg -o outFile
+\end{verbatim}
+也可以用一些脚本程序来运行，比如Perl，Python
+
+\begin{verbatim}
+exec('M6CC.exe -a options.mao -d alignment.meg -o outFile');
+\end{verbatim}
+MEGA-CC附带完善的文件迭代系统，来处理多个文件，而不用脚本来帮忙。
+具体可以参考下面第二个实例。
+
+其他的应用也可以调用MEGA-CC:
+
+\begin{verbatim}
+status = CreateProcess("M6CC.exe...");
+\end{verbatim}
+如果要查看更多的命令选项，那么从命令行中调用M6CC.exe -h
+\subsection{MEGA-Proto (分析模版)}
+\label{sec-2-5}
+
+
+\begin{verbatim}
+第一：和图形界面版本一样的外观
+第二：生成MEGA分析所需要的选项文件
+第三：没有计算能力，只是一个模拟的过程
+\end{verbatim}
+双击打开MEGA-Proto以后，图形界面会引导你进行一下步骤。
+
+第一步：选择输入文件类型。
+包含四种类型。
+
+\begin{verbatim}
+Nucleotide (non-coding)
+Nucleotide (coding)
+Protein (amino-acid)
+Distance matrix (MEGA format)
+\end{verbatim}
+
+第二步：从上面的菜单中选择一项分析过程。
+
+第三步：调整分析的参数设置。
+
+第四步：保存你设置好的MEGA分析的选项到一个文件。
+\subsection{Demo1：实例1}
+\label{sec-2-6}
+
+本实例展现了如何用MEGA-Proto 和MEGA-CC来完成
+“Maximum Likelihood phylogeny reconstruction”。
+
+第0步：准备文件
+
+为了能够正确的完成这个实例，你需要确认你有了M6CC.exe，
+以及M6Proto.exe这两个程序（我们上面下载的就是）。
+事例所需要的文件就是我们上面解压得到的。
+
+\begin{verbatim}
+第1步：双击或者右键打开MEGA-Proto.exe。
+第2步：选择输入的数据类型。这里我们用的是默认设置。Nucleotide (non-coding)。
+第3步：在菜单栏中选择：Phylogeny => Construct/Test Maximum Likelihood Tree
+第4步：调整参数，然后点击“Save Settings”。把文件“mlDemo.mao”保存在当前文件夹。
+第5步：打开一个命令行界面。也就是win+R，cmd。然后用cd命令切换到M6CC.exe所在的文件夹。
+第6步：用M6CC.exe执行程序来分析文件。
+      M6CC.exe -a mlDemo.mao -d Examples\Crab_rRNA.meg -o demoResults
+第7步：程序开始执行。会有进度的显示。执行完成以后退出。
+最后 ：分析得到3个输出文件。
+    * demoResult.nwk
+      这个文件是用我们给定的设置参数得到的Maximum Likelihood 树。
+    * demoResult_consensus.nwk
+      这个文件是Mega 从所有的bootstrap sample trees中得到的bootstrap consensus树。
+    * demoResult_summary.txt
+      这个文件给出了分析数据：比如log likelihood value of the Maximum Likelihood tree,ts/tv ratio etc...
+\end{verbatim}
+\subsection{Demo2: 实例2}
+\label{sec-2-7}
+
+下面这个例子展示了，如何用MEGA-CC中的文件迭代系统
+来用一个配置好的文件来处理多个输入文件。
+
+第0步：启动
+这个就是第一个Demo1中的前5个过程，如果还搞不定的话，自己去复习。
+
+
+\begin{verbatim}
+第1步：新建一个文件命名为 demo2Data.txt 这里面包含我们要处理的多个文件。
+      一行是一个文件。
+      在这个文件中，对两个文件Grab_rRNA.meg 和Drosophila_Adh.meg两个实例
+      文件添加完全的路径。
+第2步：然后在命令行中用如下命令调用MEGA-CC:
+      M6CC.exe -a mlDemo.mao -d demo2Data.txt
+第3步：然后分析会启动。一个个的处理文件。处理的进度会显示在命令行界面中。
+最后 ：分析程序会对每一个输入文件产生一个输出结果。
+      在这个例子中，相同的分析配置文件用在每一个文件中。
+\end{verbatim}
+
+\end{document}
