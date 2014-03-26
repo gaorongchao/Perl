@@ -1,10 +1,14 @@
 #+TITLE: 如何使用Mega cc
 #+AUTHOR: GRC(扬眉剑)
 
+* github地址：
+发现任何错误，或者不当的地方，请联系我。
+https://github.com/gaorongchao/Perl/tree/master/Bio/Mega
+
 * 下载
 http://www.megasoftware.net/megaccusage.php
 
-先从上面的网址下载，收下阅读上面网上的下载协议。
+先从上面的网址下载，阅读上面的下载协议。
 然后选“Accept Agreement”，然后就开始下载了。
 下载以后我们得到“M6CC.zip”的文件。
 然后解压。
@@ -151,3 +155,20 @@ status = CreateProcess("M6CC.exe...");
         在这个例子中，相同的分析配置文件用在每一个文件中。
 #+END_SRC
 
+** 自我实例
+下面是一个用Perl调用的小脚本：
+#+BEGIN_SRC perl
+  use strict;
+  use warnings;
+  use utf8;
+  use 5.16.3;
+  
+  
+  my @files = glob "*.fasta";
+  foreach my $file (@files)
+  {
+          exec("M6CC.exe -a huashu.mao -d $file -o $file.out");
+  }
+  
+#+END_SRC
+使用的huashu.mao都在github上。

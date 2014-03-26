@@ -1,4 +1,4 @@
-% Created 2014-03-26 Wed 22:30
+% Created 2014-03-26 Wed 23:16
 \documentclass[11pt]{ctexart}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -33,12 +33,17 @@
 \tableofcontents
 \vspace*{1cm}
 
-\section{下载}
+\section{github地址：}
 \label{sec-1}
+
+发现任何错误，或者不当的地方，请联系我。
+\href{https://github.com/gaorongchao/Perl/tree/master/Bio/Mega}{https://github.com/gaorongchao/Perl/tree/master/Bio/Mega}
+\section{下载}
+\label{sec-2}
 
 \href{http://www.megasoftware.net/megaccusage.php}{http://www.megasoftware.net/megaccusage.php}
 
-先从上面的网址下载，收下阅读上面网上的下载协议。
+先从上面的网址下载，阅读上面的下载协议。
 然后选“Accept Agreement”，然后就开始下载了。
 下载以后我们得到“M6CC.zip”的文件。
 然后解压。
@@ -55,18 +60,18 @@ Usage Agreement.pdf # 使用协议，不用看
 Examples # 这个文件夹提供了我们学习MEGACC所需要的文件
 \end{verbatim}
 \section{使用}
-\label{sec-2}
+\label{sec-3}
 
 使用过程是从解压以后得到的PDF手册翻译加工整理而来。
 \subsection{安装}
-\label{sec-2-1}
+\label{sec-3-1}
 
 你可以在上面得到的解压文件中直接使用。
 也可以直接把起作用的两个执行文件M6CC.exe 和 M6Proto.exe
 拷贝到你喜欢的文件夹中。
 下面的两个实例需要你也把Example文件也拷贝过去。
 \subsection{输入文件}
-\label{sec-2-2}
+\label{sec-3-2}
 
 
 \begin{verbatim}
@@ -80,7 +85,7 @@ Examples # 这个文件夹提供了我们学习MEGACC所需要的文件
 3:树文件（某些分析需要） .nwk文件格式。
 \end{verbatim}
 \subsection{输出文件}
-\label{sec-2-3}
+\label{sec-3-3}
 
 一般情况下生成两种输出文件
 
@@ -107,7 +112,7 @@ name.
 
 如果MEGA-CC产生了错误或者警告信息。那么会出现在summary file文件中。
 \subsection{运行MEGA-CC}
-\label{sec-2-4}
+\label{sec-3-4}
 
    \texttt{DEADLINE:} \textit{2014-03-26 Wed}
 
@@ -131,7 +136,7 @@ status = CreateProcess("M6CC.exe...");
 \end{verbatim}
 如果要查看更多的命令选项，那么从命令行中调用M6CC.exe -h
 \subsection{MEGA-Proto (分析模版)}
-\label{sec-2-5}
+\label{sec-3-5}
 
 
 \begin{verbatim}
@@ -157,7 +162,7 @@ Distance matrix (MEGA format)
 
 第四步：保存你设置好的MEGA分析的选项到一个文件。
 \subsection{Demo1：实例1}
-\label{sec-2-6}
+\label{sec-3-6}
 
 本实例展现了如何用MEGA-Proto 和MEGA-CC来完成
 “Maximum Likelihood phylogeny reconstruction”。
@@ -186,7 +191,7 @@ Distance matrix (MEGA format)
       这个文件给出了分析数据：比如log likelihood value of the Maximum Likelihood tree,ts/tv ratio etc...
 \end{verbatim}
 \subsection{Demo2: 实例2}
-\label{sec-2-7}
+\label{sec-3-7}
 
 下面这个例子展示了，如何用MEGA-CC中的文件迭代系统
 来用一个配置好的文件来处理多个输入文件。
@@ -206,5 +211,24 @@ Distance matrix (MEGA format)
 最后 ：分析程序会对每一个输入文件产生一个输出结果。
       在这个例子中，相同的分析配置文件用在每一个文件中。
 \end{verbatim}
+\subsection{自我实例}
+\label{sec-3-8}
+
+下面是一个用Perl调用的小脚本：
+
+\begin{verbatim}
+use strict;
+use warnings;
+use utf8;
+use 5.16.3;
+
+
+my @files = glob "*.fasta";
+foreach my $file (@files)
+{
+        exec("M6CC.exe -a huashu.mao -d $file -o $file.out");
+}
+\end{verbatim}
+使用的huashu.mao都在github上。
 
 \end{document}
