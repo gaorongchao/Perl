@@ -1,0 +1,541 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>2: The Basics</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="2: The Basics"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-03-23T10:53+0800"/>
+<meta name="author" content="GRC(扬眉剑)"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">2: The Basics</h1>
+
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 about</a></li>
+<li><a href="#sec-2">2 第二章：基础</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> about</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>github地址：<a href="https://github.com/gaorongchao/Perl6/tree/master/Using_perl6">https://github.com/gaorongchao/Perl6/tree/master/Using_perl6</a>
+</p>
+<p>
+如果发现任何错误和翻译不当的地方，请告知，非常感谢。
+</p></div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> 第二章：基础</h2>
+<div class="outline-text-2" id="text-2">
+
+<p>Perl起源于一个致力于从文本文件中收集整理信息的编程语言。
+现在Perl在文本处理方面仍然强大，Perl 5 是一个一般意义上的强力编程语言。
+但是Perl 6更为杰出。
+</p>
+<p>
+假设你举办了一个乒乓球联赛。
+裁判告诉你比赛结果的格式：选手1 选手2 | 3:2,这意味着，选手1赢了3局，选手2赢了2局。
+你需要一个脚本来，来统计选手赢了几场比赛，赢了多少局，并以此决定最终冠军的归属。
+</p>
+<p>
+输入文件格式如下(储存在一个名为“scores”的文件中)：
+</p>
+
+
+<pre class="example">Beth Ana Charlie Dave 
+Ana Dave            |  3:0
+Charlie Beth        |  3:1
+Ana Beth            |  2:3
+Dave Charlie        |  3:0
+Ana Charlie         |  3:1
+Beth Dave           |  0:3
+</pre>
+
+
+<p>
+第一行是所有选手的名字，后面跟着的是每场比赛的结果。
+这里有一个解决此问题的Perl 6 脚本:perl-1-1：
+</p>
+
+
+<pre class="example"><span class="linenr"> 1:  </span>use v6;
+<span class="linenr"> 2:  </span>
+<span class="linenr"> 3:  </span> my $file = open 'scores';
+<span class="linenr"> 4:  </span> my @names = $file.get.words;
+<span class="linenr"> 5:  </span>
+<span class="linenr"> 6:  </span> my %matches;
+<span class="linenr"> 7:  </span> my %sets;
+<span class="linenr"> 8:  </span>
+<span class="linenr"> 9:  </span> for $file.lines -&gt; $line {
+<span class="linenr">10:  </span> my ($pairing, $result) = $line.split(' | ');
+<span class="linenr">11:  </span> my ($p1, $p2) = $pairing.words;
+<span class="linenr">12:  </span> my ($r1, $r2) = $result.split(':');
+<span class="linenr">13:  </span>
+<span class="linenr">14:  </span> %sets{$p1} += $r1;
+<span class="linenr">15:  </span> %sets{$p2} += $r2;
+<span class="linenr">16:  </span>
+<span class="linenr">17:  </span> if $r1 &gt; $r2 {
+<span class="linenr">18:  </span> %matches{$p1}++;
+<span class="linenr">19:  </span> } else {
+<span class="linenr">20:  </span> %matches{$p2}++;
+<span class="linenr">21:  </span> }
+<span class="linenr">22:  </span> }
+<span class="linenr">23:  </span>
+<span class="linenr">24:  </span> my @sorted = @names.sort({ %sets{$_} }).sort({ %matches{$_} }).reverse;
+<span class="linenr">25:  </span>
+<span class="linenr">26:  </span> for @sorted -&gt; $n {
+<span class="linenr">27:  </span> say "$n has won %matches{$n} matches and %sets{$n} sets";
+<span class="linenr">28:  </span> }
+</pre>
+
+<p>
+输出文件：
+</p>
+
+
+<pre class="example">Ana has won 2 matches and 8 sets
+Dave has won 2 matches and 6 sets
+Charlie has won 1 matches and 4 sets
+Beth has won 1 matches and 4 sets
+</pre>
+
+<p>
+每一个Perl6程序都需要以 “use v6”; 开始。这一行告诉编译器Perl代码的版本。
+如果，你不小心用Perl5来运行这个程序，你将得到错误信息。
+</p>
+<p>
+一个Perl6程序包含0行或者更多的语句。每一个语句以分号结尾，或者以大括号结尾：
+</p>
+
+
+<pre class="example"><span class="linenr">1:  </span>my $file = open 'scores';
+</pre>
+
+<p>
+"my"声明一个词法变量。词法变量只在当前代码块可用，从声明开始到代码块的结束。
+如果一个代码块始终没有闭合，那么该变量可以在剩下的所有地方使用。代码块的定义是：
+一段在花括号\{\}之间的代码。
+</p>
+<p>
+一个变量名称以“魔符”开始，魔符是指那些非字母，非数字的符号，比如：$,@,% 或者&amp;-
+或者有时出现的双冒号“::”也是。
+魔符指明了变量的结构类型，比如：它应该被当作一个值，还是多个值，还是一个子程序，等等。
+跟在“魔符”后面的是“标识符”，标识符可以包含字母，数字和下划线。在字母与字母之间，
+你可以用短横线“-”或者撇号“'”。所以“isn't”和“double-click”都是合法的变量标识符。
+</p>
+<p>
+魔符“$”表明变量是一个数值变量，指明这个变量只存储了一个值。
+</p>
+<p>
+内建函数“open”打开了一个名为“scores”的文件，然后返回一个文件句柄，
+文件句柄是一个代表该文件的对象。
+赋值符号“=”，把文件句柄赋值给左边的变量，这也就是意味着变量$file现在存储着文件句柄。
+</p>
+<p>
+“scores”是字符串文本（string literal）。字符串（string）是一段纯文本。
+字符串文本（string literal)是直接出现在程序中的字符串。
+在这一行中，它是提供给open函数的参数。
+</p>
+
+
+
+<pre class="example"><span class="linenr">1:  </span>my @names = $file.get.words;
+</pre>
+
+<p>
+上面语句的右侧调用了一种“方法”（一个命名的一系列行为的集合体）获取存储在$file变量中的句柄。
+被命名为get的这一方法从文件中读取并返回一行，去掉末尾的换行符。word同样是一个方法，调用从
+get中返回的一行文本。word这一方法，分解它的invocant（它要操作的字符串）成一系列的单词。
+这里单词的意思是不包含空格的字符串。它把字符串“Beth Ana Charlie Dave”分解成多个字符串
+“Beth”,“Ana”,“Charlie”,“Dave”。
+</p>
+<p>
+最后，这一字符串列表存储到数组@names中。魔符@表明所声明的变量是一个数组。数组存储的是有序列表。
+</p>
+
+
+
+<pre class="example"><span class="linenr">1:  </span>my %matches;
+<span class="linenr">2:  </span>my %sets;
+</pre>
+
+<p>
+这两行代码声明了两个哈希。魔符“%”把变量标记为哈希。哈希又称为散列：是无序的键-值对的集合。
+在其他语言中又称为“哈希表”，“字典”或者“（map）图”
+你可以通过“键 $key”利用“%hash{$key}”来查询在哈希表中的值。
+</p>
+<p>
+在上述计分程序中，%matches记录了每一位运动员赢的次数。%sets记录了每一位运动员赢的局数。
+</p>
+<p>
+魔符指出了默认访问变量的方法。数组变量@是通过位置来访问，
+哈希变量%是通过“键”来访问。
+数值变量$表示一个大箩筐，这里可以盛任何东西，也可以用任何方式来访问。
+一个数值变量可以包含一个复杂对象（compound object),比如：数组或者哈希；
+魔符$表明它应该被当作一个单独的值，尽管有可能它包含众多的值（像一个数组或者哈希）。
+</p>
+
+
+<pre class="example"><span class="linenr">1:  </span>for $file.lines -&gt;$line{
+<span class="linenr">2:  </span>...
+<span class="linenr">3:  </span>}
+</pre>
+
+<p>
+“for”产生了一个由花括号界定运行范围的循环，循环会遍历列表中的每一个值。
+$file.lines 从scores文件中读取了很多行，除掉前面$file.get读取的那一行以外，到最后一行。
+循环依次将每一行的值赋予$line变量。
+</p>
+<p>
+第一次迭代$line将包含字符串 “Ana Dave | 3:0”；第二次迭代$line将包含字符串“Charlie Beth | 3:1”，等等。
+</p>
+
+
+
+<pre class="example"><span class="linenr">1:  </span>my ($pairing,$result) = $line.split('|');
+</pre>
+
+<p>
+“my”可以同时声明多个变量。在赋值符号（=）的右侧调用了一个名为“split”的方法，它把“|”当作参数。
+</p>
+<p>
+split把他作用的内容以|为分割点，分割成一系列的字符串。所以如果你用“|”作为粘合符号，把这些字符串粘合。
+那么你将得到原始字符串。
+</p>
+<p>
+$pairing 得到返回列表的第一个元素，$result 得到第二个。
+</p>
+<p>
+当处理完第一行以后，$pairing 包含“Ana Dave”这个字符串，$result包含“3:0”。
+</p>
+<p>
+下面两行是同样的模式：
+</p>
+
+
+<pre class="example"><span class="linenr">1:  </span>my ($p1,$p2) = $pairing.words;
+<span class="linenr">2:  </span>my ($r1,$r2) = $result.split(':');
+</pre>
+
+<p>
+第一行代码提取并保存两位运动员的姓名到$p1和$p2这两个变量中。
+</p>
+<p>
+第二行提取每一位运动员的比赛结果，并且分别保存到$r1和$r2中。
+</p>
+<p>
+上面程序运行以后，下面列出每一个变量包含的值：
+</p>
+
+<p>
+Table2.1:Contents of Variables
+</p>
+
+
+<pre class="example"><span class="linenr">1:  </span>Variable  Contents               
+<span class="linenr">2:  </span>$line     'Ana Dave    | 3:0' 
+<span class="linenr">3:  </span>$pairing  'Ana Dave'              
+<span class="linenr">4:  </span>$result   '3:0'                   
+<span class="linenr">5:  </span>$p1       'Ana'                   
+<span class="linenr">6:  </span>$p2       'Dave'                  
+<span class="linenr">7:  </span>$r1       '3'                     
+<span class="linenr">8:  </span>$r2       '0'                     
+</pre>
+
+
+<p>
+程序接下来统计了每一位运动员赢的局数：
+</p>
+
+
+<pre class="example"><span class="linenr">1:  </span>%sets{$p1} += $r1;
+<span class="linenr">2:  </span>%sets{$p2} += $r2;
+</pre>
+
+<p>
+这是下面的简写：
+</p>
+
+
+<pre class="example"><span class="linenr">1:  </span>%sets{$p1} = %sets{$p1}+$r1;
+<span class="linenr">2:  </span>%sets{$p2} = %sets{$p2}+$r2;
+</pre>
+
+<p>
++= $r1 的含义是：把左侧的变量加上$r1.
+在第一次迭代的时候%sets{$p1}还没有设置类型，
+所以默认为一个称为“Any”的特殊值。
+加法和递增操作符作为一个数字操作符，把Any当作一个值为0的数字。
+所以这个字符串自动转换为数字。
+</p>
+<p>
+在这两行代码执行以前，%sets 是空的。
+在hash中添加一个完全不存在的元素，将会使这个元素立马在哈希中存在。
+并且赋予初始值为0.（这被称为autovivification)。
+当这两行第一次运行以后，%sets包含“ 'Ana'=&gt; 3,'Dave'=&gt;0”。
+（胖箭头=&gt;把键值对分开）
+</p>
+
+
+
+<pre class="example"><span class="linenr">1:  </span>if $r1&gt;$r2{
+<span class="linenr">2:  </span>    %matches{$p1}++;
+<span class="linenr">3:  </span>} else {
+<span class="linenr">4:  </span>    %matches{$p2}++;
+<span class="linenr">5:  </span>}
+</pre>
+
+<p>
+如果$r1 的值大于$r2的值，那么%matches{$p1}增加1。
+如果$r1 的值小于$r2的值，那么%matches{$p2}增加1。
+和前面的+=的例子一样，如果哈希中没有存在这个值，
+那么这个哈希值将会因为自增符号而自动生成。
+</p>
+<p>
+$thing++ 是$thing +=1的缩写。
+需要注意的一点是，$thing++这个表达式返回的$thing的值是没有增加前的值。
+而不是增加以后的。在其他很多的编程语言中你可以把++前置。这样得到的增加
+以后的返回值。my $x=1; say ++$x 输出2。
+</p>
+
+
+
+<pre class="example"><span class="linenr">1:  </span>my @sorted = @names.sort({ %sets{$_} }).sort({ %matches{$_} }).reverse;
+</pre>
+
+
+<p>
+这一行代码包含三个独立的过程。首先调用数组的sort方法。
+但是默认的排序方法是按照内容排序的。为了按照赢得多少的顺序输出运动员的姓名，
+我们的程序必须按照运动员的成绩来排序，而不是用他们的名字。
+sort方法的参数一个代码块，用来把数组元素（运动员的名字）转化为用来排序的数据。
+数组元素是通过“$_”变量来传递的。
+</p>
+<p>
+你在前面已经看到过代码块：不论是“for loop-&gt; {&hellip;}”还是在代码块中的if语句。
+代码块是：一个独立的带有 signature(the -&gt;$line 的部分）Perl6代码。
+更多内容请参照sec::signatures。
+</p>
+<p>
+按照运动员成绩排序的最简单的方法是@names.sort({ %matches{$_} }),
+这是按照运动员赢的次数决定的。但是问题是，Ana 和Dave都赢了2次。
+最简单的排序方式并没有考虑到每个人赢的局数，而这个正是决定谁赢的循环赛的第二个评判标准。
+</p>
+<p>
+如果两个数组元素拥有相同的值， sort按照发现他们的先后顺序放置他们。
+计算机科学家们称之为：稳定排序。
+这个程序充分利用了Perl6排序的相关特性来利用两次排序来实现目标：
+第一次按照赢取局数的多少排序（也就是次要的冠军评判标准），然后按照赢取的次数来排序。
+</p>
+<p>
+在第一次排序以后，运动员的名字顺序是这样的：Beth Charlie Dave Ana。
+在第二次排序以后，顺序依然一样。因为没有人赢了更少的次数，但是赢了更多的局数。
+这种情况是很正常的，特别是在大型的循环赛中。
+</p>
+<p>
+sort是按照升序来排序，也就是从小到大排序。
+但这与我们的期望是相反的。所以，我们的程序在第二次排序以后，又调用了.reverse方法。
+最后把结果存入到@sorted数组中。
+</p>
+
+
+
+<pre class="example"><span class="linenr">1:  </span>for @sorted -&gt; $n {
+<span class="linenr">2:  </span>    say "$n has won %matches{$n} matches and %sets{$n} sets";
+<span class="linenr">3:  </span>}
+</pre>
+
+
+<p>
+为了输出运动员的名字和他们的成绩，我们对@sorted数组进行循环。
+依次将运动员名字赋值给$n。我们可以这样来读代码“对数组sorted中的每一个元素，
+赋值给$n，然后执行下面的代码块”。
+然后用say 进行标准输出（也就是输出到屏幕）。
+然后后面自动加上换行符。
+如果你不想在最后加上换行符，那就用print函数。
+</p>
+<p>
+当你运行本程序的时候，你会发现，say并不会逐字的输出所有内容。
+在$n的位置上，它将会打印变量$n的内容：也就是存储在$n中的运动员的名字。
+这种自动替换被称为“interpolation(变量内插)”
+这种变量内插只会发生在双引号内，而不会发生在单引号内。
+</p>
+
+
+<pre class="example"><span class="linenr">1:  </span>my $names = 'things';
+<span class="linenr">2:  </span>say 'Do not call me $name'; # Do not call me $names
+<span class="linenr">3:  </span>say "Do not call me $name"; # Do not call me things
+</pre>
+
+<p>
+在Perl6中，双引号不仅能够内插魔符$的变量，同时也可以内插在花括号内的代码块。
+因为任意的Perl代码都可以通过花括号出现，所以可以通过把数组和哈希放在花括号内
+实现内插的效果。
+</p>
+<p>
+数组放在花括号内插以后，两个元素之间会插入一个空格。
+哈希放在花括号内插以后，以多行的形式显示，每一行包括一个键，然后跟着一个制表符。
+然后紧跟这键对应的值，最后加上换行符。
+</p>
+
+
+<pre class="example"><span class="linenr">1:  </span>say "Math: {1+2}";                  # Match: 3
+<span class="linenr">2:  </span>my @people = &lt;Luke Mattew Mark&gt;;
+<span class="linenr">3:  </span>say "The synoptics are: {@people}"; # The synoptics are :Luck Matthew Mark
+<span class="linenr">4:  </span>say "{%sets}";                      # 接前面网球循环赛
+<span class="linenr">5:  </span># Charlie 4
+<span class="linenr">6:  </span># Dave    6
+<span class="linenr">7:  </span># Ana     8
+<span class="linenr">8:  </span># Beth    4
+</pre>
+
+<p>
+当数组和哈希变量直接出现在双引号之间的时候（并没有在花括号之间），那么只有在它们的名字
+后面紧跟方括号的时候才会变量内插。当然你也可以在变量名和postcircumfix之间调用一种
+方法来实现变量内插。
+</p>
+
+
+<pre class="example"><span class="linenr"> 1:  </span>my @flavours = &lt;vanilla peach&gt;;
+<span class="linenr"> 2:  </span>say "we have @flavours";          # we have @flavours
+<span class="linenr"> 3:  </span>say "we have @flavours[0]"        # we have vanilla
+<span class="linenr"> 4:  </span># so-called "Zen slice"
+<span class="linenr"> 5:  </span>say "we have @flavours[]";        # we have Vanilla peach 
+<span class="linenr"> 6:  </span>
+<span class="linenr"> 7:  </span># method calls ending in postcircumfix
+<span class="linenr"> 8:  </span>say "we have @flavours.sort()";   # we have peach  vanilla
+<span class="linenr"> 9:  </span>
+<span class="linenr">10:  </span># chained method calls:
+<span class="linenr">11:  </span>say "we have @flavours.sort.join(',')"; # we have peach ,vanilla
+</pre>
+
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2014-03-23T10:53+0800</p>
+<p class="author">Author: GRC(扬眉剑)</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>
