@@ -1,4 +1,4 @@
-% Created 2014-03-26 Wed 23:16
+% Created 2014-03-27 Thu 23:06
 \documentclass[11pt]{ctexart}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -124,7 +124,8 @@ M6CC.exe -a options.mao -d alignment.meg -o outFile
 也可以用一些脚本程序来运行，比如Perl，Python
 
 \begin{verbatim}
-exec('M6CC.exe -a options.mao -d alignment.meg -o outFile');
+exec('M6CC.exe -a options.mao -d alignment.meg -o outFile'); # exec亲测不可用，我们这里改成system就可以了
+system ('M6CC.exe -a options.mao -d alignment.meg -o outFile'); # exec亲测不可用，我们这里改成system就可以了
 \end{verbatim}
 MEGA-CC附带完善的文件迭代系统，来处理多个文件，而不用脚本来帮忙。
 具体可以参考下面第二个实例。
@@ -207,6 +208,9 @@ Distance matrix (MEGA format)
       文件添加完全的路径。
 第2步：然后在命令行中用如下命令调用MEGA-CC:
       M6CC.exe -a mlDemo.mao -d demo2Data.txt
+
+     上面的命令行没有指定输出的文件夹，以及文件名称。不过不用担心。
+     所有的结果都会根据你的文件名来命名，并且输出到M6CC_Out文件夹中。
 第3步：然后分析会启动。一个个的处理文件。处理的进度会显示在命令行界面中。
 最后 ：分析程序会对每一个输入文件产生一个输出结果。
       在这个例子中，相同的分析配置文件用在每一个文件中。
@@ -222,7 +226,6 @@ use warnings;
 use utf8;
 use 5.16.3;
 
-
 my @files = glob "*.fasta";
 foreach my $file (@files)
 {
@@ -230,5 +233,55 @@ foreach my $file (@files)
 }
 \end{verbatim}
 使用的huashu.mao都在github上。
+
+直接用Perl画完一个树以后停止了。
+经过测试，发现，把上面程序中的exec换成system命令以后，程序完美运行。
+
+同时我们也可以用，他自带的多文件处理功能。
+
+Perl脚本用来提取所有需要处理文件的文件名到file.txt。
+
+\begin{verbatim}
+use strict;
+use warnings;
+use utf8;
+use 5.16.3;
+
+my      $out_out = "file.txt";
+open  my $out, '>', $out_out or die  "Fail open $out_out\n";
+my @files = glob "*.fasta";
+foreach my $file (@files)
+{
+        print $out "D:\\Less_less_region\\$file\n";
+        #exec("M6CC.exe -a huashu.mao -d $file -o $file.out");
+}
+close  $out;
+\end{verbatim}
+然后用上面的多个文件处理的方法：
+
+\begin{verbatim}
+M6CC.exe -a huashu.mao -d file.txt
+\end{verbatim}
+但是用上面的方法来处理文件的时候，只有一半的文件被处理，基本上是处理一个，跳过一个。
+不知道是什么原因。我能想到的解决办法是:在上面的输出文件名称到file.txt的时候，
+每一个文件都输出两遍。仅仅是一种解决方案，没有找到真实原因。
+
+\begin{verbatim}
+use strict;
+use warnings;
+use utf8;
+use 5.16.3;
+
+my      $out_out = "file.txt";
+open  my $out, '>', $out_out or die  "Fail open $out_out\n";
+my @files = glob "*.fasta";
+foreach my $file (@files)
+{
+        print $out "D:\\Less_less_region\\$file\n";
+        print $out "D:\\Less_less_region\\$file\n";
+        #exec("M6CC.exe -a huashu.mao -d $file -o $file.out");
+}
+close  $out;
+\end{verbatim}
 
 \end{document}
