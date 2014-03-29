@@ -44,7 +44,7 @@ http://www.megasoftware.net/megaccusage.php
   * 1. Calculation-specific results file (Newick file, distance 
   matrix,…). 
   * 2. A summary file with additional info (likelihood, SBL,…). 
-  ,* Some analyses produce additional output (bootstrap consensus 
+  , Some analyses produce additional output (bootstrap consensus 
   tree).
  
 输出的文件夹和文件名称
@@ -63,10 +63,10 @@ http://www.megasoftware.net/megaccusage.php
 #+BEGIN_SRC perl
   M6CC.exe -a options.mao -d alignment.meg -o outFile
 #+END_SRC
-也可以用一些脚本程序来运行，比如Perl，Python
+也可以用一些脚本程序来运行，比如Perl，Python。
+这里我们用exec发现会出问题，所以这里改成用system来进行调用。
 #+BEGIN_SRC perl
-  exec('M6CC.exe -a options.mao -d alignment.meg -o outFile'); 
-  # exec亲测不可用，我们这里改成system就可以了
+  #exec('M6CC.exe -a options.mao -d alignment.meg -o outFile'); 
   system ('M6CC.exe -a options.mao -d alignment.meg -o outFile');
 #+END_SRC
 MEGA-CC附带完善的文件迭代系统，来处理多个文件，而不用脚本来帮忙。
@@ -218,7 +218,6 @@ Perl脚本用来提取所有需要处理文件的文件名到file.txt，这个�
   close  $out;
 #+END_SRC
 
-
 * mao 文件简单解析
 mao文件是我们用M6Proto.exe通过模拟分析得到的一个参数列表。
 但是他的本质就是一个文本文件。我们可以用文本编辑器打开。
@@ -262,3 +261,13 @@ mao文件是我们用M6Proto.exe通过模拟分析得到的一个参数列表。
 比如，上面有一行 No. of Bootstrap Replications=500。
 这个我们非常容易理解，就是设置Bootstrap的次数，如果你想改成1000，那就直接从mao文件
 中修改吧。
+* 在Linux下如何使用
+官方的说法是现在只支持windows系统，暂时还不支持Mac和Linux。
+Mega只能用最大4G的内存。
+
+MEGA CC is developed for use on Microsoft Windows operating systems, 
+including XP, Vista, Windows 7, and Windows 8. 
+The version is limited to 32-bit execution, but should run fine on 64-bit systems.
+32-bit limitations will still apply ex. 
+MEGA can only use max 4gb of memory. 
+At this time Mac and Linux are not supported.

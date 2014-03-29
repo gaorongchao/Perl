@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="如何使用Mega cc"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-29T11:54+0800"/>
+<meta name="generated" content="2014-03-29T23:19+0800"/>
 <meta name="author" content="GRC(扬眉剑)"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -137,6 +137,7 @@ for the JavaScript code in this tag.
 </ul>
 </li>
 <li><a href="#sec-4">4 mao 文件简单解析</a></li>
+<li><a href="#sec-5">5 在Linux下如何使用</a></li>
 </ul>
 </div>
 </div>
@@ -247,7 +248,7 @@ for the JavaScript code in this tag.
 </li>
 </ul>
 
-<p>  ,* Some analyses produce additional output (bootstrap consensus 
+<p>  , Some analyses produce additional output (bootstrap consensus 
   tree).
 </p>
 <p> 
@@ -286,12 +287,12 @@ for the JavaScript code in this tag.
 </pre>
 
 <p>
-也可以用一些脚本程序来运行，比如Perl，Python
+也可以用一些脚本程序来运行，比如Perl，Python。
+这里我们用exec发现会出问题，所以这里改成用system来进行调用。
 </p>
 
 
-<pre class="example">exec('M6CC.exe -a options.mao -d alignment.meg -o outFile'); 
-# exec亲测不可用，我们这里改成system就可以了
+<pre class="example">#exec('M6CC.exe -a options.mao -d alignment.meg -o outFile'); 
 system ('M6CC.exe -a options.mao -d alignment.meg -o outFile');
 </pre>
 
@@ -540,7 +541,6 @@ close  $out;
 </pre>
 
 
-
 </div>
 </div>
 
@@ -598,11 +598,29 @@ Site Coverage Cutoff (%)=Not Applicable
 这个我们非常容易理解，就是设置Bootstrap的次数，如果你想改成1000，那就直接从mao文件
 中修改吧。
 </p></div>
+
+</div>
+
+<div id="outline-container-5" class="outline-2">
+<h2 id="sec-5"><span class="section-number-2">5</span> 在Linux下如何使用</h2>
+<div class="outline-text-2" id="text-5">
+
+<p>官方的说法是现在只支持windows系统，暂时还不支持Mac和Linux。
+Mega只能用最大4G的内存。
+</p>
+<p>
+MEGA CC is developed for use on Microsoft Windows operating systems, 
+including XP, Vista, Windows 7, and Windows 8. 
+The version is limited to 32-bit execution, but should run fine on 64-bit systems.
+32-bit limitations will still apply ex. 
+MEGA can only use max 4gb of memory. 
+At this time Mac and Linux are not supported.
+</p></div>
 </div>
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-29T11:54+0800</p>
+<p class="date">Date: 2014-03-29T23:19+0800</p>
 <p class="author">Author: GRC(扬眉剑)</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
