@@ -1,10 +1,11 @@
 #+TITLE: 如何使用Mega cc
 #+AUTHOR: GRC(扬眉剑)
-
+#+LATEX_CLASS: ctexart
+#+LATEX_HEADER: \usepackage{listings}
 * github地址：
-发现任何错误，或者不当的地方，请联系我。
 https://github.com/gaorongchao/Perl/tree/master/Bio/Mega
 
+发现任何错误，或者不当的地方，请联系我.
 * 下载
 http://www.megasoftware.net/megaccusage.php
 
@@ -14,16 +15,11 @@ http://www.megasoftware.net/megaccusage.php
 然后解压。
 
 解压以后得到几个文件。
-#+BEGIN_SRC perl
-  M6CC.exe
-  M6Proto.exe #这两个是主程序，是我们要用到的
-  
-  MEGA-CC-Quick-Start-Tutorial.pdf # 这个是使用的教程
-  Usage Agreement.pdf # 使用协议，不用看
-  
-  Examples # 这个文件夹提供了我们学习MEGACC所需要的文件
-#+END_SRC
-
+    * M6CC.exe
+    * M6Proto.exe #这两个是主程序，是我们要用到的
+    * MEGA-CC-Quick-Start-Tutorial.pdf # 这个是使用的教程
+    * Usage Agreement.pdf # 使用协议，不用看
+    * Examples # 这个文件夹提供了我们学习MEGACC所需要的文件
 * 使用
 使用过程是从解压以后得到的PDF手册翻译加工整理而来。
 ** 安装
@@ -32,49 +28,46 @@ http://www.megasoftware.net/megaccusage.php
 拷贝到你喜欢的文件夹中。
 下面的两个实例需要你也把Example文件也拷贝过去。
 ** 输入文件
-#+BEGIN_SRC perl
-  1：分析配置文件：也就是你要用MEGA的什么参数进行分析的一个参数设定的集合。
-      这个是用MEGA-Proto来生成的。
-      生成的文件是一个 .mao为后缀的文件。
-  2：数据文件（下面的任意一个都可以）
-      ,* Multiple sequence alignment in MEGA or Fasta format. 
-      ,* Distance matrix in MEGA format. 
-      ,* Unaligned sequences in Fasta format (f or alignment only)
-  3:树文件（某些分析需要） .nwk文件格式。
-#+END_SRC
+1：分析配置文件：也就是你要用MEGA的什么参数进行分析的一个参数设定的集合。
+这个是用MEGA-Proto来生成的。
+生成的文件是一个 .mao为后缀的文件。
+
+2：数据文件（下面的任意一个都可以）
+      * Multiple sequence alignment in MEGA or Fasta format. 
+      * Distance matrix in MEGA format. 
+      * Unaligned sequences in Fasta format (f or alignment only)
+
+3:树文件（某些分析需要） .nwk文件格式。
 ** 输出文件
 一般情况下生成两种输出文件
 
-#+BEGIN_SRC perl
-  1. Calculation-specific results file (Newick file, distance 
+  * 1. Calculation-specific results file (Newick file, distance 
   matrix,…). 
-  2. A summary file with additional info (likelihood, SBL,…). 
+  * 2. A summary file with additional info (likelihood, SBL,…). 
   ,* Some analyses produce additional output (bootstrap consensus 
-  tree). 
-#+END_SRC
+  tree).
+ 
 输出的文件夹和文件名称
 
-#+BEGIN_SRC perl
-  1：默认和输入文件在同一个文件夹
-  2：如果要改变文件夹或者文件名称，那么用-o 选项。
-  3: If no output filename is specified, MEGA-CC will assign a unique 
+ * 1：默认和输入文件在同一个文件夹
+ * 2：如果要改变文件夹或者文件名称，那么用-o 选项。
+ * 3: If no output filename is specified, MEGA-CC will assign a unique 
   name. 
-#+END_SRC
+
 错误和警告：
 
 如果MEGA-CC产生了错误或者警告信息。那么会出现在summary file文件中。
 
 ** 运行MEGA-CC
-   DEADLINE: <2014-03-26 Wed>
 用命令行运行非常简单。
 #+BEGIN_SRC perl
   M6CC.exe -a options.mao -d alignment.meg -o outFile
 #+END_SRC
 也可以用一些脚本程序来运行，比如Perl，Python
 #+BEGIN_SRC perl
-  exec('M6CC.exe -a options.mao -d alignment.meg -o outFile'); # exec亲测不可用，我们这里改成system就可以了
-  system ('M6CC.exe -a options.mao -d alignment.meg -o outFile'); # exec亲测不可用，我们这里改成system就可以了
-  
+  exec('M6CC.exe -a options.mao -d alignment.meg -o outFile'); 
+  # exec亲测不可用，我们这里改成system就可以了
+  system ('M6CC.exe -a options.mao -d alignment.meg -o outFile');
 #+END_SRC
 MEGA-CC附带完善的文件迭代系统，来处理多个文件，而不用脚本来帮忙。
 具体可以参考下面第二个实例。
@@ -85,12 +78,11 @@ status = CreateProcess("M6CC.exe...");
 #+END_SRC
 如果要查看更多的命令选项，那么从命令行中调用M6CC.exe -h
 
-
 ** MEGA-Proto (分析模版)
-#+BEGIN_SRC perl
-  第一：和图形界面版本一样的外观
-  第二：生成MEGA分析所需要的选项文件
-  第三：没有计算能力，只是一个模拟的过程
+MEGA-Proto有一下特点：
+  * 第一：和图形界面版本一样的外观
+  * 第二：生成MEGA分析所需要的选项文件
+  * 第三：没有计算能力，只是一个模拟的过程
 #+END_SRC
 双击打开MEGA-Proto以后，图形界面会引导你进行一下步骤。
 
@@ -113,52 +105,55 @@ status = CreateProcess("M6CC.exe...");
 本实例展现了如何用MEGA-Proto 和MEGA-CC来完成
 “Maximum Likelihood phylogeny reconstruction”。
 
-第0步：准备文件
-
+ * 第0步：准备文件。
 为了能够正确的完成这个实例，你需要确认你有了M6CC.exe，
 以及M6Proto.exe这两个程序（我们上面下载的就是）。
-事例所需要的文件就是我们上面解压得到的。
+实例所需要的文件就是我们上面解压得到的。
+ *  第1步：双击或者右键打开MEGA-Proto.exe。
+ *  第2步：选择输入的数据类型。这里我们用的是默认设置。Nucleotide (non-coding)。
+ *  第3步：在菜单栏中选择：Phylogeny => Construct/Test Maximum Likelihood Tree
+ *  第4步：调整参数，然后点击“Save Settings”。把文件“mlDemo.mao”保存在当前文件夹。
+ *  第5步：打开一个命令行界面。也就是win+R，cmd。然后用cd命令切换到M6CC.exe所在的文件夹。
+ *  第6步：用M6CC.exe执行程序来分析文件。
 #+BEGIN_SRC perl
-  第1步：双击或者右键打开MEGA-Proto.exe。
-  第2步：选择输入的数据类型。这里我们用的是默认设置。Nucleotide (non-coding)。
-  第3步：在菜单栏中选择：Phylogeny => Construct/Test Maximum Likelihood Tree
-  第4步：调整参数，然后点击“Save Settings”。把文件“mlDemo.mao”保存在当前文件夹。
-  第5步：打开一个命令行界面。也就是win+R，cmd。然后用cd命令切换到M6CC.exe所在的文件夹。
-  第6步：用M6CC.exe执行程序来分析文件。
-        M6CC.exe -a mlDemo.mao -d Examples\Crab_rRNA.meg -o demoResults
-  第7步：程序开始执行。会有进度的显示。执行完成以后退出。
-  最后 ：分析得到3个输出文件。
-      ,* demoResult.nwk
-        这个文件是用我们给定的设置参数得到的Maximum Likelihood 树。
-      ,* demoResult_consensus.nwk
-        这个文件是Mega 从所有的bootstrap sample trees中得到的bootstrap consensus树。
-      ,* demoResult_summary.txt
-        这个文件给出了分析数据：比如log likelihood value of the Maximum Likelihood tree,ts/tv ratio etc...
+  M6CC.exe -a mlDemo.mao -d Examples\Crab_rRNA.meg -o demoResults
 #+END_SRC
-
-
-
+ *  第7步：程序开始执行。会有进度的显示。执行完成以后退出。
+ *  最后 ：分析得到3个输出文件。
+#+BEGIN_EXAMPLE
+  ,* demoResult.nwk
+  这个文件是用我们给定的设置参数得到的Maximum Likelihood 树。
+  ,* demoResult_consensus.nwk
+  这个文件是Mega 从所有的bootstrap sample trees中得到的bootstrap consensus树。
+  ,* demoResult_summary.txt
+  这个文件给出了分析数据：比如log likelihood value of the Maximum Likelihood tree,ts/tv ratio etc...
+#+END_EXAMPLE
 ** Demo2: 实例2
-下面这个例子展示了，如何用MEGA-CC中的文件迭代系统
-来用一个配置好的文件来处理多个输入文件。
+下面这个例子展示了，如何用MEGA-CC中的文件迭代系统，
+用同一个配置文件（也就是MEGA-Proto得到的文件）来处理多个输入文件。
 
 第0步：启动
+
 这个就是第一个Demo1中的前5个过程，如果还搞不定的话，自己去复习。
 
-#+BEGIN_SRC perl
-  第1步：新建一个文件命名为 demo2Data.txt 这里面包含我们要处理的多个文件。
+第1步：新建一个文件命名为 demo2Data.txt 这里面包含我们要处理的多个文件。
         一行是一个文件。
-        在这个文件中，对两个文件Grab_rRNA.meg 和Drosophila_Adh.meg两个实例
+        在这个文件中，有两个文件“Grab\_rRNA.meg” 和“Drosophila\_Adh.meg”。
         文件添加完全的路径。
-  第2步：然后在命令行中用如下命令调用MEGA-CC:
-        M6CC.exe -a mlDemo.mao -d demo2Data.txt
+
+第2步：然后在命令行中用如下命令调用MEGA-CC:
+#+BEGIN_SRC perl
+  M6CC.exe -a mlDemo.mao -d demo2Data.txt
+#+END_SRC
+        
       
        上面的命令行没有指定输出的文件夹，以及文件名称。不过不用担心。
-       所有的结果都会根据你的文件名来命名，并且输出到M6CC_Out文件夹中。
-  第3步：然后分析会启动。一个个的处理文件。处理的进度会显示在命令行界面中。
-  最后 ：分析程序会对每一个输入文件产生一个输出结果。
+       所有的结果都会根据你的文件名来命名，并且输出到“M6CC\_Out”文件夹中。
+
+第3步：然后分析会启动。一个个的处理文件。处理的进度会显示在命令行界面中。
+
+最后 ：分析程序会对每一个输入文件产生一个输出结果。
         在这个例子中，相同的分析配置文件用在每一个文件中。
-#+END_SRC
 
 ** 自我实例
 下面是一个用Perl调用的小脚本：
@@ -176,13 +171,11 @@ status = CreateProcess("M6CC.exe...");
   
 #+END_SRC
 使用的huashu.mao都在github上。
+但是如果直接用上面的Perl程序来画树，画完一个树以后就停止了。
+经过测试发现，把上面程序中的“exec”换成“system”命令以后，程序完美运行。
 
-直接用Perl画完一个树以后停止了。
-经过测试，发现，把上面程序中的exec换成system命令以后，程序完美运行。
-
-同时我们也可以用，他自带的多文件处理功能。
-
-Perl脚本用来提取所有需要处理文件的文件名到file.txt。
+同时我们也可以用MEGA-cc自带的多文件处理功能。
+Perl脚本用来提取所有需要处理文件的文件名到file.txt，这个文件名要包含完全的路径。
 #+BEGIN_SRC perl
   use strict;
   use warnings;
@@ -206,7 +199,7 @@ Perl脚本用来提取所有需要处理文件的文件名到file.txt。
 #+END_SRC
 但是用上面的方法来处理文件的时候，只有一半的文件被处理，基本上是处理一个，跳过一个。
 不知道是什么原因。我能想到的解决办法是:在上面的输出文件名称到file.txt的时候，
-每一个文件都输出两遍。仅仅是一种解决方案，没有找到真实原因。
+每一个文件都输出两遍。仅仅是一种解决方案，没有找到真正原因。
 #+BEGIN_SRC perl
   use strict;
   use warnings;
@@ -226,3 +219,46 @@ Perl脚本用来提取所有需要处理文件的文件名到file.txt。
 #+END_SRC
 
 
+* mao 文件简单解析
+mao文件是我们用M6Proto.exe通过模拟分析得到的一个参数列表。
+但是他的本质就是一个文本文件。我们可以用文本编辑器打开。
+#+BEGIN_SRC perl
+  ; Please do not edit this file! If this file is modified, results are unpredictable.
+  ; Instead of modifying this file, simply create a new MEGA Analysis Options file by using the MEGA Prototyper.
+  [ MEGAinfo ]
+  ver=0
+  [ DataSettings ]
+  datatype=snNucleotide
+  containsCodingNuc=False
+  missingBaseSymbol=?
+  identicalBaseSymbol=.
+  gapSymbol=-
+  [ ProcessTypes ]
+  ppInfer=true
+  ppNJ=true
+  [ AnalysisSettings ]
+  Analysis=Phylogeny Reconstruction
+  Scope=All Selected Taxa
+  Statistical Method=Neighbor-joining
+  Phylogeny Test=====================
+  Test of Phylogeny=Bootstrap method
+  No. of Bootstrap Replications=500
+  Substitution Model=====================
+  Substitutions Type=Nucleotide
+  Model/Method=p-distance
+  Substitutions to Include=d: Transitions + Transversions
+  Rates and Patterns=====================
+  Rates among Sites=Uniform rates
+  Gamma Parameter=Not Applicable
+  Pattern among Lineages=Same (Homogeneous)
+  Data Subset to Use=====================
+  Gaps/Missing Data Treatment=Pairwise deletion
+  Site Coverage Cutoff (%)=Not Applicable
+#+END_SRC
+虽然文件的第一行，不让我们修改，但是我们仔细看一下每一行的意思以后。
+完全可以进行小的改动。这样就不必要每一个小的改动，都去使用M6Proto.exe
+这个程序。
+
+比如，上面有一行 No. of Bootstrap Replications=500。
+这个我们非常容易理解，就是设置Bootstrap的次数，如果你想改成1000，那就直接从mao文件
+中修改吧。
