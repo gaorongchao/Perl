@@ -1,4 +1,4 @@
-% Created 2014-03-29 Sat 23:19
+% Created 2014-03-30 Sun 19:13
 \documentclass{ctexart}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -14,8 +14,12 @@
 \usepackage{latexsym}
 \usepackage{amssymb}
 \usepackage{hyperref}
-\tolerance=1000
 \usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+\definecolor{background}{rgb}{0.9,0.9,0.9}
+\tolerance=1000
+
 \providecommand{\alert}[1]{\textbf{#1}}
 
 \title{如何使用Mega cc}
@@ -33,12 +37,15 @@
 \setcounter{tocdepth}{3}
 \tableofcontents
 \vspace*{1cm}
+ 
 \section{github地址：}
 \label{sec-1}
 
 \href{https://github.com/gaorongchao/Perl/tree/master/Bio/Mega}{https://github.com/gaorongchao/Perl/tree/master/Bio/Mega}
 
-发现任何错误，或者不当的地方，请联系我.
+所有后续更新都在github上进行，其他地方不做同步。
+发现任何错误，或者不当的地方，请先到github查看是否改正。
+如果没有请留言。或者邮件交流：rongchaogao@gmail.com
 \section{下载}
 \label{sec-2}
 
@@ -115,14 +122,14 @@
 
 用命令行运行非常简单。
 
-\lstset{frame=trBL,frameround=fttt,breaklines=true,language=Perl}
+\lstset{columns=flexible,backgroundcolor=\color{background},frame=trBL,frameround=fttt,breaklines=true,language=Perl}
 \begin{lstlisting}
 M6CC.exe -a options.mao -d alignment.meg -o outFile
 \end{lstlisting}
 也可以用一些脚本程序来运行，比如Perl，Python。
 这里我们用exec发现会出问题，所以这里改成用system来进行调用。
 
-\lstset{frame=trBL,frameround=fttt,breaklines=true,language=Perl}
+\lstset{columns=flexible,backgroundcolor=\color{background},frame=trBL,frameround=fttt,breaklines=true,language=Perl}
 \begin{lstlisting}
 #exec('M6CC.exe -a options.mao -d alignment.meg -o outFile'); 
 system ('M6CC.exe -a options.mao -d alignment.meg -o outFile');
@@ -132,7 +139,7 @@ MEGA-CC附带完善的文件迭代系统，来处理多个文件，而不用脚�
 
 其他的应用也可以调用MEGA-CC:
 
-\lstset{frame=trBL,frameround=fttt,breaklines=true,language=Perl}
+\lstset{columns=flexible,backgroundcolor=\color{background},frame=trBL,frameround=fttt,breaklines=true,language=Perl}
 \begin{lstlisting}
 status = CreateProcess("M6CC.exe...");
 \end{lstlisting}
@@ -140,7 +147,7 @@ status = CreateProcess("M6CC.exe...");
 \subsection{MEGA-Proto (分析模版)}
 \label{sec-3-5}
 
-MEGA-Proto有一下特点：
+MEGA-Proto有以下特点：
 \begin{itemize}
 \item 第一：和图形界面版本一样的外观
 \item 第二：生成MEGA分析所需要的选项文件
@@ -148,10 +155,10 @@ MEGA-Proto有一下特点：
 \end{itemize}
 双击打开MEGA-Proto以后，图形界面会引导你进行一下步骤。
 
-第一步：选择输入文件类型。
+第一步：选择序列类型。
 包含四种类型。
 
-\lstset{frame=trBL,frameround=fttt,breaklines=true,language=Perl}
+\lstset{columns=flexible,backgroundcolor=\color{background},frame=trBL,frameround=fttt,breaklines=true,language=Perl}
 \begin{lstlisting}
 Nucleotide (non-coding)
 Nucleotide (coding)
@@ -185,7 +192,7 @@ Distance matrix (MEGA format)
 \item 第6步：用M6CC.exe执行程序来分析文件。
 \end{itemize}
 
-\lstset{frame=trBL,frameround=fttt,breaklines=true,language=Perl}
+\lstset{columns=flexible,backgroundcolor=\color{background},frame=trBL,frameround=fttt,breaklines=true,language=Perl}
 \begin{lstlisting}
 M6CC.exe -a mlDemo.mao -d Examples\Crab_rRNA.meg -o demoResults
 \end{lstlisting}
@@ -212,14 +219,19 @@ M6CC.exe -a mlDemo.mao -d Examples\Crab_rRNA.meg -o demoResults
 
 这个就是第一个Demo1中的前5个过程，如果还搞不定的话，自己去复习。
 
-第1步：新建一个文件命名为 demo2Data.txt 这里面包含我们要处理的多个文件。
+第1步：新建一个文件，命名为 demo2Data.txt。这里面包含我们要处理的多个文件。
         一行是一个文件。
         在这个文件中，有两个文件“Grab\_rRNA.meg” 和“Drosophila\_Adh.meg”。
-        文件添加完全的路径。
+        文件添加完全的路径。大致是下面的样子。
 
+\lstset{columns=flexible,backgroundcolor=\color{background},frame=trBL,frameround=fttt,breaklines=true,language=Perl}
+\begin{lstlisting}
+D:\M6CC\Examples\Crab_rRNA.meg 
+D:\M6CC\Examples\Drosophila_Adh.meg
+\end{lstlisting}
 第2步：然后在命令行中用如下命令调用MEGA-CC:
 
-\lstset{frame=trBL,frameround=fttt,breaklines=true,language=Perl}
+\lstset{columns=flexible,backgroundcolor=\color{background},frame=trBL,frameround=fttt,breaklines=true,language=Perl}
 \begin{lstlisting}
 M6CC.exe -a mlDemo.mao -d demo2Data.txt
 \end{lstlisting}
@@ -237,68 +249,58 @@ M6CC.exe -a mlDemo.mao -d demo2Data.txt
 
 下面是一个用Perl调用的小脚本：
 
-\lstset{frame=trBL,frameround=fttt,breaklines=true,language=Perl}
+\lstset{columns=flexible,backgroundcolor=\color{background},frame=trBL,frameround=fttt,breaklines=true,language=Perl}
 \begin{lstlisting}
 use strict;
 use warnings;
-use utf8;
-use 5.16.3;
 
 my @files = glob "*.fasta";
 foreach my $file (@files)
 {
-        exec("M6CC.exe -a huashu.mao -d $file -o $file.out");
+        system ("M6CC.exe -a huashu.mao -d $file -o $file.out");
 }
 \end{lstlisting}
 使用的huashu.mao都在github上。
-但是如果直接用上面的Perl程序来画树，画完一个树以后就停止了。
-经过测试发现，把上面程序中的“exec”换成“system”命令以后，程序完美运行。
 
 同时我们也可以用MEGA-cc自带的多文件处理功能。
 Perl脚本用来提取所有需要处理文件的文件名到file.txt，这个文件名要包含完全的路径。
 
-\lstset{frame=trBL,frameround=fttt,breaklines=true,language=Perl}
+\lstset{columns=flexible,backgroundcolor=\color{background},frame=trBL,frameround=fttt,breaklines=true,language=Perl}
 \begin{lstlisting}
 use strict;
 use warnings;
-use utf8;
-use 5.16.3;
 
-my      $out_out = "file.txt";
+my $out_out = "file.txt";
 open  my $out, '>', $out_out or die  "Fail open $out_out\n";
 my @files = glob "*.fasta";
 foreach my $file (@files)
 {
         print $out "D:\\Less_less_region\\$file\n";
-        #exec("M6CC.exe -a huashu.mao -d $file -o $file.out");
 }
 close  $out;
 \end{lstlisting}
 然后用上面的多个文件处理的方法：
 
-\lstset{frame=trBL,frameround=fttt,breaklines=true,language=Perl}
+\lstset{columns=flexible,backgroundcolor=\color{background},frame=trBL,frameround=fttt,breaklines=true,language=Perl}
 \begin{lstlisting}
 M6CC.exe -a huashu.mao -d file.txt
 \end{lstlisting}
 但是用上面的方法来处理文件的时候，只有一半的文件被处理，基本上是处理一个，跳过一个。
-不知道是什么原因。我能想到的解决办法是:在上面的输出文件名称到file.txt的时候，
+不知道是什么原因。解决办法是:在上面的输出文件名称到file.txt的时候，
 每一个文件都输出两遍。仅仅是一种解决方案，没有找到真正原因。
 
-\lstset{frame=trBL,frameround=fttt,breaklines=true,language=Perl}
+\lstset{columns=flexible,backgroundcolor=\color{background},frame=trBL,frameround=fttt,breaklines=true,language=Perl}
 \begin{lstlisting}
 use strict;
 use warnings;
-use utf8;
-use 5.16.3;
 
-my      $out_out = "file.txt";
+my  $out_out = "file.txt";
 open  my $out, '>', $out_out or die  "Fail open $out_out\n";
 my @files = glob "*.fasta";
 foreach my $file (@files)
 {
         print $out "D:\\Less_less_region\\$file\n";
         print $out "D:\\Less_less_region\\$file\n";
-        #exec("M6CC.exe -a huashu.mao -d $file -o $file.out");
 }
 close  $out;
 \end{lstlisting}
@@ -308,7 +310,7 @@ close  $out;
 mao文件是我们用M6Proto.exe通过模拟分析得到的一个参数列表。
 但是他的本质就是一个文本文件。我们可以用文本编辑器打开。
 
-\lstset{frame=trBL,frameround=fttt,breaklines=true,language=Perl}
+\lstset{columns=flexible,backgroundcolor=\color{background},frame=trBL,frameround=fttt,breaklines=true,language=Perl}
 \begin{lstlisting}
 ; Please do not edit this file! If this file is modified, results are unpredictable.
 ; Instead of modifying this file, simply create a new MEGA Analysis Options file by using the MEGA Prototyper.

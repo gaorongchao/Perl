@@ -1,11 +1,13 @@
 #+TITLE: 如何使用Mega cc
 #+AUTHOR: GRC(扬眉剑)
 #+LATEX_CLASS: ctexart
-#+LATEX_HEADER: \usepackage{listings}
+ 
 * github地址：
 https://github.com/gaorongchao/Perl/tree/master/Bio/Mega
 
-发现任何错误，或者不当的地方，请联系我.
+所有后续更新都在github上进行，其他地方不做同步。
+发现任何错误，或者不当的地方，请先到github查看是否改正。
+如果没有请留言。或者邮件交流：rongchaogao@gmail.com
 * 下载
 http://www.megasoftware.net/megaccusage.php
 
@@ -79,14 +81,14 @@ status = CreateProcess("M6CC.exe...");
 如果要查看更多的命令选项，那么从命令行中调用M6CC.exe -h
 
 ** MEGA-Proto (分析模版)
-MEGA-Proto有一下特点：
+MEGA-Proto有以下特点：
   * 第一：和图形界面版本一样的外观
   * 第二：生成MEGA分析所需要的选项文件
   * 第三：没有计算能力，只是一个模拟的过程
 #+END_SRC
 双击打开MEGA-Proto以后，图形界面会引导你进行一下步骤。
 
-第一步：选择输入文件类型。
+第一步：选择序列类型。
 包含四种类型。
 #+BEGIN_SRC perl
   Nucleotide (non-coding)
@@ -136,11 +138,14 @@ MEGA-Proto有一下特点：
 
 这个就是第一个Demo1中的前5个过程，如果还搞不定的话，自己去复习。
 
-第1步：新建一个文件命名为 demo2Data.txt 这里面包含我们要处理的多个文件。
+第1步：新建一个文件，命名为 demo2Data.txt。这里面包含我们要处理的多个文件。
         一行是一个文件。
         在这个文件中，有两个文件“Grab\_rRNA.meg” 和“Drosophila\_Adh.meg”。
-        文件添加完全的路径。
-
+        文件添加完全的路径。大致是下面的样子。
+#+BEGIN_SRC perl
+  D:\M6CC\Examples\Crab_rRNA.meg 
+  D:\M6CC\Examples\Drosophila_Adh.meg
+#+END_SRC
 第2步：然后在命令行中用如下命令调用MEGA-CC:
 #+BEGIN_SRC perl
   M6CC.exe -a mlDemo.mao -d demo2Data.txt
@@ -160,35 +165,27 @@ MEGA-Proto有一下特点：
 #+BEGIN_SRC perl
   use strict;
   use warnings;
-  use utf8;
-  use 5.16.3;
   
   my @files = glob "*.fasta";
   foreach my $file (@files)
   {
-          exec("M6CC.exe -a huashu.mao -d $file -o $file.out");
-  }
-  
+          system ("M6CC.exe -a huashu.mao -d $file -o $file.out");
+  } 
 #+END_SRC
 使用的huashu.mao都在github上。
-但是如果直接用上面的Perl程序来画树，画完一个树以后就停止了。
-经过测试发现，把上面程序中的“exec”换成“system”命令以后，程序完美运行。
 
 同时我们也可以用MEGA-cc自带的多文件处理功能。
 Perl脚本用来提取所有需要处理文件的文件名到file.txt，这个文件名要包含完全的路径。
 #+BEGIN_SRC perl
   use strict;
   use warnings;
-  use utf8;
-  use 5.16.3;
   
-  my      $out_out = "file.txt";
+  my $out_out = "file.txt";
   open  my $out, '>', $out_out or die  "Fail open $out_out\n";
   my @files = glob "*.fasta";
   foreach my $file (@files)
   {
           print $out "D:\\Less_less_region\\$file\n";
-          #exec("M6CC.exe -a huashu.mao -d $file -o $file.out");
   }
   close  $out;
   
@@ -198,26 +195,22 @@ Perl脚本用来提取所有需要处理文件的文件名到file.txt，这个�
   M6CC.exe -a huashu.mao -d file.txt
 #+END_SRC
 但是用上面的方法来处理文件的时候，只有一半的文件被处理，基本上是处理一个，跳过一个。
-不知道是什么原因。我能想到的解决办法是:在上面的输出文件名称到file.txt的时候，
+不知道是什么原因。解决办法是:在上面的输出文件名称到file.txt的时候，
 每一个文件都输出两遍。仅仅是一种解决方案，没有找到真正原因。
 #+BEGIN_SRC perl
   use strict;
   use warnings;
-  use utf8;
-  use 5.16.3;
     
-  my      $out_out = "file.txt";
+  my  $out_out = "file.txt";
   open  my $out, '>', $out_out or die  "Fail open $out_out\n";
   my @files = glob "*.fasta";
   foreach my $file (@files)
   {
           print $out "D:\\Less_less_region\\$file\n";
           print $out "D:\\Less_less_region\\$file\n";
-          #exec("M6CC.exe -a huashu.mao -d $file -o $file.out");
   }
   close  $out;
 #+END_SRC
-
 * mao 文件简单解析
 mao文件是我们用M6Proto.exe通过模拟分析得到的一个参数列表。
 但是他的本质就是一个文本文件。我们可以用文本编辑器打开。

@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 <meta name="title" content="如何使用Mega cc"/>
 <meta name="generator" content="Org-mode"/>
-<meta name="generated" content="2014-03-29T23:19+0800"/>
+<meta name="generated" content="2014-03-30T19:13+0800"/>
 <meta name="author" content="GRC(扬眉剑)"/>
 <meta name="description" content=""/>
 <meta name="keywords" content=""/>
@@ -118,6 +118,7 @@ for the JavaScript code in this tag.
 <h1 class="title">如何使用Mega cc</h1>
 
 
+
 <div id="table-of-contents">
 <h2>Table of Contents</h2>
 <div id="text-table-of-contents">
@@ -149,7 +150,9 @@ for the JavaScript code in this tag.
 <p><a href="https://github.com/gaorongchao/Perl/tree/master/Bio/Mega">https://github.com/gaorongchao/Perl/tree/master/Bio/Mega</a>
 </p>
 <p>
-发现任何错误，或者不当的地方，请联系我.
+所有后续更新都在github上进行，其他地方不做同步。
+发现任何错误，或者不当的地方，请先到github查看是否改正。
+如果没有请留言。或者邮件交流：rongchaogao@gmail.com
 </p></div>
 
 </div>
@@ -319,7 +322,7 @@ MEGA-CC附带完善的文件迭代系统，来处理多个文件，而不用脚�
 <h3 id="sec-3-5"><span class="section-number-3">3.5</span> MEGA-Proto (分析模版)</h3>
 <div class="outline-text-3" id="text-3-5">
 
-<p>MEGA-Proto有一下特点：
+<p>MEGA-Proto有以下特点：
 </p><ul>
 <li>第一：和图形界面版本一样的外观
 </li>
@@ -332,7 +335,7 @@ MEGA-CC附带完善的文件迭代系统，来处理多个文件，而不用脚�
 <p>双击打开MEGA-Proto以后，图形界面会引导你进行一下步骤。
 </p>
 <p>
-第一步：选择输入文件类型。
+第一步：选择序列类型。
 包含四种类型。
 </p>
 
@@ -429,11 +432,17 @@ Distance matrix (MEGA format)
 这个就是第一个Demo1中的前5个过程，如果还搞不定的话，自己去复习。
 </p>
 <p>
-第1步：新建一个文件命名为 demo2Data.txt 这里面包含我们要处理的多个文件。
+第1步：新建一个文件，命名为 demo2Data.txt。这里面包含我们要处理的多个文件。
         一行是一个文件。
         在这个文件中，有两个文件“Grab_rRNA.meg” 和“Drosophila_Adh.meg”。
-        文件添加完全的路径。
+        文件添加完全的路径。大致是下面的样子。
 </p>
+
+
+<pre class="example">D:\M6CC\Examples\Crab_rRNA.meg 
+D:\M6CC\Examples\Drosophila_Adh.meg
+</pre>
+
 <p>
 第2步：然后在命令行中用如下命令调用MEGA-CC:
 </p>
@@ -469,21 +478,16 @@ Distance matrix (MEGA format)
 
 <pre class="example">use strict;
 use warnings;
-use utf8;
-use 5.16.3;
 
 my @files = glob "*.fasta";
 foreach my $file (@files)
 {
-        exec("M6CC.exe -a huashu.mao -d $file -o $file.out");
-}
-
+        system ("M6CC.exe -a huashu.mao -d $file -o $file.out");
+} 
 </pre>
 
 <p>
 使用的huashu.mao都在github上。
-但是如果直接用上面的Perl程序来画树，画完一个树以后就停止了。
-经过测试发现，把上面程序中的“exec”换成“system”命令以后，程序完美运行。
 </p>
 <p>
 同时我们也可以用MEGA-cc自带的多文件处理功能。
@@ -493,16 +497,13 @@ Perl脚本用来提取所有需要处理文件的文件名到file.txt，这个�
 
 <pre class="example">use strict;
 use warnings;
-use utf8;
-use 5.16.3;
 
-my      $out_out = "file.txt";
+my $out_out = "file.txt";
 open  my $out, '&gt;', $out_out or die  "Fail open $out_out\n";
 my @files = glob "*.fasta";
 foreach my $file (@files)
 {
         print $out "D:\\Less_less_region\\$file\n";
-        #exec("M6CC.exe -a huashu.mao -d $file -o $file.out");
 }
 close  $out;
 
@@ -518,28 +519,24 @@ close  $out;
 
 <p>
 但是用上面的方法来处理文件的时候，只有一半的文件被处理，基本上是处理一个，跳过一个。
-不知道是什么原因。我能想到的解决办法是:在上面的输出文件名称到file.txt的时候，
+不知道是什么原因。解决办法是:在上面的输出文件名称到file.txt的时候，
 每一个文件都输出两遍。仅仅是一种解决方案，没有找到真正原因。
 </p>
 
 
 <pre class="example">use strict;
 use warnings;
-use utf8;
-use 5.16.3;
 
-my      $out_out = "file.txt";
+my  $out_out = "file.txt";
 open  my $out, '&gt;', $out_out or die  "Fail open $out_out\n";
 my @files = glob "*.fasta";
 foreach my $file (@files)
 {
         print $out "D:\\Less_less_region\\$file\n";
         print $out "D:\\Less_less_region\\$file\n";
-        #exec("M6CC.exe -a huashu.mao -d $file -o $file.out");
 }
 close  $out;
 </pre>
-
 
 </div>
 </div>
@@ -620,7 +617,7 @@ At this time Mac and Linux are not supported.
 </div>
 
 <div id="postamble">
-<p class="date">Date: 2014-03-29T23:19+0800</p>
+<p class="date">Date: 2014-03-30T19:13+0800</p>
 <p class="author">Author: GRC(扬眉剑)</p>
 <p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
 <a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
