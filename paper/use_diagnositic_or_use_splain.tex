@@ -1,0 +1,131 @@
+% Created 2014-04-07 Mon 20:01
+\documentclass{ctexart}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{wrapfig}
+\usepackage{soul}
+\usepackage{textcomp}
+\usepackage{marvosym}
+\usepackage{wasysym}
+\usepackage{latexsym}
+\usepackage{amssymb}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{xcolor}
+\definecolor{background}{rgb}{0.9,0.9,0.9}
+\tolerance=1000
+
+\providecommand{\alert}[1]{\textbf{#1}}
+
+\title{use diagnostic 或者 use splain}
+\author{GRC}
+\date{\today}
+\hypersetup{
+  pdfkeywords={},
+  pdfsubject={},
+  pdfcreator={Emacs Org-mode version 7.9.3f}}
+
+\begin{document}
+
+\maketitle
+
+\setcounter{tocdepth}{3}
+\tableofcontents
+\vspace*{1cm}
+
+如果Perl程序发出警告或者报错，而你并不理解，Perl给你的报错信息。
+那么你有几种选择。
+
+\begin{itemize}
+\item 在某一个channels中提问。
+\item Check out the alternative,and hopefully beginner friendly explanations
+\end{itemize}
+on the Perl Maven site。
+\begin{itemize}
+\item 使用use diagnostic 或者use splain。
+\end{itemize}
+
+如果你觉得Perl默认提供的警告或者报错信息，太过短小精悍。那么你可以要求Perl提供更长的
+解释。你可以在程序上添加 use diagnostics; （建议只在研发过程中使用）。
+或者你也可以把错误保存到一个文件中，然后使用use splain.
+
+\section{0不能做除数}
+\label{sec-1}
+
+让我们来看一个例子：
+
+\lstset{columns=flexible,backgroundcolor=\color{background},frame=trBL,frameround=fttt,breaklines=true,language=Perl}
+\begin{lstlisting}
+$x=0;
+print 1/$x;
+\end{lstlisting}
+如果你运行上面的代码，你会得到错误：
+Illegal division by zero at x.pl line2。
+
+我知道对于大不人来说，上面的内容足够可以让人意识到自己的错误。但是问题的
+关键在于，0是如何成为分母的。
+
+所以这个例子依然是一个好例子，来展现如何得到更多，更详细的解释。
+\section{use diagnostics}
+\label{sec-2}
+
+在上述代码上添加：use diagnostics:
+
+\lstset{columns=flexible,backgroundcolor=\color{background},frame=trBL,frameround=fttt,breaklines=true,language=Perl}
+\begin{lstlisting}
+use diagnostics;
+
+$x=0;
+print 1/$x;
+\end{lstlisting}
+结果是这样的：
+
+\begin{verbatim}
+Illegal division by zero at C:/Users/GRC/Desktop/a.pl line 4 (#1)
+    (F) You tried to divide a number by 0.  Either something was wrong in
+    your logic, or you need to put a conditional in to guard against
+    meaningless input.
+
+Uncaught exception from user code:
+        Illegal division by zero at C:/Users/GRC/Desktop/a.pl line 4.
+\end{verbatim}
+\section{splain}
+\label{sec-3}
+
+splain 是一个Perl附带的命令行工具。
+我们运行上述程序（不加use diagnostics）但是我们把错误输出到一个文件中。
+
+\lstset{columns=flexible,backgroundcolor=\color{background},frame=trBL,frameround=fttt,breaklines=true,language=Perl}
+\begin{lstlisting}
+perl x.pl 2 > x.err
+\end{lstlisting}
+然后我们运行：
+
+\lstset{columns=flexible,backgroundcolor=\color{background},frame=trBL,frameround=fttt,breaklines=true,language=Perl}
+\begin{lstlisting}
+splain x.err
+\end{lstlisting}
+结果会输出：
+
+\begin{verbatim}
+Illegal division by zero at x.pl line 2 (#1)
+    (F) You tried to divide a number by 0.  Either something was wrong in
+    your logic, or you need to put a conditional in to guard against
+    meaningless input.
+\end{verbatim}
+\section{splain in a pipe}
+\label{sec-4}
+
+Linux/Unix 的高级使用者可以用管道命令得到错误信息，而不用把他们保存到一个文件中。
+
+\lstset{columns=flexible,backgroundcolor=\color{background},frame=trBL,frameround=fttt,breaklines=true,language=Perl}
+\begin{lstlisting}
+perl x.pl 2>&1 | splain
+\end{lstlisting}
+
+\end{document}

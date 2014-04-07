@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+               "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>use diagnostic 或者 use splain</title>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
+<meta name="title" content="use diagnostic 或者 use splain"/>
+<meta name="generator" content="Org-mode"/>
+<meta name="generated" content="2014-04-07T20:00+0800"/>
+<meta name="author" content="GRC"/>
+<meta name="description" content=""/>
+<meta name="keywords" content=""/>
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  html { font-family: Times, serif; font-size: 12pt; }
+  .title  { text-align: center; }
+  .todo   { color: red; }
+  .done   { color: green; }
+  .tag    { background-color: #add8e6; font-weight:normal }
+  .target { }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .right  {margin-left:auto; margin-right:0px;  text-align:right;}
+  .left   {margin-left:0px;  margin-right:auto; text-align:left;}
+  .center {margin-left:auto; margin-right:auto; text-align:center;}
+  p.verse { margin-left: 3% }
+  pre {
+	border: 1pt solid #AEBDCC;
+	background-color: #F3F5F7;
+	padding: 5pt;
+	font-family: courier, monospace;
+        font-size: 90%;
+        overflow:auto;
+  }
+  table { border-collapse: collapse; }
+  td, th { vertical-align: top;  }
+  th.right  { text-align:center;  }
+  th.left   { text-align:center;   }
+  th.center { text-align:center; }
+  td.right  { text-align:right;  }
+  td.left   { text-align:left;   }
+  td.center { text-align:center; }
+  dt { font-weight: bold; }
+  div.figure { padding: 0.5em; }
+  div.figure p { text-align: center; }
+  div.inlinetask {
+    padding:10px;
+    border:2px solid gray;
+    margin:10px;
+    background: #ffffcc;
+  }
+  textarea { overflow-x: auto; }
+  .linenr { font-size:smaller }
+  .code-highlighted {background-color:#ffff00;}
+  .org-info-js_info-navigation { border-style:none; }
+  #org-info-js_console-label { font-size:10px; font-weight:bold;
+                               white-space:nowrap; }
+  .org-info-js_search-highlight {background-color:#ffff00; color:#000000;
+                                 font-weight:bold; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+
+</head>
+<body>
+
+<div id="preamble">
+
+</div>
+
+<div id="content">
+<h1 class="title">use diagnostic 或者 use splain</h1>
+
+<p>如果Perl程序发出警告或者报错，而你并不理解，Perl给你的报错信息。
+那么你有几种选择。
+</p>
+<ul>
+<li>在某一个channels中提问。
+</li>
+<li>Check out the alternative,and hopefully beginner friendly explanations 
+</li>
+</ul>
+
+<p>on the Perl Maven site。
+</p><ul>
+<li>使用use diagnostic 或者use splain。
+</li>
+</ul>
+
+
+<p>
+如果你觉得Perl默认提供的警告或者报错信息，太过短小精悍。那么你可以要求Perl提供更长的
+解释。你可以在程序上添加 use diagnostics; （建议只在研发过程中使用）。
+或者你也可以把错误保存到一个文件中，然后使用use splain.
+</p>
+
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">1 0不能做除数</a></li>
+<li><a href="#sec-2">2 use diagnostics</a></li>
+<li><a href="#sec-3">3 splain</a></li>
+<li><a href="#sec-4">4 splain in a pipe</a></li>
+</ul>
+</div>
+</div>
+
+<div id="outline-container-1" class="outline-2">
+<h2 id="sec-1"><span class="section-number-2">1</span> 0不能做除数</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>让我们来看一个例子：
+</p>
+
+
+<pre class="example">$x=0;
+print 1/$x;
+</pre>
+
+<p>
+如果你运行上面的代码，你会得到错误：
+Illegal division by zero at x.pl line2。
+</p>
+<p>
+我知道对于大不人来说，上面的内容足够可以让人意识到自己的错误。但是问题的
+关键在于，0是如何成为分母的。
+</p>
+<p>
+所以这个例子依然是一个好例子，来展现如何得到更多，更详细的解释。
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-2" class="outline-2">
+<h2 id="sec-2"><span class="section-number-2">2</span> use diagnostics</h2>
+<div class="outline-text-2" id="text-2">
+
+<p>在上述代码上添加：use diagnostics:
+</p>
+
+
+<pre class="example">use diagnostics;
+
+$x=0;
+print 1/$x;
+</pre>
+
+<p>
+结果是这样的：
+</p>
+
+
+<pre class="example">Illegal division by zero at C:/Users/GRC/Desktop/a.pl line 4 (#1)
+    (F) You tried to divide a number by 0.  Either something was wrong in
+    your logic, or you need to put a conditional in to guard against
+    meaningless input.
+
+Uncaught exception from user code:
+        Illegal division by zero at C:/Users/GRC/Desktop/a.pl line 4.
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-3" class="outline-2">
+<h2 id="sec-3"><span class="section-number-2">3</span> splain</h2>
+<div class="outline-text-2" id="text-3">
+
+<p>splain 是一个Perl附带的命令行工具。
+我们运行上述程序（不加use diagnostics）但是我们把错误输出到一个文件中。
+</p>
+
+
+<pre class="example">perl x.pl 2 &gt; x.err
+</pre>
+
+<p>
+然后我们运行：
+</p>
+
+
+<pre class="example">splain x.err
+</pre>
+
+<p>
+结果会输出：
+</p>
+
+
+<pre class="example">Illegal division by zero at x.pl line 2 (#1)
+    (F) You tried to divide a number by 0.  Either something was wrong in
+    your logic, or you need to put a conditional in to guard against
+    meaningless input.
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-4" class="outline-2">
+<h2 id="sec-4"><span class="section-number-2">4</span> splain in a pipe</h2>
+<div class="outline-text-2" id="text-4">
+
+<p>Linux/Unix 的高级使用者可以用管道命令得到错误信息，而不用把他们保存到一个文件中。
+</p>
+
+
+<pre class="example">perl x.pl 2&gt;&amp;1 | splain
+</pre>
+
+</div>
+</div>
+</div>
+
+<div id="postamble">
+<p class="date">Date: 2014-04-07T20:00+0800</p>
+<p class="author">Author: GRC</p>
+<p class="creator"><a href="http://orgmode.org">Org</a> version 7.9.3f with <a href="http://www.gnu.org/software/emacs/">Emacs</a> version 24</p>
+<a href="http://validator.w3.org/check?uri=referer">Validate XHTML 1.0</a>
+
+</div>
+</body>
+</html>

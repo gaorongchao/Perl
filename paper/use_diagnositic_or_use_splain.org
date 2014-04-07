@@ -1,0 +1,72 @@
+#+TITLE: use diagnostic 或者 use splain
+#+AUTHOR: GRC
+#+LATEX_CLASS: ctexart
+
+如果Perl程序发出警告或者报错，而你并不理解，Perl给你的报错信息。
+那么你有几种选择。
+
+ * 在某一个channels中提问。
+ * Check out the alternative,and hopefully beginner friendly explanations 
+on the Perl Maven site。
+ * 使用use diagnostic 或者use splain。
+
+如果你觉得Perl默认提供的警告或者报错信息，太过短小精悍。那么你可以要求Perl提供更长的
+解释。你可以在程序上添加 use diagnostics; （建议只在研发过程中使用）。
+或者你也可以把错误保存到一个文件中，然后使用use splain.
+
+* 0不能做除数
+让我们来看一个例子：
+#+BEGIN_SRC perl
+  $x=0;
+  print 1/$x;
+#+END_SRC
+如果你运行上面的代码，你会得到错误：
+Illegal division by zero at x.pl line2。
+
+我知道对于大不人来说，上面的内容足够可以让人意识到自己的错误。但是问题的
+关键在于，0是如何成为分母的。
+
+所以这个例子依然是一个好例子，来展现如何得到更多，更详细的解释。
+
+* use diagnostics
+在上述代码上添加：use diagnostics:
+#+BEGIN_SRC perl
+  use diagnostics;
+  
+  $x=0;
+  print 1/$x;
+#+END_SRC
+结果是这样的：
+#+BEGIN_EXAMPLE
+  Illegal division by zero at C:/Users/GRC/Desktop/a.pl line 4 (#1)
+      (F) You tried to divide a number by 0.  Either something was wrong in
+      your logic, or you need to put a conditional in to guard against
+      meaningless input.
+  
+  Uncaught exception from user code:
+          Illegal division by zero at C:/Users/GRC/Desktop/a.pl line 4.
+#+END_EXAMPLE
+
+* splain
+splain 是一个Perl附带的命令行工具。
+我们运行上述程序（不加use diagnostics）但是我们把错误输出到一个文件中。
+#+BEGIN_SRC perl
+  perl x.pl 2 > x.err
+#+END_SRC
+然后我们运行：
+#+BEGIN_SRC perl
+  splain x.err
+#+END_SRC
+结果会输出：
+#+BEGIN_EXAMPLE
+  Illegal division by zero at x.pl line 2 (#1)
+      (F) You tried to divide a number by 0.  Either something was wrong in
+      your logic, or you need to put a conditional in to guard against
+      meaningless input.
+#+END_EXAMPLE
+
+* splain in a pipe
+Linux/Unix 的高级使用者可以用管道命令得到错误信息，而不用把他们保存到一个文件中。
+#+BEGIN_SRC perl
+  perl x.pl 2>&1 | splain
+#+END_SRC
