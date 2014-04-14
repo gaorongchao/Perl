@@ -7,7 +7,6 @@ use Data::Dumper;
 my (%hash,);
 %hash=("30"=>9,"60"=>10,"70"=>13,"80"=>8);
 
-
 my @files = glob "/home/grc/Data/TZH/all_sample_2014_03_18/0_2_Four_Group/Region_Tree/Less_less_region/*.fasta";
 
 $/="\n>";
@@ -15,15 +14,17 @@ my @groups=qw/30 60 70 80/;
 foreach my $file (@files)
 {
 	my $basename=basename($file);
+	my	$out_out = "$basename.arp";
+	open  my $out, '>', $out_out or die  "Fail open $out_out\n";
+	
+	my $output=output($file);
+	print $out "$output\n";
+
 	foreach my $group (@groups)
 	{
-		my	$out_out = "$group/$basename.arp";
-		open  my $out, '>', $out_out or die  "Fail open $out_out\n";
-		
-		my $output=output($file,$group);
-		print $out "$output\n";
-
 		my @all_sample;
+
+		print $out "SampleName=\"$group\"\nSampleSize=$hash{$group}\nSampleData=\{\n";
 
 		my	$in_in = "$file";
 		open  my $in, '<', $in_in or die "Fail open $in_in file\n";
@@ -37,24 +38,19 @@ foreach my $file (@files)
 			my $judge=print_or_not($group,$niandai);
 			if ($judge eq "TRUE")
 			{
-				push @all_sample,"$sample $niandai";
-				print $out "SampleName=\"$sample $niandai\"\nSampleSize=1\nSampleData=\{\n000 1 $lines[1] \n\}\n";
+				print $out "$sample 1 $lines[1]\n";
 			}
 			else
 			{
 				next;
 			}
 		}
+		print $out "}\n";
 		close  $in;
-		print $out "[[Stucture]]\nStructureName=\"$file\"\nNbGroups=$hash{$group}\n\nGroup={\n";
-
-		foreach my $all_sample (@all_sample)
-		{
-			print $out "\"$all_sample\"\n";
-		}
-		print $out "\}";
-		close  $out;
 	}
+	print $out "[[Stucture]]\nStructureName=\"$file\"\nNbGroups=4\nGroup={\n";
+	print $out "\"30\"\n\"40\"\n\"50\"\n\"60\"\n}";
+	close  $out;
 }
 $/="\n";
 
@@ -63,7 +59,7 @@ $/="\n";
 #------------------------------------------------
 sub output 
 {
-	my $outputline="[Profile]\n\tTitle=\"$_[0] $_[1]\"\n\tNbsamples=$hash{$_[1]}\n
+	my $outputline="[Profile]\n\tTitle=\"$_[0]\"\n\tNbsamples=4\n
 	\tDataType=DNA\nGenotypicData=0\nLocusSeparator=NONE\nMissingData=\"?\"\n
 	[Data]\n[[Samples]]\n";
 }
