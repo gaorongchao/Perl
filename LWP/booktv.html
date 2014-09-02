@@ -1,0 +1,894 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<script id="allmobilize" charset="utf-8" src="http://a.yunshipei.com/csdnnet/allmobilize.min.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>CSDN.NET - 全球最大中文IT社区，为IT专业技术人员提供最全面的信息传播和服务平台</title>
+<link href="http://csdnimg.cn/www/css/csdn_common.css" rel="stylesheet" type="text/css">
+<link href="css/content.css" rel="stylesheet" type="text/css">
+<link href="http://csdnimg.cn/public/favicon.ico" rel="SHORTCUT ICON">
+</head>
+<body>
+<script type="text/javascript">
+//google计数器
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-535605-6']);
+_gaq.push(['_addOrganic', 'm.baidu', 'word']);
+_gaq.push(['_addOrganic', 'wap.baidu', 'word']);
+_gaq.push(['_addOrganic', 'baidu.mobi', 'word']);
+_gaq.push(['_addOrganic', 'news.baidu', 'word']);
+_gaq.push(['_addOrganic', 'opendata.baidu', 'wd']);
+_gaq.push(['_addOrganic', 'post.baidu', 'kw']);
+_gaq.push(['_addOrganic', 'mp3.baidu', 'word']);
+_gaq.push(['_addOrganic', 'mp3.baidu', 'song']);
+_gaq.push(['_addOrganic', 'box.zhangmen.baidu', 'word']);
+_gaq.push(['_addOrganic', 'image.baidu', 'word']);
+_gaq.push(['_addOrganic', 'top.baidu', 'w']);
+_gaq.push(['_addOrganic', 'baidu', 'wd']);
+_gaq.push(['_addOrganic', 'baidu', 'word']);
+_gaq.push(['_addOrganic', 'baidu', 'kw']);
+_gaq.push(['_addOrganic', 'baidu', 'q1']);
+_gaq.push(['_addOrganic', 'baidu', 'q2']);
+_gaq.push(['_addOrganic', 'baidu', 'q3']);
+_gaq.push(['_addOrganic', 'baidu', 'q4']);
+_gaq.push(['_addOrganic', 'baidu', 'q5']);
+_gaq.push(['_addOrganic', 'baidu', 'q6']);
+_gaq.push(['_addOrganic', 'news.google', 'q']);
+_gaq.push(['_addOrganic', 'image.soso', 'w']);
+_gaq.push(['_addOrganic', 'wenwen.soso', 'sp']);
+_gaq.push(['_addOrganic', 'wenwen.soso', 'w']);
+_gaq.push(['_addOrganic', 'wap.soso', 'key']);
+_gaq.push(['_addOrganic', 'soso', 'w']);
+_gaq.push(['_addOrganic', 'bing', 'q']);
+_gaq.push(['_addOrganic', 'youdao', 'q']);
+_gaq.push(['_addOrganic', 'vnet', 'kw']);
+_gaq.push(['_addOrganic', 'so.360', 'q']);
+_gaq.push(['_addOrganic', 'so', 'q']);
+_gaq.push(['_addOrganic', '360sou', 'q']);
+_gaq.push(['_addOrganic', '360so', 'q']);
+_gaq.push(['_addOrganic', '360', 'q']);
+_gaq.push(['_addOrganic', 'image.so', 'q']);
+_gaq.push(['_addOrganic', 'news.sogou', 'query']);
+_gaq.push(['_addOrganic', 'mp3.sogou', 'query']);
+_gaq.push(['_addOrganic', 'pic.sogou', 'query']);
+_gaq.push(['_addOrganic', 'blogsearch.sogou', 'query']);
+_gaq.push(['_addOrganic', 'wap.sogou', 'keyword']);
+_gaq.push(['_addOrganic', 'm.sogou', 'keyword']);
+_gaq.push(['_addOrganic', 'sogou', 'query']);
+_gaq.push(['_setDomainName', 'csdn.net']);
+_gaq.push(['_trackPageview']);
+(function() {
+  var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+  ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+  var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); 
+})();
+</script>
+<div class="pagetop_notice txt_gray"><cite id="login"><span class="login">您还未登录！</span>|<a href="https://passport.csdn.net/account/login">登录</a>|<a href="https://passport.csdn.net/account/register">注册</a>|<a href="https://passport.csdn.net/help/faq">帮助</a><input type="text" name="passwordtwo" class="search" value="搜索" onfocus="if(this.value=='搜索') this.value='';this.style.color='#333'; return true;" onblur="if(this.value=='') this.value='搜索'; this.style.color='#999'; return true;" id="srch1"></cite><span id="showinfo"></span></div><script type="text/javascript">
+function getCookie( name ) {
+    var arr = document.cookie.match(new RegExp("(^| )"+name+"=([^;]*)(;|$)"));
+    if( arr != null )
+    {
+        return decodeURIComponent( arr[ 2 ] );
+    }
+    return null;
+}
+
+function csdnShowSpaceNotify( data ) {
+    document.getElementById("header_notice_num").innerHTML = parseInt( data.n ) > 0 ? data.n : 0;
+    if( parseInt( data.l ) > 0 )
+    {
+      document.getElementById("header_letter_num").innerHTML = "（"+data.l+"）";
+    }
+}
+window.csdnShowSpaceNotify = csdnShowSpaceNotify;
+
+var userName = getCookie( "UserNick" );
+if ( userName && userName != "Guest" )
+{
+    document.getElementById("login").innerHTML = "";
+    document.getElementById("showinfo").innerHTML = "<a href='http://my.csdn.net/'><em>"+ userName + "</em></a><a href=\"http://notify.csdn.net/dashboard\" class=\"notice_num\" id=\"header_notice_num\"></a>我的：<a href=\"http://my.csdn.net/my/letter\">收件箱<span id=\"header_letter_num\"></span></a><a href='http://download.csdn.net/my' class='red'>资源</a> <a href='http://write.blog.csdn.net/' class='red'>博客</a> <a href='http://my.csdn.net/'>空间</a> <a href='http://my.csdn.net/my/account/changepwd'>设置</a>|&nbsp;<a href='https://passport.csdn.net/help/faq'>帮助</a>|&nbsp;<a href='https://passport.csdn.net/account/logout'>退出</a><input type='text' name='passwordtwo' class='search' value='搜索' onfocus=\"if(this.value=='搜索') this.value='';this.style.color='#333'; return true;\" onblur=\"if(this.value=='') this.value='搜索'; this.style.color='#999'; return true;\" id='srch1' />";
+}
+
+if ( userName && userName != "Guest" )
+{
+    ( function() {
+        var ca = document.createElement( 'script' );
+        ca.type = 'text/javascript';
+        ca.async = true;
+        ca.src = 'http://my.csdn.net/index.php/service/notifications/getnl?jsonpcallback=csdnShowSpaceNotify';
+        var s = document.getElementsByTagName( 'script' )[ 0 ];
+        s.parentNode.insertBefore( ca, s );
+    } )();
+}
+</script>
+<div class="ad_top clearfix">
+	<div class="fl ad_728" id="629732">
+	</div>
+	<div class="fl" id="629765">
+	</div>
+</div>
+<div class="header clearfix">
+	<a href="/" target="_blank"  class="logo"
+	></a>
+	<div id="629767"></div>
+</div>
+<!--header-->
+<div class="nav">
+	<div class="nav_menu">
+	<div class="menu">
+		<ul class="clearfix">
+      	<li><a href="http://news.csdn.net" target="_blank" onclick="LogClickCount(this,348);">业界</a></li>
+      	<li><a href="http://cloud.csdn.net" target="_blank" onclick="LogClickCount(this,349);">云计算</a></li>
+        <li><a href="http://mobile.csdn.net" target="_blank" onclick="LogClickCount(this,350);">移动</a></li>
+        <li><a href="http://sd.csdn.net" target="_blank" onclick="LogClickCount(this,351);">研发</a></li>
+        <li><a href="http://programmer.csdn.net" target="_blank" onclick="LogClickCount(this,358);">程序员杂志</a></li>
+        <li class="parting"></li>
+        <li><a href="http://bbs.csdn.net" target="_blank" onclick="LogClickCount(this,352);">论坛</a></li>
+        <li><a href="http://blog.csdn.net" target="_blank" onclick="LogClickCount(this,353);">博客</a></li>
+        <li><a href="http://download.csdn.net" target="_blank" onclick="LogClickCount(this,354);">下载</a></li>
+        <li><a href="http://ask.csdn.net" target="_blank" onclick="LogClickCount(this,355);">问答</a></li>
+        <li><a href="http://www.iteye.com" target="_blank" onclick="LogClickCount(this,356);">ITeye</a></li>
+        <li class="parting"></li>
+        <li><a href="https://code.csdn.net" target="_blank" onclick="LogClickCount(this,369);">CODE</a></li>
+        <li><a href="http://huiyi.csdn.net" target="_blank" onclick="LogClickCount(this,357);">会议</a></li>        
+        <li><a href="http://job.csdn.net" target="_blank" onclick="LogClickCount(this,359);">招聘</a></li>
+        <li><a href="http://edu.csdn.net" target="_blank" onclick="LogClickCount(this,360);">培训</a></li>
+        <li><a href="http://www.csto.com" target="_blank" onclick="LogClickCount(this,361);">外包</a></li>
+        <li><a href="http://ems.csdn.net" target="_blank" onclick="LogClickCount(this,390);">EMS</a></li>
+        <li class="nav_more">
+        	<div class="nav_more_list" style="display: none">
+          	<a class="arrow"></a>
+          	<ul class="clearfix">
+            	<li>
+              	<h4>内容</h4>
+              	<a href="http://www.csdn.net/article/tag/云计算" target="_blank" onclick="LogClickCount(this,362);">云计算</a>
+              	<a href="http://www.csdn.net/article/tag/移动开发" target="_blank" onclick="LogClickCount(this,362);">移动开发</a>
+              	<a href="http://www.csdn.net/article/tag/大数据" target="_blank" onclick="LogClickCount(this,362);">大数据</a>
+              	<a href="http://www.csdn.net/article/tag/编程语言" target="_blank" onclick="LogClickCount(this,362);">编程语言</a>
+              	<a href="http://www.csdn.net/article/tag/前端开发" target="_blank" onclick="LogClickCount(this,362);">前端开发</a>
+              	<a href="http://database.csdn.net" target="_blank" onclick="LogClickCount(this,362);">数据库</a>
+              	<a href="http://security.csdn.net" target="_blank" onclick="LogClickCount(this,362);">安全</a>
+              	<a href="http://server.csdn.net" target="_blank" onclick="LogClickCount(this,362);">服务器</a>
+              	<a href="http://www.csdn.net/article/tag/存储" target="_blank" onclick="LogClickCount(this,362);">存储</a>
+              	<a href="http://special.csdn.net/newssubject/index.html" target="_blank" onclick="LogClickCount(this,362);">专题</a>             	
+              </li>
+              <li>
+              	<h4>社区</h4>
+                <a href="http://bbs.csdn.net" target="_blank" onclick="LogClickCount(this,362);">论坛</a>
+                <a href="http://blog.csdn.net" target="_blank" onclick="LogClickCount(this,362);">博客</a>
+                <a href="http://blog.csdn.net/column.html" target="_blank" onclick="LogClickCount(this,362);">专栏</a>
+                <a href="http://ask.csdn.net" target="_blank" onclick="LogClickCount(this,362);">问答</a>
+                <a href="http://download.csdn.net" target="_blank" onclick="LogClickCount(this,362);">下载</a>
+                <a href="http://so.csdn.net" target="_blank" onclick="LogClickCount(this,362);">搜索</a>
+                <a href="http://www.iteye.com" target="_blank" onclick="LogClickCount(this,362);">ITeye</a>
+                <a href="http://geek.csdn.net" target="_blank" onclick="LogClickCount(this,362);">极客头条</a>
+                <a href="http://share.csdn.net" target="_blank" onclick="LogClickCount(this,362);">Share</a>
+              </li>
+              <li>
+              	<h4>活动</h4>
+                <a href="http://huiyi.csdn.net" target="_blank" onclick="LogClickCount(this,362);">会议</a>
+                <a href="http://club.csdn.net/cto" target="_blank" onclick="LogClickCount(this,362);">CTO俱乐部</a>
+                <a href="http://club.csdn.net/cmdn" target="_blank" onclick="LogClickCount(this,362);">移动俱乐部</a>
+                <a href="http://student.csdn.net" target="_blank" onclick="LogClickCount(this,362);">高校俱乐部</a>
+                <a href="http://tup.csdn.net" target="_blank" onclick="LogClickCount(this,362);">TUP俱乐部</a>
+                <a href="http://club.csdn.net/community" target="_blank" onclick="LogClickCount(this,362);">社区大本营</a>
+                <a href="http://club.csdn.net/hr" target="_blank" onclick="LogClickCount(this,362);">ITHRClub</a>
+              </li>
+              <li>
+              	<h4>服务</h4>
+                <a href="http://www.programmer.com.cn" target="_blank" onclick="LogClickCount(this,362);">程序员杂志</a>
+                <a href="http://edu.csdn.net" target="_blank" onclick="LogClickCount(this,362);">培训充电</a>
+                <a href="http://job.csdn.net" target="_blank" onclick="LogClickCount(this,362);">Job</a>
+                <a href="http://hero.csdn.net" target="_blank" onclick="LogClickCount(this,362);">英雄会</a>
+                <a href="http://www.csto.com" target="_blank" onclick="LogClickCount(this,362);">CSTO</a>
+                <a href="https://code.csdn.net" target="_blank" onclick="LogClickCount(this,369);">CODE</a>
+                <a href="http://ems.csdn.net" target="_blank" onclick="LogClickCount(this,369);">企业会员服务</a>
+              </li>
+              <li style="width:110px; magin-right: -100px;">
+              	<h4>客户端</h4>
+                <a href="http://subject.csdn.net/programmer-ipad" target="_blank" onclick="LogClickCount(this,362);">程序员杂志iPad</a>
+                <a href="http://subject.csdn.net/programmer-android" target="_blank" onclick="LogClickCount(this,362);">程序员杂志Android</a>
+                <a href="http://share.csdn.net" target="_blank" onclick="LogClickCount(this,362);">Share</a>
+                <a href="http://subject.csdn.net/csdnapp/news" target="_blank" onclick="LogClickCount(this,362);">CSDN新闻客户端</a>
+              </li>             
+            </ul>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="submenu">  
+		<ul class="">
+		<li><a href="http://ios.itcast.cn" target="_blank">iOS培训</a></li>
+      	<li><a href="http://c.itcast.cn" target="_blank">C/C++培训</a></li>
+        <li><a href="http://java.itcast.cn" target="_blank">Java 培训</a></li>
+        <li><a href="http://net.itcast.cn" target="_blank">.NET培训</a></li>
+        <li><a href="http://php.itcast.cn" target="_blank">PHP培训</a></li>      	
+        <li><a href="http://tcl.csdn.net" target="_blank">TCL专区</a></li>
+        <li><a href="http://huawei.csdn.net" target="_blank">华为云计算</a></li>
+      	<li><a href="http://intel.csdn.net" target="_blank">英特尔 软件</a></li>
+      	<!-- <li><a href="http://baidu.csdn.net" target="_blank">百度开放云</a></li> -->
+      	<li><a href="http://ibmuniversity.csdn.net" target="_blank">IBM大学</a></li>
+      	<li><a href="http://hc.csdn.net" target="_blank">异构开发</a></li>
+      	<li><a href="http://ie.csdn.net" target="_blank">IE</a></li>
+      	<li><a href="http://qualcomm.csdn.net" target="_blank">Qualcomm</a></li>     
+        <li>|</li>
+        <li><a href="http://club.csdn.net/cto" target="_blank">CTO</a></li>
+        <li><a href="http://student.csdn.net" target="_blank">高校</a></li>
+        <li><a href="http://mobilehub.io" target="_blank">mobilehub</a></li>       
+      </ul>
+    </div>
+  </div>
+</div>
+<!--nav-->
+<div class="content clearfix">
+	<div class="sidebar fr">
+  	<div class="box hot">
+    	            <a href="http://g.csdn.net/5271036" title="" target="_blank"><img src="http://images.csdn.net/20140620/300-200.gif" /></a>
+                    <a href="http://g.csdn.net/5270936" title="" target="_blank"><img src="http://images.csdn.net/20140618/aws-zq-300-200-20140618.jpg" /></a>
+                    <a href="http://g.csdn.net/5271016" title="" target="_blank"><img src="http://images.csdn.net/20140620/300x200.jpg" /></a>
+                    <a href="http://g.csdn.net/5270291" title="" target="_blank"><img src="http://images.csdn.net/20140603/tcl-ds-300-200-20140603.jpg" /></a>
+                    <a href="http://g.csdn.net/5269987" title="" target="_blank"><img src="http://images.csdn.net/20140526/ibm-powerlinux-300-200-20140526.jpg" /></a>
+                    <a href="http://g.csdn.net/5270837" title="" target="_blank"><img src="http://images.csdn.net/20140616/300-200.png" /></a>
+                <ul class="clearfix js-tagRoot"> </ul>
+    </div>
+    <div class="box quick">
+		<h2><a onclick="LogClickCount(this,337);" class="more" target="_blank" href="http://read.csdn.net">定制你的个性CSDN内容</a>快速入口</h2>
+        <dl class="clearfix">          
+					<dd>
+                        <a title="AWS" href="http://g.csdn.net/5270987" target="_blank" onclick="LogClickCount(this,337);">AWS</a>
+                        <a title="Hadoop" href="http://hadoop.csdn.net" target="_blank" onclick="LogClickCount(this,337);">Hadoop</a>
+                        <a title="大数据" href="http://www.csdn.net/tag/大数据" target="_blank" onclick="LogClickCount(this,337);">大数据</a>
+                        <a title="开放平台" href="http://www.csdn.net/tag/开放平台" target="_blank" onclick="LogClickCount(this,337);">开放平台</a>
+                        <a title="移动游戏" href="http://www.csdn.net/tag/移动游戏" target="_blank" onclick="LogClickCount(this,337);">移动游戏</a>
+                        <a title="HTML5" href="http://www.csdn.net/tag/HTML5" target="_blank" onclick="LogClickCount(this,337);">HTML5</a>
+                        <a title="视频集萃" href="http://v.csdn.hudong.com" target="_blank" onclick="LogClickCount(this,337);">视频集萃</a>
+                        <a title="开源" href="http://www.csdn.net/tag/开源" target="_blank" onclick="LogClickCount(this,337);">开源</a>
+            					</dd>
+					<dt>推荐频道:</dt>
+					<dd>
+                        <a title="ITHRClub" href="http://club.csdn.net/hr" target="_blank" onclick="LogClickCount(this,338);">ITHRClub</a>
+                        <a title="个性阅读" href="http://read.csdn.net" target="_blank" onclick="LogClickCount(this,338);">个性阅读</a>
+                        <a title="问答" href="http://ask.csdn.net/" target="_blank" onclick="LogClickCount(this,338);">问答</a>
+                        <a title="社区大本营" href="http://club.csdn.net/community/" target="_blank" onclick="LogClickCount(this,338);">社区大本营</a>
+                        <a title="博客导出" href="http://blog.csdn.net/sq_zhuyi/article/details/7924776" target="_blank" onclick="LogClickCount(this,338);">博客导出</a>
+                        <a title="博客搬家" href="http://blog.csdn.net/import/apply.html" target="_blank" onclick="LogClickCount(this,338);">博客搬家</a>
+                        <a title="极客头条" href="http://geek.csdn.net" target="_blank" onclick="LogClickCount(this,338);">极客头条</a>
+                        <a title="网盘" href="http://api.csdn.net/service/baidu/login?u=http://yun.baidu.com/xcloud/csdn/pan" target="_blank" onclick="LogClickCount(this,338);">网盘</a>
+            					</dd>
+					<dt>推荐服务:</dt>
+					<dd>
+                        <a title="Qualcomm开发" href="http://g.csdn.net/5258310" target="_blank" onclick="LogClickCount(this,339);">Qualcomm开发</a>
+                        <a title="联想开发者俱乐部" href="http://g.csdn.net/5250351" target="_blank" onclick="LogClickCount(this,339);">联想开发者俱乐部</a>
+                        <a title="IE" href="http://g.csdn.net/5265223" target="_blank" onclick="LogClickCount(this,339);">IE</a>
+                        <a title="英特尔 软件" href="http://intel.csdn.net/" target="_blank" onclick="LogClickCount(this,339);">英特尔 软件</a>
+                        <a title="百度轻应用" href="http://g.csdn.net/5265222" target="_blank" onclick="LogClickCount(this,339);">百度轻应用</a>
+                        <a title="百度开放云" href="http://baidu.csdn.net/" target="_blank" onclick="LogClickCount(this,339);">百度开放云</a>
+                        <a title="IBM dW" href="http://ibm.csdn.net/" target="_blank" onclick="LogClickCount(this,339);">IBM dW</a>
+                        <a title="异构开发" href="http://hc.csdn.net/" target="_blank" onclick="LogClickCount(this,339);">异构开发</a>
+                        <a title="IBM 新兴技术大学" href="http://ibmuniversity.csdn.net/" target="_blank" onclick="LogClickCount(this,339);">IBM 新兴技术大学</a>
+                        <a title="PowerLinux技术社区" href="http://powerlinux.csdn.net/" target="_blank" onclick="LogClickCount(this,339);">PowerLinux技术社区</a>
+            					</dd>
+					<dt>推荐专区:</dt>
+					<dd>     
+                        <a title="Xamarin" href="http://g.csdn.net/5261683" target="_blank" onclick="LogClickCount(this,388);">Xamarin</a>
+                        <a title="订阅服务" href="http://g.csdn.net/5254477" target="_blank" onclick="LogClickCount(this,388);">订阅服务</a>
+                        <a title="领袖套餐" href="http://g.csdn.net/5254374" target="_blank" onclick="LogClickCount(this,388);">领袖套餐</a>
+                        <a title="团队套餐" href="http://g.csdn.net/5254379" target="_blank" onclick="LogClickCount(this,388);">团队套餐</a>
+                        <a title="Atlassian" href="http://g.csdn.net/5254376" target="_blank" onclick="LogClickCount(this,388);">Atlassian</a>
+                        <a title="Confluence" href="http://g.csdn.net/5254378" target="_blank" onclick="LogClickCount(this,388);">Confluence</a>
+                        <a title="MSDN订阅" href="http://msdn.csdn.net/" target="_blank" onclick="LogClickCount(this,388);">MSDN订阅</a>
+                        <a title="JIRA" href="http://g.csdn.net/5254377" target="_blank" onclick="LogClickCount(this,388);">JIRA</a>
+            					</dd>
+					<dt>企业服务:</dt>      
+        </dl>
+        <ul class="ad_text_01">
+		<li id="684782"></li>
+		<li id="684819"></li>
+		<li id="684820"></li>
+		<li id="684822"></li>
+	</ul>
+    </div>  
+    <div class="box book">
+		<h2><a onclick="LogClickCount(this,340);" class="more" target="_blank" href="http://subject.csdn.net/programmer-ipad">订阅杂志iPad版</a><a href="http://programmer.csdn.net" target="_blank" onclick="LogClickCount(this,340);">程序员杂志</a></h2>
+				<dl>
+      	<dt><a title="Hack微信，不一样的安全视角" href="http://www.csdn.net/article/2014-06-11/2820183" target="_blank" onclick="LogClickCount(this,340);">Hack微信，不一样的安全视角</a></dt>
+        <dd>微信作为IM工具，承担了几亿用户的信息交换，因此保护微信内容尤为重要。本文以为微信增加“密友”功能为例阐述了如何Hack微信，如何打造真正符合用户需求的安全产品。</dd>
+		</dl>
+						<a title="《程序员》2014年6月刊:移动开发工具" href="http://www.csdn.net/article/2014-06-04/2820065" target="_blank" class="book_cover" onclick="LogClickCount(this,340);"><img src="http://images.csdn.net/20140604/120X170.jpg"></a>
+		    </div>
+    <div class="box enterprise">
+    	<h2>行业热点</h2>     
+		<dl>
+      	      	<dd>
+			<a title="提交轻应用，赢取推广资金" href="http://g.csdn.net/5265352" target="_blank" onclick="LogClickCount(this,343);"><img src="http://images.csdn.net/20140115/百度轻应用行业热点.gif"></a>			<h4><a title="提交轻应用，赢取推广资金" href="http://g.csdn.net/5265352" target="_blank" onclick="LogClickCount(this,343);">提交轻应用，赢取推广资金</a></h4>
+			为鼓励CSDN开发者参与创建百度轻应用，特举办“开发轻应用，赢取推广资金”活动。凡在2014.1.1日后在百度提交并通过审核上线的轻应用均可参与本活动。        </dd>
+              	<dd>
+			<a title="Informatica为您提供卓越的解决方案" href="http://g.csdn.net/5266483" target="_blank" onclick="LogClickCount(this,343);"><img src="http://images.csdn.net/20140227/90x60.gif"></a>			<h4><a title="Informatica为您提供卓越的解决方案" href="http://g.csdn.net/5266483" target="_blank" onclick="LogClickCount(this,343);">Informatica为您提供卓越的解决方案</a></h4>
+			成为Informatica资源中心会员，您将免费获取每月Newsletter，优先阅读最新行业市场动态及技术白皮书。        </dd>
+              	<dd>
+			<a title="最受C#开发者欢迎的移动跨平台开发工具" href="http://g.csdn.net/5266484" target="_blank" onclick="LogClickCount(this,343);"><img src="http://images.csdn.net/20140311/x.jpg"></a>			<h4><a title="最受C#开发者欢迎的移动跨平台开发工具" href="http://g.csdn.net/5266484" target="_blank" onclick="LogClickCount(this,343);">最受C#开发者欢迎的移动跨平台开发工具</a></h4>
+			用C#开发iOS、Android 与Windows 等平台的原生(Native) App 应用程序，节省至少1/2的开发时间和成本！        </dd>
+        		</dl>
+    </div>
+    <div class="box job">
+    	<h2><a href="http://student.csdn.net" target="_blank" class="more" onclick="LogClickCount(this,400);">查看更多精彩内容</a><a href="http://student.csdn.net" target="_blank" onclick="LogClickCount(this,400);">大学生园地</a></h2>
+		<dl>
+      	      	<dt><a title="2014大学生开源夏令营火热报名ing~" href="http://g.csdn.net/5270891" target="_blank" onclick="LogClickCount(this,400);">2014大学生开源夏令营火热报名ing~</a></dt>
+        <dd>1.入选夏令营：成功完成项目获得5000元奖金和实习生证明；2.未入选夏令营：200余优秀开题报告评选，...</dd>
+              	<dt><a title="第二届战神杯线上编程挑战赛月赛第三题：世界杯场上的ACM" href="http://g.csdn.net/5270988" target="_blank" onclick="LogClickCount(this,400);">第二届战神杯线上编程挑战赛月赛第三题：世界杯场上的ACM</a></dt>
+        <dd>世界杯正在火热进行中，室友不惜睡眠时间，凌晨起来观看，但Njzy对此不是很感兴趣，他在思考一个...</dd>
+              	<dt><a title="自测-C/C++综合水平测试试卷—免费赢取程序员T-shirt和程序员杂志7月电子刊" href="http://g.csdn.net/5270893" target="_blank" onclick="LogClickCount(this,400);">自测-C/C++综合水平测试试卷—免费赢取程序员T-shirt和程序员杂志7月电子...</a></dt>
+        <dd>这张试卷包含C和C++语言混合知识，从入门到较难级别，大部分题目集中在初级和中等难度。正在学习...</dd>
+        		</dl>
+    </div>
+    <div class="box job">
+    	<h2><a href="http://www.pongo.cn" target="_blank" class="more" onclick="LogClickCount(this,346);">查看更多职位信息</a><a href="http://market.pongo.cn" target="_blank" onclick="LogClickCount(this,346);">招聘宣言</a></h2>
+		<dl>
+      	      	<dt><a title="来顶尖IT企业，与大牛并肩前行！" href="http://g.csdn.net/5269673" target="_blank" onclick="LogClickCount(this,346);">来顶尖IT企业，与大牛并肩前行！</a></dt>
+        <dd>CSDN正在为“京东”、“去哪儿”、“小米科技”、“乐视”、“大众点评”集中招聘，CTO直接开offe...</dd>
+              	<dt><a title="次世代MMO各类研发人员看这里！" href="http://g.csdn.net/5270867" target="_blank" onclick="LogClickCount(this,346);">次世代MMO各类研发人员看这里！</a></dt>
+        <dd>【搜狐畅游】招聘【次时代MMO研发人员】</dd>
+              	<dt><a title="直面完美世界HRD" href="http://g.csdn.net/5270937" target="_blank" onclick="LogClickCount(this,346);">直面完美世界HRD</a></dt>
+        <dd>快乐完美，等你加入</dd>
+        		</dl>
+    </div>
+    <div class="box job">
+    	<h2><a href="http://hero.pongo.cn" target="_blank" class="more" onclick="LogClickCount(this,367);">查看更多题目信息</a><a href="http://hero.pongo.cn" target="_blank" onclick="LogClickCount(this,367);">编程挑战</a></h2>
+		<dl>
+      	      	<dt><a title="【奖】第五届在线编程大赛月赛指定题目：反向互补子串" href="http://hero.csdn.net/Question/Details?ID=616&ExamID=611&from=4" target="_blank" onclick="LogClickCount(this,367);">【奖】第五届在线编程大赛月赛指定题目：反向互补子串</a></dt>
+        <dd>一等奖 ： 价值4999的诺基亚Lumia1020手机一台。
+二等奖 ： 价值799的平板电脑一台。
+三等奖 ： 价值...</dd>
+              	<dt><a title="第五届在线编程大赛月赛第三题：石子游戏（1）" href="http://hero.csdn.net/Question/Details?ID=617&ExamID=612&from=4" target="_blank" onclick="LogClickCount(this,367);">第五届在线编程大赛月赛第三题：石子游戏（1）</a></dt>
+        <dd>甲乙两人面对若干堆石子，其中每一堆石子的数目可以任意确定。两人轮流按下列规则取走一些石子，...</dd>
+              	<dt><a title="第五届在线编程大赛月赛第二题：走格子" href="http://hero.csdn.net/Question/Details?ID=610&ExamID=605&from=4" target="_blank" onclick="LogClickCount(this,367);">第五届在线编程大赛月赛第二题：走格子</a></dt>
+        <dd>我们有一个两行n列格子的棋盘，你可以从任何位置出发。每次你可以沿着上下左右以及对角线的方向...</dd>
+        		</dl>
+    </div>
+    
+    <div class="box activity">
+    	<h2><a target="_blank" href="http://blog.csdn.net/csdnproduct/article/details/8782812" class="more" onclick="LogClickCount(this,345);">如何发布我的活动</a><a href="http://huiyi.csdn.net" target="_blank" onclick="LogClickCount(this,345);">活动日历</a></h2>
+		<ul>
+      	      	<li>
+			<h4><span>2014/06/21</span><span>深圳</span></h4>
+			<a title="打造实用绩效考核" href="http://huiyi.csdn.net/module/meeting/meeting/info/920/community" target="_blank" onclick="LogClickCount(this,345);">打造实用绩效考核</a>
+        </li>
+              	<li>
+			<h4><span>2014/06/24</span><span>上海</span></h4>
+			<a title="开源力量公开课第62期 ：红帽企业Linux7揭秘" href="http://huiyi.csdn.net/module/meeting/meeting/info/941/community" target="_blank" onclick="LogClickCount(this,345);">开源力量公开课第62期 ：红帽企业Linux7揭秘</a>
+        </li>
+              	<li>
+			<h4><span>2014/06/26</span><span>成都</span></h4>
+			<a title="亚马逊AWS游戏行业研讨会" href="http://huiyi.csdn.net/module/meeting/meeting/info/942/tech" target="_blank" onclick="LogClickCount(this,345);">亚马逊AWS游戏行业研讨会</a>
+        </li>
+              	<li>
+			<h4><span>2014/06/26</span><span>北京</span></h4>
+			<a title="2014创新校园招聘巡回论坛" href="http://huiyi.csdn.net/module/meeting/meeting/info/925/hr" target="_blank" onclick="LogClickCount(this,345);">2014创新校园招聘巡回论坛</a>
+        </li>
+              	<li>
+			<h4><span>2014/06/28</span><span>北京</span></h4>
+			<a title="京东技术开放日第1期：6.18技术解密" href="http://huiyi.csdn.net/meeting/info/952/tech?project_id=0" target="_blank" onclick="LogClickCount(this,345);">京东技术开放日第1期：6.18技术解密</a>
+        </li>
+              	<li>
+			<h4><span>2014/06/29</span><span>上海</span></h4>
+			<a title="云计算与大数据探索之道" href="http://huiyi.csdn.net/module/meeting/meeting/info/938/community" target="_blank" onclick="LogClickCount(this,345);">云计算与大数据探索之道</a>
+        </li>
+              	<li>
+			<h4><span>2014/07/04</span><span>北京</span></h4>
+			<a title="MIIC2014移动互联网创新大会" href="http://huiyi.csdn.net/module/meeting/meeting/info/953/tech" target="_blank" onclick="LogClickCount(this,345);">MIIC2014移动互联网创新大会</a>
+        </li>
+              	<li>
+			<h4><span>2014/07/04</span><span>北京</span></h4>
+			<a title="《近匠》讲堂：对话金牌游戏人——游戏运营不得不说的那些事" href="http://huiyi.csdn.net/module/meeting/meeting/info/956/jishu" target="_blank" onclick="LogClickCount(this,345);">《近匠》讲堂：对话金牌游戏人——游戏运营不得不说的那些事</a>
+        </li>
+              	<li>
+			<h4><span>2014/07/05</span><span>北京</span></h4>
+			<a title="移动游戏系列沙龙：破IP怪圈  助力CP突围" href="http://huiyi.csdn.net/module/meeting/meeting/info/957/tech" target="_blank" onclick="LogClickCount(this,345);">移动游戏系列沙龙：破IP怪圈  助力CP突围</a>
+        </li>
+              	<li>
+			<h4><span>2014/07/10</span><span>北京</span></h4>
+			<a title="敏捷用户体验" href="http://huiyi.csdn.net/module/meeting/meeting/info/947/community" target="_blank" onclick="LogClickCount(this,345);">敏捷用户体验</a>
+        </li>
+              	<li>
+			<h4><span>2014/07/12</span><span>杭州</span></h4>
+			<a title="IT项目管理与职业生涯规划" href="http://huiyi.csdn.net/module/meeting/meeting/info/905/community" target="_blank" onclick="LogClickCount(this,345);">IT项目管理与职业生涯规划</a>
+        </li>
+              	<li>
+			<h4><span>2014/08/15</span><span>厦门</span></h4>
+			<a title="第七届厦门国际动漫节游戏开发大赛" href="http://huiyi.csdn.net/module/meeting/meeting/info/946/tech" target="_blank" onclick="LogClickCount(this,345);">第七届厦门国际动漫节游戏开发大赛</a>
+        </li>
+              	<li>
+			<h4><span>2014/08/19</span><span>北京</span></h4>
+			<a title="2014中国国际大数据峰会" href="http://huiyi.csdn.net/module/meeting/meeting/info/955/tech" target="_blank" onclick="LogClickCount(this,345);">2014中国国际大数据峰会</a>
+        </li>
+        		</ul>
+    </div>
+
+    <div class="box">
+    	<h2></h2>
+		<ul class="club">
+						<li class="clearfix"><img src="http://images.csdn.net/20140603/1.jpg"><a title="【高校俱乐部】校企研讨会—云时代的在线教育" href="http://student.csdn.net/mcd/topic/163587/770571" class="tit" target="_blank" onclick="LogClickCount(this,347);">【高校俱乐部】校企研讨会—云时代的在线教育</br></a></li>
+						<li class="clearfix"><img src="http://images.csdn.net/20140509/WP_20130826_011_副本-首页图.jpg"><a title="【CTO俱乐部】会员观点" href="http://g.csdn.net/5269193" class="tit" target="_blank" onclick="LogClickCount(this,347);">【CTO俱乐部】会员观点</br>技术人员如何参与产品设计讨论？</a></li>
+					</ul>
+      
+    </div>
+    <!--<div class="box job">
+    	<h2><a target="_blank" href="http://www.itcast.cn/subject/openclass/index.html" class="more" onclick="LogClickCount(this,368);">查看更多课程</a>视频课程</h2>
+		<dl>
+      				<dt><a title="PHP公开课-8天带你开发CI版电子商城（完整版）" href="http://bbs.itcast.cn/thread-17556-1-1.html" target="_blank" onclick="LogClickCount(this,368);">PHP公开课-8天带你开发CI版电子商城（完整版）</a></dt>
+			<dd>CI是什么? ci的全称是CodeIgniter, 是一个简单快速的PHP MVC 框架。是大名鼎鼎的Ellislab公司开发的。其特点...</dd>
+        			<dt><a title="JavaScript从入门到精通公开课 (第二季)" href="http://bbs.itcast.cn/thread-17063-1-1.html?from=gkk" target="_blank" onclick="LogClickCount(this,368);">JavaScript从入门到精通公开课 (第二季)</a></dt>
+			<dd>JavaScript技术使网页增加互动性,使有规律重复的HTML文段简化，减少下载时间。能及时响应用户的操作，...</dd>
+        			<dt><a title="Unity3D游戏开发视频教程" href="http://bbs.itcast.cn/thread-15273-1-1.html?from=gkk" target="_blank" onclick="LogClickCount(this,368);">Unity3D游戏开发视频教程</a></dt>
+			<dd>很多初学者误以为Android、IOS开发只能使用Java、ObjectC等语言进行开发，其实借助于Mono技术我们可以使...</dd>
+        		</dl>
+    </div>-->
+    <div class="box follow">
+    	<h2><a target="_blank" href="http://newsletter.csdn.net/module/news/newsletter/index/1" onclick="LogClickCount(this,341);">订阅技术邮件</a></h2>
+      <ul>
+      				<li><a title="【社区周刊】第19期：世界杯不仅仅只是足球" href="http://newsletter.csdn.net/module/news/newsletter/show_book/330/5" target="_blank" onclick="LogClickCount(this,341);">【社区周刊】第19期：世界杯不仅仅只是足球</a></li>
+					<li><a title="【移　动】第73期：Android开发者必知的5个开源库" href="http://newsletter.csdn.net/module/news/newsletter/show_book/329/1" target="_blank" onclick="LogClickCount(this,341);">【移　动】第73期：Android开发者必知的5个开源库</a></li>
+					<li><a title="【CTO俱乐部】第20期：从瓦萨学院到发现希格斯粒子" href="http://newsletter.csdn.net/module/news/newsletter/show_book/328/3" target="_blank" onclick="LogClickCount(this,341);">【CTO俱乐部】第20期：从瓦萨学院到发现希格斯粒子</a></li>
+					<li><a title="【Hadoop】第25期：Facebook下一代数据存储系统" href="http://newsletter.csdn.net/module/news/newsletter/show_book/324/6" target="_blank" onclick="LogClickCount(this,341);">【Hadoop】第25期：Facebook下一代数据存储系统</a></li>
+					<li><a title="【CTO俱乐部】第19期：夏季读书会报名啦！" href="http://newsletter.csdn.net/module/news/newsletter/show_book/321/3" target="_blank" onclick="LogClickCount(this,341);">【CTO俱乐部】第19期：夏季读书会报名啦！</a></li>
+					<li><a title="【移　动】第72期：Xcode 6的新特性" href="http://newsletter.csdn.net/module/news/newsletter/show_book/322/1" target="_blank" onclick="LogClickCount(this,341);">【移　动】第72期：Xcode 6的新特性</a></li>
+					<li><a title="【云计算】第67期：Facebook开放交换机" href="http://newsletter.csdn.net/module/news/newsletter/show_book/317/2" target="_blank" onclick="LogClickCount(this,341);">【云计算】第67期：Facebook开放交换机</a></li>
+					<li><a title="【Hadoop】第24期：Spark成功应用解析" href="http://newsletter.csdn.net/module/news/newsletter/show_book/316/6" target="_blank" onclick="LogClickCount(this,341);">【Hadoop】第24期：Spark成功应用解析</a></li>
+					<li><a title="【社区周刊】第18期：从技术小白到月薪10K" href="http://newsletter.csdn.net/module/news/newsletter/show_book/314/5" target="_blank" onclick="LogClickCount(this,341);">【社区周刊】第18期：从技术小白到月薪10K</a></li>
+					<li><a title="【CTO俱乐部】第18期：一个技术团队就像UGC社区" href="http://newsletter.csdn.net/module/news/newsletter/show_book/313/3" target="_blank" onclick="LogClickCount(this,341);">【CTO俱乐部】第18期：一个技术团队就像UGC社区</a></li>
+		      </ul>
+    </div>
+    <div class="box share">
+    	<h2><a href="http://share.csdn.net" target="_blank">CSDN Share PPT下载</a></h2>
+      <dl>
+      	      	<dt class="clearfix"><a title="Jerry Cuomo Dockercon Presentation" href="http://share.csdn.net/slides/5270" target="_blank" onclick="LogClickCount(this,342);"><img src="http://share.csdn.net/uploads/68e84c652ae8d7826c09b0ba826d3ebf/68e84c652ae8d7826c09b0ba826d3ebf_thumb.jpg"></a><a title="Jerry Cuomo Dockercon Presentation" href="http://share.csdn.net/slides/5270" target="_blank" onclick="LogClickCount(this,342);">Jerry Cuomo Dockercon Presentation</a></dt>
+              	<dt class="clearfix"><a title="Docker at RelateIQ" href="http://share.csdn.net/slides/5266" target="_blank" onclick="LogClickCount(this,342);"><img src="http://share.csdn.net/uploads/5c4fb00ba60dd4ded0dd54f7c9e4b755/5c4fb00ba60dd4ded0dd54f7c9e4b755_thumb.jpg"></a><a title="Docker at RelateIQ" href="http://share.csdn.net/slides/5266" target="_blank" onclick="LogClickCount(this,342);">Docker at RelateIQ</a></dt>
+              	<dt class="clearfix"><a title="DockerCon Keynote Ben Golub" href="http://share.csdn.net/slides/5264" target="_blank" onclick="LogClickCount(this,342);"><img src="http://share.csdn.net/uploads/ab783c5c4185d807c423509315150cdd/ab783c5c4185d807c423509315150cdd_thumb.jpg"></a><a title="DockerCon Keynote Ben Golub" href="http://share.csdn.net/slides/5264" target="_blank" onclick="LogClickCount(this,342);">DockerCon Keynote Ben Golub</a></dt>
+              	<dt class="clearfix"><a title="Robust Containers" href="http://share.csdn.net/slides/5262" target="_blank" onclick="LogClickCount(this,342);"><img src="http://share.csdn.net/uploads/177524df55c6c94825bd9d1f4d2a35d1/177524df55c6c94825bd9d1f4d2a35d1_thumb.jpg"></a><a title="Robust Containers" href="http://share.csdn.net/slides/5262" target="_blank" onclick="LogClickCount(this,342);">Robust Containers</a></dt>
+              	<dt class="clearfix"><a title="Cloud Native NetflixOSS Services on Docker" href="http://share.csdn.net/slides/5261" target="_blank" onclick="LogClickCount(this,342);"><img src="http://share.csdn.net/uploads/8f68e4e872b40f529c891ee3289f026e/8f68e4e872b40f529c891ee3289f026e_thumb.jpg"></a><a title="Cloud Native NetflixOSS Services on Docker" href="http://share.csdn.net/slides/5261" target="_blank" onclick="LogClickCount(this,342);">Cloud Native NetflixOSS Services on Docker</a></dt>
+              	<dt class="clearfix"><a title="Immutable infrastructure with Docker and EC2" href="http://share.csdn.net/slides/5260" target="_blank" onclick="LogClickCount(this,342);"><img src="http://share.csdn.net/uploads/7b9875c382c2b8652c40e03f04ec7db9/7b9875c382c2b8652c40e03f04ec7db9_thumb.jpg"></a><a title="Immutable infrastructure with Docker and EC2" href="http://share.csdn.net/slides/5260" target="_blank" onclick="LogClickCount(this,342);">Immutable infrastructure with Docker and EC2</a></dt>
+              </dl>
+    </div>
+  </div>
+  <div class="main fl">
+   <div class="news clearfix">
+   	<div class="news_left">
+    	<dl>
+    	      		    	<dt><a title="参加过越战的程序员及他背后的GoDaddy帝国" href="http://www.csdn.net/article/2014-06-17/2820255" target="_blank" onclick="LogClickCount(this,364);"><img src="http://images.csdn.net/20140619/go-daddy-parsons_副本.jpg"></a><a title="参加过越战的程序员及他背后的GoDaddy帝国" href="http://www.csdn.net/article/2014-06-17/2820255" target="_blank" onclick="LogClickCount(this,364);">参加过越战的程序员及他背后的GoDaddy帝国</a></dt>
+        <dd>GoDaddy，全球最大的域名服务商，拥有超过1200万用户、5700万域名，创始人Bob Parsons的经历可谓传奇，参加过越战，获三枚奖章，回国后自学编程，创立GoDaddy。 </dd>
+                      	              	              	        		</dl>
+		<ul>
+      	      	              	      	<li><a title="PostScript语言里的珠玑" href="http://www.csdn.net/article/2014-06-18/2820282" target="_blank" onclick="LogClickCount(this,364);">PostScript语言里的珠玑</a></li>
+                      	      	<li><a title="《近匠》iMAG：移动应用快速跨平台开发工具" href="http://www.csdn.net/article/2014-06-16/2820250-mobilehub-interview-iMAG" target="_blank" onclick="LogClickCount(this,364);">《近匠》iMAG：移动应用快速跨平台开发工具</a></li>
+                      	      	<li><a title="开源夏令营报名开始啦：让自己的暑期也“开源”" href="http://code.csdn.net/news/2820188" target="_blank" onclick="LogClickCount(this,364);">开源夏令营报名开始啦：让自己的暑期也“开源”</a></li>
+                		</ul>
+    </div>
+    <div class="news_list">
+    	<ul>
+    	      	<li><a title="一周消息树：惠普研发基于Linux开源操作系统 打造全新计算机" href="http://www.csdn.net/article/2014-06-20/2820323-Weekly-news" target="_blank" onclick="LogClickCount(this,330);">一周消息树：惠普研发基于Linux开源操作系统 打造全新计算机</a></li>
+              	<li><a title="【CTO俱乐部走进CSDN】开始报名了！" href="http://huiyi.csdn.net/meeting/info/958/cto?project_id=1096" target="_blank" onclick="LogClickCount(this,330);">【CTO俱乐部走进CSDN】开始报名了！</a></li>
+              	<li><a title="我从谷歌学到的那些事：Toilet文化、代码实验室" href="http://www.csdn.net/article/2014-06-20/2820329-google-engineering-culture" target="_blank" onclick="LogClickCount(this,330);">我从谷歌学到的那些事：Toilet文化、代码实验室</a></li>
+              	<li><a title="对话大神Scott Shenker：从物理博士到SDN's Uncle" href="http://www.csdn.net/article/2014-06-05/2820097-Scott-Shenker" target="_blank" onclick="LogClickCount(this,330);">对话大神Scott Shenker：从物理博士到SDN's Uncle</a></li>
+              	<li><a title="【观察】2013国内公共云市场规模47.6亿，增速降低但生机旺盛" href="http://www.csdn.net/article/2014-06-20/2820328" target="_blank" onclick="LogClickCount(this,330);">【观察】2013国内公共云市场规模47.6亿，增速降低但生机旺盛</a></li>
+              	<li><a title="Vuforia SDK全面更新：3.0版可实时生成虚拟场景和物体" href="http://www.csdn.net/article/2014-06-20/2820321-Qualcomm-vuforia-sdk-update-smart-terrain?reload=1" target="_blank" onclick="LogClickCount(this,330);">Vuforia SDK全面更新：3.0版可实时生成虚拟场景和物体</a></li>
+              	<li><a title="亚马逊的心思：要Android，不要谷歌" href="http://www.csdn.net/article/2014-06-20/2820315-amazon-and-samsung-in-a-battle-against-google" target="_blank" onclick="LogClickCount(this,330);">亚马逊的心思：要Android，不要谷歌</a></li>
+              	<li><a title="Stream SDK：以手为“剪”，随时随地分享精彩内容" href="http://www.csdn.net/article/2014-06-19/2820310-Stream-SDK" target="_blank" onclick="LogClickCount(this,330);">Stream SDK：以手为“剪”，随时随地分享精彩内容</a></li>
+        		</ul>
+		<a href="/headlines.html" target="_blank" class="more" onclick="LogClickCount(this,330);">更多</a>
+	</div>
+	</div>
+	<div class="ad_news clearfix">
+		<div class="fl ad_650" id="643411">
+    	</div>
+    </div>
+	<div class="wrap clearfix">
+		<div class="left">
+		<div class="box hot_blog">
+			<h2><a target="_blank" href="http://geek.csdn.net" class="more" onclick="LogClickCount(this,363);">发布一条</a><a href="http://geek.csdn.net" target="_blank" onclick="LogClickCount(this,363);">极客头条</a></h2>
+			<ul>
+          	          	<li><a title="纯CSS3实现自行车动画特效" href="http://geek.csdn.net/news/detail/12873" target="_blank" onclick="LogClickCount(this,363);">纯CSS3实现自行车动画特效</a></li>
+                      	<li><a title="IPViking：实时查看全球网络攻击，『核战危机』游戏即视感" href="http://geek.csdn.net/news/detail/12871" target="_blank" onclick="LogClickCount(this,363);">IPViking：实时查看全球网络攻击，『核战危机』游戏即视感</a></li>
+                      	<li><a title="程序员要知道的事情" href="http://geek.csdn.net/news/detail/12868" target="_blank" onclick="LogClickCount(this,363);">程序员要知道的事情</a></li>
+                      	<li><a title="程序员长期保持身心健康的几点建议" href="http://geek.csdn.net/news/detail/12808" target="_blank" onclick="LogClickCount(this,363);">程序员长期保持身心健康的几点建议</a></li>
+                      	<li><a title="让安卓手机通过代理翻墙的方法" href="http://geek.csdn.net/news/detail/12812" target="_blank" onclick="LogClickCount(this,363);">让安卓手机通过代理翻墙的方法</a></li>
+                      	<li><a title="你能分辨这是什么浏览器吗？" href="http://geek.csdn.net/news/detail/12823" target="_blank" onclick="LogClickCount(this,363);">你能分辨这是什么浏览器吗？</a></li>
+                      	<li><a title="分享7款顶级的CSS3动画特效" href="http://geek.csdn.net/news/detail/12803" target="_blank" onclick="LogClickCount(this,363);">分享7款顶级的CSS3动画特效</a></li>
+                      	<li><a title="皇帝的新衣：Node.js" href="http://geek.csdn.net/news/detail/12806" target="_blank" onclick="LogClickCount(this,363);">皇帝的新衣：Node.js</a></li>
+            			</ul>
+        </div>
+      	
+        <div class="box special">
+			<h2><a href="http://special.csdn.net/newssubject/index.html" target="_blank" onclick="LogClickCount(this,334);">专题</a></h2>
+			<dl>
+           	           	<dt><a title="首届中国网络安全提速论坛专题报道" href="http://subject.csdn.net/baidusafe/" target="_blank" onclick="LogClickCount(this,334);">首届中国网络安全提速论坛专题报道</a></dt>
+            <dd>
+            <a title="首届中国网络安全提速论坛专题报道" href="http://subject.csdn.net/baidusafe/" target="_blank" onclick="LogClickCount(this,334);"><img src="http://images.csdn.net/20140528/baidu.jpg"></a>            </dd>
+                       	<dt><a title="第六届中国云计算大会现场报道专题" href="http://special.csdncms.csdn.net/ciecloud2014/" target="_blank" onclick="LogClickCount(this,334);">第六届中国云计算大会现场报道专题</a></dt>
+            <dd>
+            <a title="第六届中国云计算大会现场报道专题" href="http://special.csdncms.csdn.net/ciecloud2014/" target="_blank" onclick="LogClickCount(this,334);"><img src="http://images.csdn.net/20140523/现场直播s.jpg"></a>            </dd>
+            			</dl>
+        </div>
+        <div class="box hot_paper">
+        <h2><a href="http://blog.csdn.net" target="_blank" onclick="LogClickCount(this,333);">博客推荐</a></h2>
+        	<ul>
+								<li>
+				<img style="-webkit-user-select: none" src="http://avatar.csdn.net/0/E/A/1_anzhsoft2008.jpg" data-pinit="registered">				<a title="【张安站】Spark技术内幕" href="http://blog.csdn.net/anzhsoft/article/details/30802603" target="_blank" onclick="LogClickCount(this,333);" onclick="LogClickCount(this,333);">【张安站】Spark技术内幕</a>
+				</li> 
+								<li>
+				<img style="-webkit-user-select: none" src="http://avatar.csdn.net/8/B/B/1_sinyu890807.jpg" data-pinit="registered">				<a title="【郭霖】Android ActionBar完全解析(下)" href="http://blog.csdn.net/guolin_blog/article/details/25466665" target="_blank" onclick="LogClickCount(this,333);" onclick="LogClickCount(this,333);">【郭霖】Android ActionBar完全解析(下)</a>
+				</li> 
+								<li>
+				<img style="-webkit-user-select: none" src="http://avatar.csdn.net/5/D/9/1_wxg694175346.jpg" data-pinit="registered">				<a title="【汪海洋】在Mac下配置Linux服务器并安装Nginx+PHP" href="http://blog.csdn.net/pleasecallmewhy/article/details/32104157" target="_blank" onclick="LogClickCount(this,333);" onclick="LogClickCount(this,333);">【汪海洋】在Mac下配置Linux服务器并安装Nginx+PHP</a>
+				</li> 
+								<li>
+				<img style="-webkit-user-select: none" src="http://avatar.csdn.net/4/D/1/1_hitwhylz.jpg" data-pinit="registered">				<a title="【余龙泽】iOS开发-博客导出工具开发教程" href="http://blog.csdn.net/hitwhylz/article/details/31768677" target="_blank" onclick="LogClickCount(this,333);" onclick="LogClickCount(this,333);">【余龙泽】iOS开发-博客导出工具开发教程</a>
+				</li> 
+								<li>
+				<img style="-webkit-user-select: none" src="http://avatar.csdn.net/2/1/6/1_xiaowei_cqu.jpg" data-pinit="registered">				<a title="【魏兰】Learning To Rank之RankBoost" href="http://blog.csdn.net/xiaowei_cqu/article/details/32198209" target="_blank" onclick="LogClickCount(this,333);" onclick="LogClickCount(this,333);">【魏兰】Learning To Rank之RankBoost</a>
+				</li> 
+							</ul>
+        </div>
+        <div class="box hot_blog">
+        <h2><a href="http://bbs.csdn.net" target="_blank" onclick="LogClickCount(this,335);">程序人生</a></h2>
+        	<ul>
+          	            <li><a title="社区问答：设计模式之禅 秦小波" href="http://bbs.csdn.net/topics/390812543" target="_blank" onclick="LogClickCount(this,335);">社区问答：设计模式之禅 秦小波</a></li>
+                        <li><a title="论坛版主招募公告" href="http://bbs.csdn.net/topics/390799468" target="_blank" onclick="LogClickCount(this,335);">论坛版主招募公告</a></li>
+                        <li><a title="下载资源上半年人气帖大集合（免积分下载）" href="http://bbs.csdn.net/topics/390811099" target="_blank" onclick="LogClickCount(this,335);">下载资源上半年人气帖大集合（免积分下载）</a></li>
+                        <li><a title="公司派我出差，当我拒绝后。。。" href="http://bbs.csdn.net/topics/390812871" target="_blank" onclick="LogClickCount(this,335);">公司派我出差，当我拒绝后。。。</a></li>
+                        <li><a title="毕业三年的感悟" href="http://bbs.csdn.net/topics/390805307" target="_blank" onclick="LogClickCount(this,335);">毕业三年的感悟</a></li>
+                        <li><a title="大四了，公务员还是程序猿" href="http://bbs.csdn.net/topics/390806318" target="_blank" onclick="LogClickCount(this,335);">大四了，公务员还是程序猿</a></li>
+                        <li><a title="中文女和程序员的爱情奇遇" href="http://bbs.csdn.net/topics/390801557" target="_blank" onclick="LogClickCount(this,335);">中文女和程序员的爱情奇遇</a></li>
+                        <li><a title="给所有面试官" href="http://bbs.csdn.net/topics/390800730" target="_blank" onclick="LogClickCount(this,335);">给所有面试官</a></li>
+                        <li><a title="月薪10K 你用了多久？" href="http://bbs.csdn.net/topics/390781263" target="_blank" onclick="LogClickCount(this,335);">月薪10K 你用了多久？</a></li>
+                        <li><a title="程序员怎么跟同事，领导搞好关系？" href="http://bbs.csdn.net/topics/390786013" target="_blank" onclick="LogClickCount(this,335);">程序员怎么跟同事，领导搞好关系？</a></li>
+                      </ul>
+        </div>             
+        <div class="box hot_blog">
+        <h2><a href="http://download.csdn.net" target="_blank" onclick="LogClickCount(this,365);">最热下载</a></h2>
+        	<ul>
+          	            <li><a title="【移动开发】世界杯终极版App" href="http://download.csdn.net/detail/chenzhuo1100/7486289" target="_blank" onclick="LogClickCount(this,365);">【移动开发】世界杯终极版App</a></li>
+                        <li><a title="【课程资源】程序员接单宝典" href="http://download.csdn.net/detail/zjroland/7496913" target="_blank" onclick="LogClickCount(this,365);">【课程资源】程序员接单宝典</a></li>
+                        <li><a title="【移动开发】声波通信商用版源代码" href="http://download.csdn.net/detail/jcgu/7503955" target="_blank" onclick="LogClickCount(this,365);">【移动开发】声波通信商用版源代码</a></li>
+                        <li><a title="【开发技术】jquery版小型婚礼（可动态添加祝福语）" href="http://download.csdn.net/detail/ya307115947/7497205" target="_blank" onclick="LogClickCount(this,365);">【开发技术】jquery版小型婚礼（可动态添加祝...</a></li>
+                        <li><a title="【开发技术】2014年java技术与框架使用情况统计报告" href="http://download.csdn.net/detail/u010182075/7469761" target="_blank" onclick="LogClickCount(this,365);">【开发技术】2014年java技术与框架使用情况统...</a></li>
+                      </ul>
+        </div>
+        <div class="box special top_news">
+			<h2>要闻回顾</h2>
+			<dl>
+          	          	<dt><a title="Android开发者必知的5个开源库" href="http://www.csdn.net/article/2014-06-16/2820224-top-5-android-libraries" target="_blank" onclick="LogClickCount(this,332);">Android开发者必知的5个开源库</a></dt>
+            <dd>
+            <a title="Android开发者必知的5个开源库" href="http://www.csdn.net/article/2014-06-16/2820224-top-5-android-libraries" target="_blank" onclick="LogClickCount(this,334);"><img src="http://cms.csdnimg.cn/article/201406/16/539eb13c3de20.jpg"></a>            </dd>
+                      	<dt><a title="MySQL在大型网站的应用架构演变" href="http://www.csdn.net/article/2014-06-10/2820160" target="_blank" onclick="LogClickCount(this,332);">MySQL在大型网站的应用架构演变</a></dt>
+            <dd>
+            <a title="MySQL在大型网站的应用架构演变" href="http://www.csdn.net/article/2014-06-10/2820160" target="_blank" onclick="LogClickCount(this,334);"><img src="http://cms.csdnimg.cn/article/201406/17/539f9f8f153b0.jpg"></a>            </dd>
+                      	<dt><a title="惠普研发基于Linux开源操作系统 打造全新品牌计算机" href="http://www.csdn.net/article/2014-06-15/2820221" target="_blank" onclick="LogClickCount(this,332);">惠普研发基于Linux开源操作系统 打造全新品牌计算机</a></dt>
+            <dd>
+            <a title="惠普研发基于Linux开源操作系统 打造全新品牌计算机" href="http://www.csdn.net/article/2014-06-15/2820221" target="_blank" onclick="LogClickCount(this,334);"><img src="http://cms.csdnimg.cn/article/201406/15/539daa3b361b0.jpg"></a>            </dd>
+                      	<dt><a title="现在还不是推广国产操作系统的好时候" href="http://www.csdn.net/article/2014-06-18/2820275" target="_blank" onclick="LogClickCount(this,332);">现在还不是推广国产操作系统的好时候</a></dt>
+            <dd>
+            <a title="现在还不是推广国产操作系统的好时候" href="http://www.csdn.net/article/2014-06-18/2820275" target="_blank" onclick="LogClickCount(this,334);"><img src="http://cms.csdnimg.cn/article/201406/18/53a0d2b25fca6.jpg"></a>            </dd>
+                      	<dt><a title="专访陆其明：技术牛人的蜕变之路" href="http://www.csdn.net/article/2014-06-10/2820155" target="_blank" onclick="LogClickCount(this,332);">专访陆其明：技术牛人的蜕变之路</a></dt>
+            <dd>
+            <a title="专访陆其明：技术牛人的蜕变之路" href="http://www.csdn.net/article/2014-06-10/2820155" target="_blank" onclick="LogClickCount(this,334);"><img src="http://cms.csdnimg.cn/article/201406/16/539e91c925bdf.jpg"></a>            </dd>
+            			</dl>
+        </div>  
+        <div class="ad_160_600" id="643412">
+        </div>
+      </div>
+      <div class="center">
+      <div class="box flow">
+        	<h2>滚动</h2>
+			<ul>
+          	          	<li>
+				<h3><a title="专访梁杰：Swift或将取代Objective-C" href="http://www.csdn.net/article/2014-06-20/2820313" target="_blank" onclick="LogClickCount(this,331);">专访梁杰：Swift或将取代Objective-C</a></h3>
+								<div class="summary clearfix">
+              	<a title="专访梁杰：Swift或将取代Objective-C" href="http://www.csdn.net/article/2014-06-20/2820313" target="_blank" onclick="LogClickCount(this,331);"><img src="http://images.csdn.net/20140620/53a37d99abdc3.jpg"></a>              	北航的90后大学生梁杰（兼Swift语言开发者社区Swiftist.org管理员）用9天时间组织完成近670页的Swift语言文档翻译，那这位90后当时是为什么做这件事情呢？Swift语言吸引他的地方是什么？不妨看下这篇采访。 				</div>
+				      	
+          	</li>
+          				          	          	<li>
+				<h3><a title="【开源夏令营专访】HackRF.net：全世界的射频工程师们，团结起来" href="http://code.csdn.net/news/2820253" target="_blank" onclick="LogClickCount(this,331);">【开源夏令营专访】HackRF.net：全世界的射频工程师们，团结起来</a></h3>
+								<div class="summary clearfix">
+              	              	HackRF.net开源软件无线电社区，致力于在国内推广和发展SDR(Software Defined Radio, 软件无线电)概念，其目标是为了让熟悉Linux的软件工程师有一个快速通向无线电世界的途径。				</div>
+				      	
+          	</li>
+          				          	          	<li>
+				<h3><a title="开源软件后来居上，将蚕食软件全局" href="http://code.csdn.net/news/2820326" target="_blank" onclick="LogClickCount(this,331);">开源软件后来居上，将蚕食软件全局</a></h3>
+								<div class="summary clearfix">
+              	<a title="开源软件后来居上，将蚕食软件全局" href="http://code.csdn.net/news/2820326" target="_blank" onclick="LogClickCount(this,331);"><img src="http://images.csdn.net/20140620/opensource-1-100312771-orig.jpg"></a>              	根据开源管理供应商Black Duck Software的说法，到目前为止已经有不下于一百万个不同的开源软件项目。这里列举了十个开源软件流行度飙升的理由，绝对不是空穴来风。				</div>
+				      	
+          	</li>
+          				<li class="ad_flow_text">
+				<dl>
+										<dt><a title="Android新手平均月薪10434元，你的薪水落伍了吗？" href="http://g.csdn.net/5271014" target="_blank">Android新手平均月薪10434元，你的薪水落伍了吗？</a></dt>
+					<dd>黑马程序员Android29期毕业仅1天，就有38位同学顺利入职，就业率达54%，平均薪水达10434元......</dd>
+										<dt><a title="中科院大数据硕士招生" href="http://g.csdn.net/5270941" target="_blank">中科院大数据硕士招生</a></dt>
+					<dd>中国科学院大学2014年招收“大数据技术与应用”方向工程硕士研究生，该专业在把握最新的技术趋势...</dd>
+									</dl>
+			</li>
+						          	          	<li>
+				<h3><a title="API设计如龙生九子，Tunneling、Hypermedia等更受开发者青睐" href="http://www.csdn.net/article/2014-06-19/2820301-API" target="_blank" onclick="LogClickCount(this,331);">API设计如龙生九子，Tunneling、Hypermedia等更受开发者青睐</a></h3>
+								<div class="summary clearfix">
+              	<a title="API设计如龙生九子，Tunneling、Hypermedia等更受开发者青睐" href="http://www.csdn.net/article/2014-06-19/2820301-API" target="_blank" onclick="LogClickCount(this,331);"><img src="http://images.csdn.net/20140620/53a285ec0ee76.jpg"></a>              	IT咨询管理公司CA Technologies对API产业做了个问卷调查，问卷内容涉及API设计风格以及管理部署的新动向。调查结果表明，JSON与XML可谓两分天下，50.5%的投票给予了JSON，47.8%的票数落在了XML。				</div>
+				      	
+          	</li>
+          				          	          	<li>
+				<h3><a title="CSDN AWS中文技术社区正式上线" href="http://www.csdn.net/article/2014-06-19/2820292" target="_blank" onclick="LogClickCount(this,331);">CSDN AWS中文技术社区正式上线</a></h3>
+								<div class="summary clearfix">
+              	              	6月19日，CSDN云计算频道正式上线CSDN AWS中文技术社区（http://aws.csdn.net/）。如果你关心AWS能为中国用户提供哪些服务？热切的想获取更多的AWS使用经验，赶紧带着你的难题，到AWS中文技术社区收获解决之道。				</div>
+				      	
+          	</li>
+          				          	          	<li>
+				<h3><a title="Go 1.3正式发布，改进正则表达式！" href="http://www.csdn.net/article/2014-06-19/2820295-Go" target="_blank" onclick="LogClickCount(this,331);">Go 1.3正式发布，改进正则表达式！</a></h3>
+								<div class="summary clearfix">
+              	              	Google今天发布了Go语言1.3版本。新的版本改进了一些功能，支持在新环境中运行，显著改进链接器和编译器等，新增支持平台NaCl、DragonFly BSD、 Plan 9、 Solaris。目前，用户可以下载安装了。 				</div>
+				      	
+          	</li>
+          				          	          	<li>
+				<h3><a title="亚马逊开放双SDK：摄像购物，追踪脸部玩游戏" href="http://www.csdn.net/article/2014-06-19/2820306-dynamic-perspective-sdk-and-firefly-sdk" target="_blank" onclick="LogClickCount(this,331);">亚马逊开放双SDK：摄像购物，追踪脸部玩游戏</a></h3>
+								<div class="summary clearfix">
+              	<a title="亚马逊开放双SDK：摄像购物，追踪脸部玩游戏" href="http://www.csdn.net/article/2014-06-19/2820306-dynamic-perspective-sdk-and-firefly-sdk" target="_blank" onclick="LogClickCount(this,331);"><img src="http://cms.csdnimg.cn/article/201406/19/53a2b0c45636c.jpg"></a>              	亚马逊在发布第一款智能手机Fire Phone正式进军智能手机市场的同时，也推出了两项极具突破性的技术服务，分别为支持脸部追踪的Dynamic Perspective和智能识别一切事物的Firefly，并向第三方开发者开放了它们的SDK。				</div>
+				      	
+          	</li>
+          				          	          	<li>
+				<h3><a title="日薄西山的问答网站" href="http://www.csdn.net/article/2014-06-20/2820316" target="_blank" onclick="LogClickCount(this,331);">日薄西山的问答网站</a></h3>
+								<div class="summary clearfix">
+              	              	国外问答网站Quora融资8000万美元，紧接着国内的知乎也于2014年6月获得2千万美元新融资。初看，问答网站处于“欣欣向荣”的景象，百度指数中“问答网站”的搜索指数也在显著提升，但是真的如此吗？ 				</div>
+				      	
+          	</li>
+          				          	          	<li>
+				<h3><a title="许鹏：从零开始学习，Apache Spark源码走读（三）" href="http://www.csdn.net/article/2014-06-18/2820283" target="_blank" onclick="LogClickCount(this,331);">许鹏：从零开始学习，Apache Spark源码走读（三）</a></h3>
+								<div class="summary clearfix">
+              	<a title="许鹏：从零开始学习，Apache Spark源码走读（三）" href="http://www.csdn.net/article/2014-06-18/2820283" target="_blank" onclick="LogClickCount(this,331);"><img src="http://images.csdn.net/20140620/53a16a37cb9d2_副本.jpg"></a>              	自2013年6月进入Apache孵化器，Spark已经有来自25个组织的120多位开发者参与贡献。而在不久前，更成为了Apache软件基金会的顶级项目，当下已是知名Hadoop开发商Cloudera和MapR的新宠。				</div>
+				      	
+          	</li>
+          				          	          	<li>
+				<h3><a title="腾讯大数据平台质量保障之道" href="http://code.csdn.net/news/2820317" target="_blank" onclick="LogClickCount(this,331);">腾讯大数据平台质量保障之道</a></h3>
+								<div class="summary clearfix">
+              	<a title="腾讯大数据平台质量保障之道" href="http://code.csdn.net/news/2820317" target="_blank" onclick="LogClickCount(this,331);"><img src="http://images.csdn.net/20140620/539840e05cbdd.png"></a>              	本文为大家介绍了腾讯在大数据测试和平台建设方面的一些做法和经验，如腾讯分布式数据库TDW、腾讯实时计算平台TRC、算法测试实验平台Libra等，可供参考。				</div>
+				      	
+          	</li>
+          							<li class="ad_flow_text">
+				<dl>
+										<dt><a title="只需4个月，年薪就可超10万？" href="http://g.csdn.net/5271015" target="_blank">只需4个月，年薪就可超10万？</a></dt>
+					<dd>黑马程序员携最强师资、最新Android课程火爆入驻深圳，4个月让你年薪超10万！在黑马，没有什么不可...</dd>
+										<dt><a title="MSDN订阅，你的天生绝配，让工作、健康完美兼顾" href="http://g.csdn.net/5270985" target="_blank">MSDN订阅，你的天生绝配，让工作、健康完美兼顾</a></dt>
+					<dd>在微软平台进行测试和开发的工程师们，请不要再辛苦了，MSDN订阅无限量供应微软正版软件及工具，...</dd>
+									</dl>
+			</li>
+			          	          	<li>
+				<h3><a title="内忧外患：Android版FuelBand应用来得太迟？" href="http://www.csdn.net/article/2014-06-18/2820286-nike-fuelband-finally-launches-on-android" target="_blank" onclick="LogClickCount(this,331);">内忧外患：Android版FuelBand应用来得太迟？</a></h3>
+								<div class="summary clearfix">
+              	<a title="内忧外患：Android版FuelBand应用来得太迟？" href="http://www.csdn.net/article/2014-06-18/2820286-nike-fuelband-finally-launches-on-android" target="_blank" onclick="LogClickCount(this,331);"><img src="http://images.csdn.net/20140620/53a15d827893f.jpg"></a>              	时隔两年，耐克终于针对Android平台发布了其官方的FuelBand应用，在功能与设计上与iOS版如出一辙，但要求更为苛刻。于耐克而言，内忧外患一应俱全，FuelBand部门刚遭清洗，苹果、谷歌、三星可穿戴设备更是纷至沓来。 				</div>
+				      	
+          	</li>
+          				          	          	<li>
+				<h3><a title="开源与地球科学有啥关系？听听NASA怎么说" href="http://code.csdn.net/news/2820280" target="_blank" onclick="LogClickCount(this,331);">开源与地球科学有啥关系？听听NASA怎么说</a></h3>
+								<div class="summary clearfix">
+              	<a title="开源与地球科学有啥关系？听听NASA怎么说" href="http://code.csdn.net/news/2820280" target="_blank" onclick="LogClickCount(this,331);"><img src="http://images.csdn.net/20140620/53a10207500f7_thumb.jpg"></a>              	美国国家航空航天研究组织——NASA一直与开源社区有着深度合作，其多个项目已经开源，还设立了专门网站展示这些项目。本文以NASA和开源社区为例，讲解开源与地球气候的关系。				</div>
+				      	
+          	</li>
+          				          	          	<li>
+				<h3><a title="来自都教授的守护——腾讯电脑管家星星版超能力体验" href="http://www.csdn.net/article/a/2014-06-19/15819058" target="_blank" onclick="LogClickCount(this,331);">来自都教授的守护——腾讯电脑管家星星版超能力体验</a></h3>
+								<div class="summary clearfix">
+              	<a title="来自都教授的守护——腾讯电脑管家星星版超能力体验" href="http://www.csdn.net/article/a/2014-06-19/15819058" target="_blank" onclick="LogClickCount(this,331);"><img  class="image"src="http://images.csdn.net/20140620/2_140619143519_1_副本.jpg"></a>              					</div>
+				      	
+          	</li>
+          				          	          	<li>
+				<h3><a title="向三星和苹果发难：亚马逊FirePhone 3D手机强势来袭" href="http://www.csdn.net/article/2014-06-19/2820289-amazon-revealed-fire-phone-3d-smartphone" target="_blank" onclick="LogClickCount(this,331);">向三星和苹果发难：亚马逊FirePhone 3D手机强势来袭</a></h3>
+								<div class="summary clearfix">
+              	<a title="向三星和苹果发难：亚马逊FirePhone 3D手机强势来袭" href="http://www.csdn.net/article/2014-06-19/2820289-amazon-revealed-fire-phone-3d-smartphone" target="_blank" onclick="LogClickCount(this,331);"><img  class="image"src="http://images.csdn.net/20140620/53a220724c7d8.jpg"></a>              					</div>
+				      	
+          	</li>
+          				          	          	<li>
+				<h3><a title="开源夏令营学生报名开始，让暑期也开源！" href="http://code.csdn.net/news/2820188" target="_blank" onclick="LogClickCount(this,331);">开源夏令营学生报名开始，让暑期也开源！</a></h3>
+								<div class="summary clearfix">
+              	<a title="开源夏令营学生报名开始，让暑期也开源！" href="http://code.csdn.net/news/2820188" target="_blank" onclick="LogClickCount(this,331);"><img  class="image"src="http://images.csdn.net/20140606/538702d5489bf.png"></a>              					</div>
+				      	
+          	</li>
+          				          	          	<li>
+				<h3><a title="NFV+SDN，博科打造开放式网络平台" href="http://www.csdn.net/article/2014-06-17/2820274-brocade-SDN-NFV" target="_blank" onclick="LogClickCount(this,331);">NFV+SDN，博科打造开放式网络平台</a></h3>
+								<div class="summary clearfix">
+              	              	2014年6月17日，博科宣布推出博科Vyatta平台。据透露，亚太地区和中国的核心云服务商和电信运营商已经开始了对Vyatta平台的测试工作。				</div>
+				      	
+          	</li>
+          				          	          	<li>
+				<h3><a title="全球开发者报告：程序媛崛起，企业应用更赚钱！" href="http://www.csdn.net/article/2014-06-18/2820277-developer-population-and-demographics-study-2014" target="_blank" onclick="LogClickCount(this,331);">全球开发者报告：程序媛崛起，企业应用更赚钱！</a></h3>
+								<div class="summary clearfix">
+              	<a title="全球开发者报告：程序媛崛起，企业应用更赚钱！" href="http://www.csdn.net/article/2014-06-18/2820277-developer-population-and-demographics-study-2014" target="_blank" onclick="LogClickCount(this,331);"><img src="http://images.csdn.net/20140619/upo.jpg"></a>              	Evans Data发布《2014全球开发者人口和分布调查》报告，相比总是吃力不讨好的普通用户应用开发，越来越多的开发者将工作重心转移到企业级应用开发上来。另一方面，女性开发者的数量以87%的高比例呈现爆发式增长。				</div>
+				      	
+          	</li>
+          				          	          	<li>
+				<h3><a title="Google和Facebook渐被称为“开源标兵”" href="http://code.csdn.net/news/2820303" target="_blank" onclick="LogClickCount(this,331);">Google和Facebook渐被称为“开源标兵”</a></h3>
+								<div class="summary clearfix">
+              	<a title="Google和Facebook渐被称为“开源标兵”" href="http://code.csdn.net/news/2820303" target="_blank" onclick="LogClickCount(this,331);"><img src="http://images.csdn.net/20140619/pt_1955_472_o.jpg"></a>              	除了RedHat之外，Google和Facebook也一直是开源社区最大的贡献者排头兵，将自己的许多项目放心的交给社区发展，无形中壮大了开源社区的发展。				</div>
+				      	
+          	</li>
+          				          	          	<li>
+				<h3><a title="Facebook自主设计网络交换机：不再依赖思科" href="http://code.csdn.net/news/2820302" target="_blank" onclick="LogClickCount(this,331);">Facebook自主设计网络交换机：不再依赖思科</a></h3>
+								<div class="summary clearfix">
+              	<a title="Facebook自主设计网络交换机：不再依赖思科" href="http://code.csdn.net/news/2820302" target="_blank" onclick="LogClickCount(this,331);"><img src="http://images.csdn.net/20140619/124104rfbppgkvykosmeen_jpg_middle.jpg"></a>              	Facebook计算中心高管在GigaOM Structure科技大会上表示，公司已经开始使用自主设计的交换机来为10亿多Facebook用户提供服务。				</div>
+				      	
+          	</li>
+          				          	          	<li>
+				<h3><a title="MongoDB 2.6.2 发布，大大改进查询功能" href="http://www.csdn.net/article/2014-06-18/2820284-MongoDB" target="_blank" onclick="LogClickCount(this,331);">MongoDB 2.6.2 发布，大大改进查询功能</a></h3>
+								<div class="summary clearfix">
+              	              	MongoDB是一个由C++语言编写的基于分布式文件存储的数据库，旨在为Web应用提供可扩展的高性能数据存储解决方案。目前MongoDB 2.6.2发布，新版本大大改进了查询功能。				</div>
+				      	
+          	</li>
+          				          	          </ul>
+			<ul class="develop">
+						<li><span></span><a title="Android ActionBar完全解析(上)" href="http://blog.csdn.net/guolin_blog/article/details/18234477" target="_blank" onclick="LogClickCount(this,366);">Android ActionBar完全解析(上)</a></li>
+						<li><span></span><a title="对苹果“五仁”编程语言Swift的简单分析" href="http://blog.csdn.net/proteas/article/details/28439601" target="_blank" onclick="LogClickCount(this,366);">对苹果“五仁”编程语言Swift的简单分析</a></li>
+						<li><span></span><a title="iOS开发- 蓝牙后台接收数据(BLE4.0)" href="http://blog.csdn.net/hitwhylz/article/details/28664939" target="_blank" onclick="LogClickCount(this,366);">iOS开发- 蓝牙后台接收数据(BLE4.0)</a></li>
+						<li><span></span><a title="Swift编程语言初探" href="http://blog.csdn.net/tounaobun/article/details/28614859" target="_blank" onclick="LogClickCount(this,366);">Swift编程语言初探</a></li>
+						<li><span></span><a title="Android 开源框架Universal-Image-Loader完全解析（二）--- 图片缓存策略详解" href="http://blog.csdn.net/xiaanming/article/details/27525741" target="_blank" onclick="LogClickCount(this,366);">Android 开源框架Universal-Image-Loader完全解析（二）--- 图片缓存策略详解</a></li>
+						<li><span></span><a title="jQuery 将选中的对象转化为原始的DOM对象" href="http://blog.csdn.net/lcstrive/article/details/29553519" target="_blank" onclick="LogClickCount(this,366);">jQuery 将选中的对象转化为原始的DOM对象</a></li>
+						<li><span></span><a title="iOS开发- 文件共享" href="http://blog.csdn.net/hitwhylz/article/details/29389939" target="_blank" onclick="LogClickCount(this,366);">iOS开发- 文件共享</a></li>
+						<li><span></span><a title="【OpenCV入门教程之十六】OpenCV角点检测之Harris角点检测" href="http://blog.csdn.net/poem_qianmo/article/details/29356187" target="_blank" onclick="LogClickCount(this,366);">【OpenCV入门教程之十六】OpenCV角点检测之Harris角点检测</a></li>
+						<li><span></span><a title="iOS开发- 隐藏键盘总结" href="http://blog.csdn.net/hitwhylz/article/details/29263027" target="_blank" onclick="LogClickCount(this,366);">iOS开发- 隐藏键盘总结</a></li>
+						<li><span></span><a title="Swift 编程语言入门教程" href="http://blog.csdn.net/sqc3375177/article/details/29205739" target="_blank" onclick="LogClickCount(this,366);">Swift 编程语言入门教程</a></li>
+						</ul>
+          <div align="center"><a href="/rollingnews.html" target="_blank" class="more" onclick="LogClickCount(this,331);">查看更多全站动态</a></div>
+        </div>
+      </div>
+   </div>
+  </div>
+
+</div>
+<!--content-->
+<div class="footer_nav">
+	<h4>核心技术类目</h4>
+		<div class="classify">
+		    	<a title="全部主题" href="http://www.csdn.net/tag" target="_blank" onclick="LogClickCount(this,336);">全部主题</a>
+    	    	<a title="Java" href="http://www.csdn.net/tag/Java" target="_blank" onclick="LogClickCount(this,336);">Java</a>
+    	    	<a title="VPN" href="http://www.csdn.net/tag/vpn" target="_blank" onclick="LogClickCount(this,336);">VPN</a>
+    	    	<a title="Android" href="http://www.csdn.net/tag/android" target="_blank" onclick="LogClickCount(this,336);">Android</a>
+    	    	<a title="iOS" href="http://www.csdn.net/tag/ios" target="_blank" onclick="LogClickCount(this,336);">iOS</a>
+    	    	<a title="ERP" href="http://www.csdn.net/tag/erp" target="_blank" onclick="LogClickCount(this,336);">ERP</a>
+    	    	<a title="IE10" href="http://www.csdn.net/tag/ie10" target="_blank" onclick="LogClickCount(this,336);">IE10</a>
+    	    	<a title="Eclipse" href="http://www.csdn.net/tag/eclipse" target="_blank" onclick="LogClickCount(this,336);">Eclipse</a>
+    	    	<a title="CRM" href="http://www.csdn.net/tag/crm" target="_blank" onclick="LogClickCount(this,336);">CRM</a>
+    	    	<a title="JavaScript" href="http://www.csdn.net/tag/javascript" target="_blank" onclick="LogClickCount(this,336);">JavaScript</a>
+    	    	<a title="Ubuntu" href="http://www.csdn.net/tag/ubuntu" target="_blank" onclick="LogClickCount(this,336);">Ubuntu</a>
+    	    	<a title="NFC" href="http://www.csdn.net/tag/nfc" target="_blank" onclick="LogClickCount(this,336);">NFC</a>
+    	    	<a title="WAP" href="http://www.csdn.net/tag/wap" target="_blank" onclick="LogClickCount(this,336);">WAP</a>
+    	    	<a title="jQuery" href="http://www.csdn.net/tag/jquery" target="_blank" onclick="LogClickCount(this,336);">jQuery</a>
+    	    	<a title="数据库" href="http://www.csdn.net/tag/数据库" target="_blank" onclick="LogClickCount(this,336);">数据库</a>
+    	    	<a title="BI" href="http://www.csdn.net/tag/bi" target="_blank" onclick="LogClickCount(this,336);">BI</a>
+    	    	<a title="HTML5" href="http://www.csdn.net/tag/html5" target="_blank" onclick="LogClickCount(this,336);">HTML5</a>
+    	    	<a title="Spring" href="http://www.csdn.net/tag/spring" target="_blank" onclick="LogClickCount(this,336);">Spring</a>
+    	    	<a title="Apache" href="http://www.csdn.net/tag/apache" target="_blank" onclick="LogClickCount(this,336);">Apache</a>
+    	    	<a title="Hadoop" href="http://www.csdn.net/tag/hadoop" target="_blank" onclick="LogClickCount(this,336);">Hadoop</a>
+    	    	<a title=".NET" href="http://www.csdn.net/tag/.net" target="_blank" onclick="LogClickCount(this,336);">.NET</a>
+    	    	<a title="API" href="http://www.csdn.net/tag/api" target="_blank" onclick="LogClickCount(this,336);">API</a>
+    	    	<a title="HTML" href="http://www.csdn.net/tag/html" target="_blank" onclick="LogClickCount(this,336);">HTML</a>
+    	    	<a title="SDK" href="http://www.csdn.net/tag/sdk" target="_blank" onclick="LogClickCount(this,336);">SDK</a>
+    	    	<a title="IIS" href="http://www.csdn.net/tag/iis" target="_blank" onclick="LogClickCount(this,336);">IIS</a>
+    	    	<a title="Fedora" href="http://www.csdn.net/tag/fedora" target="_blank" onclick="LogClickCount(this,336);">Fedora</a>
+    	    	<a title="XML" href="http://www.csdn.net/tag/xml" target="_blank" onclick="LogClickCount(this,336);">XML</a>
+    	    	<a title="LBS" href="http://www.csdn.net/tag/lbs" target="_blank" onclick="LogClickCount(this,336);">LBS</a>
+    	    	<a title="Unity" href="http://www.csdn.net/tag/unity" target="_blank" onclick="LogClickCount(this,336);">Unity</a>
+    	    	<a title="Splashtop" href="http://www.csdn.net/tag/splashtop" target="_blank" onclick="LogClickCount(this,336);">Splashtop</a>
+    	    	<a title="UML" href="http://www.csdn.net/tag/uml" target="_blank" onclick="LogClickCount(this,336);">UML</a>
+    	    	<a title="components" href="http://www.csdn.net/tag/components" target="_blank" onclick="LogClickCount(this,336);">components</a>
+    	    	<a title="Windows Mobile" href="http://www.csdn.net/tag/windowsmobile" target="_blank" onclick="LogClickCount(this,336);">Windows Mobile</a>
+    	    	<a title="Rails" href="http://www.csdn.net/tag/rails" target="_blank" onclick="LogClickCount(this,336);">Rails</a>
+    	    	<a title="QEMU" href="http://www.csdn.net/tag/qemu" target="_blank" onclick="LogClickCount(this,336);">QEMU</a>
+    	    	<a title="KDE" href="http://www.csdn.net/tag/kde" target="_blank" onclick="LogClickCount(this,336);">KDE</a>
+    	    	<a title="Cassandra" href="http://www.csdn.net/tag/cassandra" target="_blank" onclick="LogClickCount(this,336);">Cassandra</a>
+    	    	<a title="CloudStack" href="http://www.csdn.net/tag/cloudstack" target="_blank" onclick="LogClickCount(this,336);">CloudStack</a>
+    	    	<a title="FTC" href="http://www.csdn.net/tag/ftc" target="_blank" onclick="LogClickCount(this,336);">FTC</a>
+    	    	<a title="coremail" href="http://www.csdn.net/tag/coremail" target="_blank" onclick="LogClickCount(this,336);">coremail</a>
+    	    	<a title="OPhone " href="http://www.csdn.net/tag/ophone " target="_blank" onclick="LogClickCount(this,336);">OPhone </a>
+    	    	<a title="CouchBase" href="http://www.csdn.net/tag/couchbase" target="_blank" onclick="LogClickCount(this,336);">CouchBase</a>
+    	    	<a title="云计算" href="http://www.csdn.net/tag/云计算" target="_blank" onclick="LogClickCount(this,336);">云计算</a>
+    	    	<a title="iOS6" href="http://www.csdn.net/tag/iOS6" target="_blank" onclick="LogClickCount(this,336);">iOS6</a>
+    	    	<a title="Rackspace " href="http://www.csdn.net/tag/rackspace " target="_blank" onclick="LogClickCount(this,336);">Rackspace </a>
+    	    	<a title="Web App" href="http://www.csdn.net/tag/webapp" target="_blank" onclick="LogClickCount(this,336);">Web App</a>
+    	    	<a title="SpringSide" href="http://www.csdn.net/tag/springside" target="_blank" onclick="LogClickCount(this,336);">SpringSide</a>
+    	    	<a title="Maemo" href="http://www.csdn.net/tag/maemo" target="_blank" onclick="LogClickCount(this,336);">Maemo</a>
+    	    	<a title="Compuware" href="http://www.csdn.net/tag/compuware" target="_blank" onclick="LogClickCount(this,336);">Compuware</a>
+    	    	<a title="大数据" href="http://www.csdn.net/tag/大数据" target="_blank" onclick="LogClickCount(this,336);">大数据</a>
+    	    	<a title="aptech" href="http://www.csdn.net/tag/aptech" target="_blank" onclick="LogClickCount(this,336);">aptech</a>
+    	    	<a title="Perl" href="http://www.csdn.net/tag/perl" target="_blank" onclick="LogClickCount(this,336);">Perl</a>
+    	    	<a title="Tornado" href="http://www.csdn.net/tag/tornado" target="_blank" onclick="LogClickCount(this,336);">Tornado</a>
+    	    	<a title="Ruby" href="http://www.csdn.net/tag/ruby" target="_blank" onclick="LogClickCount(this,336);">Ruby</a>
+    	    	<a title="Hibernate" href="http://www.csdn.net/hibernate" target="_blank" onclick="LogClickCount(this,336);">Hibernate</a>
+    	    	<a title="ThinkPHP" href="http://www.csdn.net/tag/thinkphp" target="_blank" onclick="LogClickCount(this,336);">ThinkPHP</a>
+    	    	<a title="Spark" href="http://www.csdn.net/tag/spark" target="_blank" onclick="LogClickCount(this,336);">Spark</a>
+    	    	<a title="HBase" href="http://www.csdn.net/tag/hbase" target="_blank" onclick="LogClickCount(this,336);">HBase</a>
+    	    	<a title="Pure" href="http://www.csdn.net/tag/pure" target="_blank" onclick="LogClickCount(this,336);">Pure</a>
+    	    	<a title="Solr" href="http://www.csdn.net/tag/solr" target="_blank" onclick="LogClickCount(this,336);">Solr</a>
+    	    	<a title="Angular" href="http://www.csdn.net/tag/angular" target="_blank" onclick="LogClickCount(this,336);">Angular</a>
+    	    	<a title="Cloud Foundry" href="http://www.csdn.net/tag/cloudfoundry" target="_blank" onclick="LogClickCount(this,336);">Cloud Foundry</a>
+    	    	<a title="Redis" href="http://www.csdn.net/tag/redis" target="_blank" onclick="LogClickCount(this,336);">Redis</a>
+    	    	<a title="Scala" href="http://www.csdn.net/tag/scala" target="_blank" onclick="LogClickCount(this,336);">Scala</a>
+    	    	<a title="Django" href="http://www.csdn.net/tag/django" target="_blank" onclick="LogClickCount(this,336);">Django</a>
+    	    	<a title="Bootstrap" href="http://www.csdn.net/tag/bootstrap" target="_blank" onclick="LogClickCount(this,336);">Bootstrap</a>
+    		</div>
+	<h4>感受CSDN丰富的服务</h4>
+	<div class="service clearfix">
+  		<a href="http://www.csdn.net/article/rss_lastnews" target="_blank" class="icon_rss">RSS</a><a href="http://huiyi.csdn.net" target="_blank" class="icon_activity">活动</a><a href="mailto:webmaster@csdn.net" target="_blank" class="icon_email">邮件</a><a href="http://weibo.com/csdn?s=6cm7D0" target="_blank" class="icon_weibo">关注微博</a><a href="http://www.csdn.net/article/2012-11-16/2811946" target="_blank" class="icon_weixin">订阅微信</a><a href="http://subject.csdn.net/programmer-ipad" target="_blank" class="icon_ipad">程序员杂志iPad</a><a href="http://share.csdn.net" target="_blank" class="icon_share">CSDN Share</a><a href="http://www.pongo.cn" target="_blank" class="icon_pongo">找工作</a><a href="http://www.csto.com" target="_blank" class="icon_csto">发布项目</a>
+	</div>
+</div>
+<img alt="Top_arrow" id="top_arrow" class="top_arrow" src="http://news.csdn.net/images/top_arrow.png" style="display: block; cursor: pointer;">
+<div class="footer">
+<div class="pub_footer">
+        <dl>
+   <dd class="backblue"><a href="http://www.csdn.net/company/about.html" target="_blank">公司简介</a>|<a href="http://www.csdn.net/company/recruit.html" target="_blank">招贤纳士</a>|<a href="http://www.csdn.net/company/marketing.html" target="_blank">广告服务</a>|<a href="http://www.csdn.net/company/account.html" target="_blank">银行汇款帐号</a>|<a href="http://www.csdn.net/company/contact.html" target="_blank">联系方式</a>|<a href="http://www.csdn.net/company/statement.html" target="_blank">版权声明</a>|<a href="http://www.csdn.net/company/layer.html" target="_blank">法律顾问</a>|<a href="#" onclick="window.location.href='mai'+'lto:'+'webma'+'ster@c'+'sdn.n'+'et?subject=Report To CSDN';return false">问题报告</a>|<a href="http://www.csdn.net/friendlink.html" target="_blank">合作伙伴</a>|<a href='http://bbs.csdn.net/forums/Service' target='_blank'>论坛反馈</a>|<a href='http://subject.csdn.net/supervisal' target='_blank'>网游监管</a></dd>
+<dt>
+<a href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001032100010" target="_blank"><img src="http://csdnimg.cn/www/images/pic_foot_gongshang.png" alt="" title=""></a>
+<a href="http://www.bnia.cn/" target="_blank"><img src="http://csdnimg.cn/www/images/pic_foot_BNIA.png" alt="" title=""></a>
+
+<a href="http://net.china.com.cn/index.htm" target="_blank"><img src="http://csdnimg.cn/www/images/pic_foot_report.png" alt="" title=""></a>
+<!--<a href="http://www.netbj.org.cn/" target="_blank"><img src="http://csdnimg.cn/www/images/link_logo04.gif" alt="" title="" /></a>-->
+<a href="http://www.bj.cyberpolice.cn/index.htm" target="_blank"><img src="http://csdnimg.cn/www/images/pic_foot_report110.png" alt="" title=""></a> </dt>
+   
+   <dd>
+   <a href="http://wpa.qq.com/msgrd?v=3&amp;uin=2355263776&amp;site=qq&amp;menu=yes" target="_blank" class="qq">网站客服</a> <a href='http://wpa.qq.com/msgrd?v=3&uin=2251809102&site=qq&menu=yes' target='_blank' class='qq'>杂志客服</a>
+   <a href="http://e.weibo.com/csdnsupport/profile" target="_blank" class="weibo">微博客服</a>
+   <a href="mailto:webmaster@csdn.net" class="email" title="联系邮箱">webmaster@csdn.net</a>
+   <span class="phone" title="服务热线">400-600-2320</span>
+   </dd>
+   <dd><a href="http://www.miibeian.gov.cn/" target="_blank">京ICP证070598号</a>　京公网安备号：110105000969</dd>
+   <dd><a href="http://www.csdn.net/company/icp.html">电信业务审批[2007]字第380号</a>　<a href="http://www.csdn.net/company/pifu.html">电信与信息服务业务经营许可证070598号</a></dd>
+   <dd>北京创新乐知信息技术有限公司 版权所有</dd>
+   <dd>江苏乐知网络技术有限公司 提供商务支持</dd>
+   <!--<dd> 文明上网违法信息举报电话：13552009689&nbsp;<img src="http://csdnimg.cn/www/images/csdnindex_pic55.gif" alt="" title="" /></dd> -->
+   <dd class="small">Copyright © 1999-2014, CSDN.NET, All Rights Reserved</dd>
+
+  <!-- <dd><a href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001032100010" target="_blank"><img src="http://csdnimg.cn/www/images/gongshang_logos.gif" alt="GongshangLogo" alt="' title="" /></a></dd> -->
+   </dl>
+        </div>
+</div> 
+</body>
+<script src="js/jquery-1.4.2.min.js" type="text/javascript"></script>
+<script src="js/swapImg_openLayer.js" type="text/javascript"></script>
+<script src="http://counter.csdn.net/a/js/AreaCounter.js" type="text/javascript"></script>
+<script type="text/javascript" src="http://news.csdn.net/js/top_arrow.js?20121128"></script>
+<script>
+document.write('<script type="text/javascript" charset="utf-8" src="http://www.csdn.net/ui/scripts/Csdn/counter.js"></'+'script>');
+</script>
+<script type="text/javascript">
+document.write('<script id="noticeScript" type="text/javascript" charset="utf-8" btnId="header_notice_num" wrapId="note1" count="5" subCount="5"  src="http://csdnimg.cn/rabbit/notev2/js/notify.js?' + (new Date()/120000|0) + '="></'+'script>');
+document.write('<script src="http://csdnimg.cn/pubfooter/js/tracking.js?'+(new Date()/120000|0)+'="></'+'script>');
+$( function () {
+	// swapImg_openLayer.js
+    csdn.SwapImage.swap( {
+        swapRoot: $( '.hot' )
+    } );
+
+    csdn.openLayer.layer( {
+        layer: $( '.nav_more' ).find( '.nav_more_list' ),
+        openBtn: $( '.nav_more' )
+    } );
+    
+    //搜索
+    $( "#srch1" ).keydown( function( event ) {
+        if( event.keyCode == 13 )
+        {
+            var val = $( this ).val();
+            val
+                ? window.open( 'http://so.csdn.net/Default.aspx?q=' + encodeURIComponent( val ) )
+                : alert( '请输入搜索内容' );
+        }
+    } );
+});
+</script>
+<script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script>
+<script type="text/javascript">
+  BAIDU_CLB_preloadSlots("643411","643412","629767","629765","629732","684782","684819","684820","684822");
+</script>
+<script type="text/javascript">
+    BAIDU_CLB_fillSlotAsync("629732", "629732");
+    BAIDU_CLB_fillSlotAsync("629765", "629765");
+    BAIDU_CLB_fillSlotAsync("629767", "629767");
+    BAIDU_CLB_fillSlotAsync("643411", "643411");
+    BAIDU_CLB_fillSlotAsync("643412", "643412");
+    BAIDU_CLB_fillSlotAsync("684782", "684782");
+    BAIDU_CLB_fillSlotAsync("684819", "684819");
+    BAIDU_CLB_fillSlotAsync("684820", "684820");
+    BAIDU_CLB_fillSlotAsync("684822", "684822");
+</script>
+</html>

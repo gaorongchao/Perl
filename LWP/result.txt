@@ -1,0 +1,36 @@
+$VAR1 = bless( {
+                 '_content' => '',
+                 '_headers' => bless( {
+                                        'expires' => 'Sun, 22 Jun 2014 03:26:39 GMT',
+                                        'accept-ranges' => 'bytes',
+                                        'last-modified' => 'Tue, 12 Jan 2010 13:48:00 GMT',
+                                        'cache-control' => 'max-age=86400',
+                                        'client-date' => 'Sat, 21 Jun 2014 03:23:06 GMT',
+                                        '::std_case' => {
+                                                          'client-response-num' => 'Client-Response-Num',
+                                                          'client-peer' => 'Client-Peer',
+                                                          'client-date' => 'Client-Date'
+                                                        },
+                                        'etag' => '"51-4b4c7d90"',
+                                        'server' => 'Apache',
+                                        'content-length' => '81',
+                                        'connection' => 'Keep-Alive',
+                                        'client-response-num' => 1,
+                                        'content-type' => 'text/html',
+                                        'date' => 'Sat, 21 Jun 2014 03:26:39 GMT',
+                                        'client-peer' => '220.181.111.85:80'
+                                      }, 'HTTP::Headers' ),
+                 '_msg' => 'OK',
+                 '_rc' => 200,
+                 '_request' => bless( {
+                                        '_method' => 'HEAD',
+                                        '_content' => '',
+                                        '_headers' => bless( {
+                                                               'user-agent' => 'LWP::Simple/6.00 libwww-perl/6.05'
+                                                             }, 'HTTP::Headers' ),
+                                        '_uri_canonical' => bless( do{\(my $o = 'http://baidu.com/')}, 'URI::http' ),
+                                        '_uri' => bless( do{\(my $o = 'http://baidu.com')}, 'URI::http' )
+                                      }, 'HTTP::Request' ),
+                 '_protocol' => 'HTTP/1.1'
+               }, 'HTTP::Response' );
+text/html 81 1263304080
